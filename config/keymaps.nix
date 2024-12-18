@@ -75,6 +75,12 @@
       action = "<cmd>Yazi cwd<CR>";
       options.desc = "Open Yazi in nvim's working directory";
     }
+    {
+      mode = "n";
+      key = "<leader>gg";
+      action = "<cmd>LazyGit<CR>";
+      options.desc = "Open LazyGit";
+    }
 
     # Bufferline
     {

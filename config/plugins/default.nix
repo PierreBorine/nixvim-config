@@ -21,6 +21,7 @@
     todo-comments.enable = true;
     markdown-preview.enable = true;
     yazi.enable = true;
+    lazygit.enable = true;
     transparent.enable = true;
 
     fugitive.enable = true;
