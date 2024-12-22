@@ -17,8 +17,6 @@
     colorizer.enable = true;
     conform-nvim.enable = true;
     nix.enable = true;
-    comment.enable = true;
-    todo-comments.enable = true;
     markdown-preview.enable = true;
     yazi.enable = true;
     lazygit.enable = true;
@@ -32,7 +30,15 @@
         changedelete.text = "󱕖";
       };
     };
+
+    comment.enable = true;
+    comment-box.enable = true;
+    todo-comments = {
+      enable = true;
+      settings.sign_priority = 6; # default overrides git line status
+    };
   };
+
   extraPlugins = with pkgs.vimPlugins; [
     cellular-automaton-nvim
   ];

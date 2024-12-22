@@ -16,6 +16,7 @@
       standalonePlugins = [
         "nvim-treesitter"
         "friendly-snippets"
+        "comment-box.nvim"
       ];
     };
   };
