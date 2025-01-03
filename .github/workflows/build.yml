@@ -1,14 +1,13 @@
-name: nixvim
+name: build
 
 on:
   push:
     branches:
       - master
-  pull_request:
 
 jobs:
   build:
-    name: Build and cache
+    name: Build and push to cachix
     runs-on: ubuntu-latest
     steps:
       - name: Maximize build space
@@ -16,16 +15,17 @@ jobs:
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /usr/local/lib/android
           sudo rm -rf /opt/ghc
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Install Nix
         uses: cachix/install-nix-action@v30
         with:
-          extra_nix_config: |
-            max-jobs = 4
+          extra_nix_config: max-jobs = 4
+          nix_path: nixpkgs=channel:nixos-unstable
       - name: Install Cachix
         uses: cachix/cachix-action@v15
         with:
           name: pierreborine
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build nixvim
-        run: |
-          nix build -L github:PierreBorine/nixvim-config?rev=${{ github.sha }}
+        run: nix build -L
