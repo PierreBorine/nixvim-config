@@ -6,7 +6,6 @@ on:
     - cron: '0 0 * * 0' # weekly
 
 permissions:
-  pull-requests: write
   contents: write
 
 jobs:
@@ -14,25 +13,12 @@ jobs:
     name: Update flake.lock
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Install Nix
         uses: cachix/install-nix-action@v30
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: cachix/cachix-action@v15
-        with:
-          name: pierreborine
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          extra_nix_config: experimental-features = nix-command flakes
       - name: Update flake.lock
-        id: update
-        uses: DeterminateSystems/update-flake-lock@v24
-        with:
-          pr-labels: |
-            dependencies
-          token: ${{ secrets.GH_UPDATES_TOKEN }}
-      - name: Auto-merge update
-        run: gh pr merge --auto --squash ${{ steps.update.outputs.pull-request-number }}
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: nix flake update --commit-lock-file
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
