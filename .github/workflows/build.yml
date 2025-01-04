@@ -1,12 +1,13 @@
 name: Build nixvim
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
     paths:
+      - 'flake.lock'
       - '**.nix'
-      - '**.lock'
 
 jobs:
   build:
