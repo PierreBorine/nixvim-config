@@ -189,6 +189,22 @@
         "type": "github"
       }
     },
+    "live-server": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721607237,
+        "narHash": "sha256-gZDG9PuzRpRJGPkkXiiBZ5w+ZUglMJA08o/ij54ME8o=",
+        "owner": "barrett-ruth",
+        "repo": "live-server.nvim",
+        "rev": "5fc8abb727827a09d0ce1b7757d0a4c7b5802b09",
+        "type": "github"
+      },
+      "original": {
+        "owner": "barrett-ruth",
+        "repo": "live-server.nvim",
+        "type": "github"
+      }
+    },
     "lualine-so-fancy": {
       "flake": false,
       "locked": {
@@ -322,6 +338,7 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "live-server": "live-server",
         "lualine-so-fancy": "lualine-so-fancy",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim"
