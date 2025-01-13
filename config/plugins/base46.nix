@@ -4,14 +4,9 @@
   extraPlugins = with pkgs.vimPlugins; [
     plenary-nvim
     base46
-    nvchad-ui
-    nvzone-volt
-    nvzone-menu
-    nvzone-minty
   ];
 
   extraConfigLua = ''
-    require 'nvchad'
     require('base46').load_all_highlights()
   '';
 
@@ -79,38 +74,11 @@
             },
             transparency = false,
             theme_toggle = { "onedark" },
-            integrations = {
-            	"codeactionmenu",
-            	"dap",
-            	"markview",
-            	"notify",
-            	"nvshades",
-            	"rainbowdelimiters",
-            	"semantic_tokens",
-            },
+            hl_add = {},
+            hl_override = {},
           },
-          ui = {
-            statusline = {
-              -- theme = "arrow",
-              order = { "mode", "file", "git", "%=", "diagnostics", "lsp", "cwd", "cursor" },
-            },
-            tabufline = {
-              order = { "treeOffset", "buffers", "tabs", "closeTab" },
-              modules = {
-                closeTab = function()
-                  return require("nvchad.tabufline.utils").btn(" 󰅖 ", "CloseAllBufsBtn", "CloseAllBufs")
-                end,
-              },
-            },
-          },
-          term = {
-            winopts = { number = false, relativenumber = false },
-          },
-          colorify = { enabled = false },
-          lsp = { signature = true },
         }
         return options
       '';
   };
-  
 }

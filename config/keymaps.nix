@@ -86,32 +86,34 @@
     {
       mode = "n";
       key = "<tab>";
-      action.__raw = ''
-        function()
-          require("nvchad.tabufline").next()
-        end
-      '';
+      action ="<cmd>BufferLineCycleNext<CR>";
       options.desc = "Cycle to next buffer tab";
       options.silent = true;
     }
     {
       mode = "n";
       key = "<S-tab>";
-      action.__raw = ''
-        function()
-          require("nvchad.tabufline").prev()
-        end
-      '';
-      options.desc = "Cycle to previous buffer tab";
+      action = "<cmd>BufferLineCyclePrev<CR>";
+      options.desc = "Cycle to previous buffer";
+      options.silent = true;
+    }
+    {
+      mode = "n";
+      key = "<C-tab>";
+      action ="<cmd>BufferLineMoveNext<CR>";
+      options.desc = "Move current buffer forward";
+      options.silent = true;
+    }
+    {
+      mode = "n";
+      key = "<C-S-tab>";
+      action = "<cmd>BufferLineMovePrev<CR>";
+      options.desc = "Move current buffer backward";
       options.silent = true;
     }
     {
       key = "<leader>x";
-      action.__raw = ''
-        function()
-          require("nvchad.tabufline").close_buffer()
-        end
-      '';
+      action = "<cmd>Bdelete<CR>";
       options.desc = "Close the current buffer";
       options.silent = true;
     }
@@ -124,35 +126,35 @@
       options.desc = "Escape terminal mode";
       options.silent = true;
     }
-    {
-      key = "<leader>h";
-      action.__raw = ''
-        function()
-          require("nvchad.term").new { pos = "sp" }
-        end
-      '';
-      options.desc = "New horizontal terminal";
-      options.silent = true;
-    }
-    {
-      key = "<leader>v";
-      action.__raw = ''
-        function()
-          require("nvchad.term").new { pos = "vsp" }
-        end
-      '';
-      options.desc = "New vertical terminal";
-      options.silent = true;
-    }
-    {
-      mode = ["n" "t"];
-      key = "<A-h>";
-      action.__raw = ''
-        function()
-          require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
-        end
-      '';
-    }
+    # {
+    #   key = "<leader>h";
+    #   action.__raw = ''
+    #     function()
+    #       require("nvchad.term").new { pos = "sp" }
+    #     end
+    #   '';
+    #   options.desc = "New horizontal terminal";
+    #   options.silent = true;
+    # }
+    # {
+    #   key = "<leader>v";
+    #   action.__raw = ''
+    #     function()
+    #       require("nvchad.term").new { pos = "vsp" }
+    #     end
+    #   '';
+    #   options.desc = "New vertical terminal";
+    #   options.silent = true;
+    # }
+    # {
+    #   mode = ["n" "t"];
+    #   key = "<A-h>";
+    #   action.__raw = ''
+    #     function()
+    #       require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+    #     end
+    #   '';
+    # }
 
     # Comments
     {

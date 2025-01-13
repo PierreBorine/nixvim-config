@@ -10,6 +10,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    lualine-so-fancy = {
+      url = "github:meuter/lualine-so-fancy.nvim";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -30,7 +35,7 @@
       }: let
         nixvimLib = nixvim.lib.${system};
         nixvim' = nixvim.legacyPackages.${system};
-        extraVimPlugins = import ./pkgs pkgs;
+        extraVimPlugins = import ./pkgs pkgs inputs;
         nixvimModule = {
           inherit pkgs;
           module = import ./config;

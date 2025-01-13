@@ -189,6 +189,22 @@
         "type": "github"
       }
     },
+    "lualine-so-fancy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736448743,
+        "narHash": "sha256-Ctdt8kCG+4ynpfEHpvUhFQpbhcaLg0hoPX+yPkUQGS0=",
+        "owner": "meuter",
+        "repo": "lualine-so-fancy.nvim",
+        "rev": "6ba7b138f2ca435673eb04c2cf85f0757df69b07",
+        "type": "github"
+      },
+      "original": {
+        "owner": "meuter",
+        "repo": "lualine-so-fancy.nvim",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -306,6 +322,7 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "lualine-so-fancy": "lualine-so-fancy",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim"
       }

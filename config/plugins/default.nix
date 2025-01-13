@@ -3,9 +3,11 @@
     ./live-server.nix
     ./treesitter.nix
     ./completion.nix
+    ./statusline.nix
+    ./bufferline.nix
     ./nvim-tree.nix
+    ./base46.nix
     ./lsp.nix
-    ./nvchad.nix
   ];
 
   plugins = {
@@ -20,7 +22,6 @@
     markdown-preview.enable = true;
     yazi.enable = true;
     lazygit.enable = true;
-    transparent.enable = true;
 
     fugitive.enable = true;
     gitsigns = {
@@ -41,5 +42,8 @@
 
   extraPlugins = with pkgs.vimPlugins; [
     cellular-automaton-nvim
+    nvzone-volt
+    nvzone-menu
+    nvzone-minty
   ];
 }
