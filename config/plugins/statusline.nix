@@ -1,5 +1,5 @@
-{extraVimPlugins, ...}: {
-  extraPlugins = [extraVimPlugins.lualine-so-fancy];
+{pkgs, ...}: {
+  extraPlugins = [pkgs.extraPlugins.lualine-so-fancy];
   plugins.lualine = {
     enable = true;
     settings = {

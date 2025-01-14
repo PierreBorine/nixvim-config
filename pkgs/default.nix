@@ -1,4 +1,6 @@
-pkgs: inputs: {
-  live-server = pkgs.callPackage ./live-server-nvim.nix {inherit inputs;};
-  lualine-so-fancy = pkgs.callPackage ./lualine-so-fancy-nvim.nix {inherit inputs;};
+prev: final: inputs: {
+  extraPlugins = {
+    live-server = prev.callPackage ./live-server-nvim.nix {inherit inputs;};
+    lualine-so-fancy = prev.callPackage ./lualine-so-fancy-nvim.nix {inherit inputs;};
+  };
 }

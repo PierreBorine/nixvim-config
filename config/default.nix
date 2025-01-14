@@ -1,8 +1,9 @@
 {
   imports = [
+    ./plugins
+    ../modules
     ./performance.nix
     ./keymaps.nix
-    ./plugins
   ];
 
   clipboard = {

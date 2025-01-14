@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./live-server.nix
     ./treesitter.nix
     ./completion.nix
     ./statusline.nix
@@ -11,6 +10,8 @@
   ];
 
   plugins = {
+    live-server.enable = true;
+
     web-devicons.enable = true; # for nvim-tree and bufferline
     which-key.enable = true;
     telescope.enable = true;

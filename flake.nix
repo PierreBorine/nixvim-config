@@ -38,21 +38,19 @@
         system,
         ...
       }: let
-        nixvimLib = nixvim.lib.${system};
+        pkgs' = pkgs.extend(prev: final: import ./pkgs prev final inputs);
+        nixvimLib = nixvim.lib;
         nixvim' = nixvim.legacyPackages.${system};
-        extraVimPlugins = import ./pkgs pkgs inputs;
         nixvimModule = {
-          inherit pkgs;
+          pkgs = pkgs';
           module = import ./config;
-          extraSpecialArgs = {
-            inherit extraVimPlugins;
-          };
+          extraSpecialArgs = {inherit nixvimLib;};
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
       in {
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
-          default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+          default = nixvimLib.${system}.check.mkTestDerivationFromNixvimModule nixvimModule;
         };
 
         packages = {
