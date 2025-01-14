@@ -74,7 +74,11 @@
             },
             transparency = false,
             theme_toggle = { "onedark" },
-            hl_add = {},
+            hl_add = {
+              IlluminatedWordRead = { bold = true, bg = "#212126" },
+              IlluminatedWordRead = { bold = true, bg = "#212126" },
+              IlluminatedWordWrite = { bold = true, bg = "#212126" },
+            },
             hl_override = {},
           },
         }

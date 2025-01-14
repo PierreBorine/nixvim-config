@@ -28,4 +28,19 @@
       };
     };
   };
+
+  keymaps = [
+    {
+      key = "<C-n>";
+      action = "<cmd>NvimTreeToggle<CR>";
+      options.desc = "nvim-tree toggle window";
+      options.silent = true;
+    }
+    {
+      key = "<leader>e";
+      action = "<cmd>NvimTreeFocus<CR>";
+      options.desc = "nvim-tree focus window";
+      options.silent = true;
+    }
+  ];
 }

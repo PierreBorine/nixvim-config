@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  extraPlugins = [pkgs.extraPlugins.lualine-so-fancy];
+  extraPlugins = [
+    # pkgs.vimPlugins.vim-tpipeline
+    pkgs.extraPlugins.lualine-so-fancy
+  ];
   plugins.lualine = {
     enable = true;
     settings = {
