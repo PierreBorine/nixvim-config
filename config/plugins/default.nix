@@ -10,18 +10,34 @@
   ];
 
   plugins = {
-    live-server.enable = true;
+    lz-n.enable = true; # Enables lazy loading
 
+    live-server = {
+      enable = true;
+      lazyLoad.settings.cmd = [
+        "LiveServerStart"
+        "LiveServerStop"
+      ];
+    };
     web-devicons.enable = true; # for nvim-tree and bufferline
-    which-key.enable = true;
+    which-key = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+    };
     telescope.enable = true;
     indent-blankline.enable = true;
     guess-indent.enable = true;
-    colorizer.enable = true;
+    colorizer = {
+      enable = true;
+      lazyLoad.settings.event = "BufReadPre";
+    };
     conform-nvim.enable = true;
     nix.enable = true;
     markdown-preview.enable = true;
-    yazi.enable = true;
+    yazi = {
+      enable = true;
+      lazyLoad.settings.cmd = "Yazi";
+    };
     lazygit.enable = true;
 
     fugitive.enable = true;
