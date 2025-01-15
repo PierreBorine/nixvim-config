@@ -9,6 +9,17 @@
     colorizer = {
       enable = true;
       lazyLoad.settings.event = "BufReadPre";
+      settings = {
+        lazy_load = true;
+        user_default_options = {
+          names = false;
+          css = true;
+          sass = {
+            enable = true;
+            parsers = ["css"];
+          };
+        };
+      };
     };
   };
 
