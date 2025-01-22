@@ -5,6 +5,7 @@
       enable = true;
       settings.options = {
         style_preset.__raw = "require('bufferline').style_preset.no_italic";
+        close_command = "Bdelete";
         diagnostics = false;
         always_show_bufferline = false;
         indicator.style = "none";
