@@ -3,6 +3,13 @@
     cellular-automaton-nvim
   ];
 
+  plugins = {
+    typr = {
+      enable = true;
+      lazyLoad.settings.cmd = [ "Typr" "TyprStats" ];
+    };
+  };
+
   keymaps = [
     {
       mode = "n";
