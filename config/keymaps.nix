@@ -16,7 +16,6 @@
       options.desc = "General Clear highlights";
     }
     {
-      mode = "n";
       key = "<C-t>";
       action.__raw = ''
         function()
@@ -26,7 +25,6 @@
       options.desc = "Open color picker";
     }
     {
-      mode = "n";
       key = "<RightMouse>";
       action.__raw = ''
         function()
