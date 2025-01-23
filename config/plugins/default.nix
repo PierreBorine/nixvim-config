@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./treesitter.nix
     ./completion.nix
     ./statusline.nix
     ./bufferline.nix
@@ -8,6 +7,7 @@
     ./comments.nix
     ./terminal.nix
     ./base46.nix
+    ./syntax.nix
     ./tools.nix
     ./lsp.nix
     ./fun.nix
@@ -29,8 +29,6 @@
       lazyLoad.settings.event = "DeferredUIEnter";
     };
     telescope.enable = true;
-    guess-indent.enable = true;
-    conform-nvim.enable = true;
     nix.enable = true;
     markdown-preview.enable = true;
   };

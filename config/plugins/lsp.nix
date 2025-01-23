@@ -2,16 +2,22 @@
   plugins.lsp = {
     enable = true;
     inlayHints = true;
+    # https://langserver.org/
     servers = {
       nixd = {
         enable = true;
         extraOptions.offset_encoding = "utf-8"; # WARN: fix in neovim 0.10.3
-        settings = {
-          nixpkgs.expr = "import <nixpkgs> { }";
-          formatting.command = ["alejandra"];
-        };
+        settings.nixpkgs.expr = "import <nixpkgs> { }";
       };
-      ts_ls.enable = true;
+      bashls.enable = true;
+      ccls.enable = true; # C / C++
+      csharp_ls.enable = true; # C#
+      ts_ls.enable = true; # Javascript / Typescript
+      # Haskell
+      hls = {
+        enable = true;
+        installGhc = true;
+      };
       html.enable = true;
       cssls.enable = true;
       rust_analyzer = {
@@ -19,14 +25,6 @@
         installRustc = true;
         installCargo = true;
       };
-    };
-
-    keymaps.lspBuf = {
-      gD = "references";
-      gd = "definition";
-      gi = "implementation";
-      gt = "type_definition";
-      gf = "format";
     };
   };
 }
