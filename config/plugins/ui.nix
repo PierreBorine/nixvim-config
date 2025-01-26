@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   plugins = {
     gitsigns = {
       enable = true;
@@ -9,6 +9,8 @@
     };
     web-devicons.enable = true;
     indent-blankline.enable = true;
+    dressing.enable = true;
+    notify.enable = true;
     noice = {
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
@@ -26,4 +28,9 @@
     };
     fidget.enable = true;
   };
+
+  extraPlugins = with pkgs.vimPlugins; [
+    nvzone-volt
+    nvzone-menu
+  ];
 }

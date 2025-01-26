@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./completion.nix
     ./statusline.nix
@@ -31,12 +31,14 @@
     };
     telescope.enable = true;
     nix.enable = true;
+    nix-develop = {
+      enable = true;
+      lazyLoad.settings.cmd = [
+        "NixDevelop"
+        "NixShell"
+        "RiffShell"
+      ];
+    };
     markdown-preview.enable = true;
   };
-
-  extraPlugins = with pkgs.vimPlugins; [
-    nvzone-volt
-    nvzone-menu
-    nvzone-minty
-  ];
 }

@@ -4,6 +4,10 @@
   ];
 
   plugins = {
+    vim-be-good = {
+      enable = true;
+      lazyLoad.settings.cmd = "VimBeGood";
+    };
     sudoku = {
       enable = true;
       settings.persist_games = false;
