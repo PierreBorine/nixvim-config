@@ -9,7 +9,7 @@
           {name = "nvim_lua";}
           {name = "luasnip";}
           {name = "path";}
-          {name = "buffer";}
+          {name = "treesitter";}
         ];
 
         completion.completeopt = "menu,menuone";
@@ -76,14 +76,19 @@
         };
       };
     };
+    cmp-nvim-lsp.enable = true;
     cmp-cmdline.enable = true;
+    cmp-buffer.enable = true;
+    cmp-path.enable = true;
+    cmp-treesitter.enable = true;
+    cmp_luasnip.enable = true;
 
-    # (Dependencies)
     luasnip = {
       enable = true;
       settings = {
         history = true;
         updateevents = "TextChanged,TextChangedI";
+        enable_autosnippets = true; # big performance penalty
       };
     };
     friendly-snippets.enable = true;
