@@ -20,6 +20,11 @@
       url = "github:meuter/lualine-so-fancy.nvim";
       flake = false;
     };
+
+    sudoku = {
+      url = "github:jim-fx/sudoku.nvim";
+      flake = false;
+    };
   };
 
   outputs = {

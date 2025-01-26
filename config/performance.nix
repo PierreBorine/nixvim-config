@@ -17,6 +17,7 @@
         "nvim-treesitter"
         "friendly-snippets"
         "comment-box.nvim"
+        "sudoku"
       ];
     };
   };

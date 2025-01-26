@@ -8,6 +8,7 @@
       settings = {
         trim_on_write = false;
         highlight = true;
+        ft_blocklist = ["sudoku"];
       };
     };
 

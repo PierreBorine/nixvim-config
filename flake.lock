@@ -341,7 +341,24 @@
         "live-server": "live-server",
         "lualine-so-fancy": "lualine-so-fancy",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "sudoku": "sudoku"
+      }
+    },
+    "sudoku": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702309233,
+        "narHash": "sha256-4XNon0MWB03J4WM3mpEy/dZUIIspjtBIyObHjaqWfiQ=",
+        "owner": "jim-fx",
+        "repo": "sudoku.nvim",
+        "rev": "c7dfd2f9fc7108ef3832a02f40a76ab1b2d940ce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jim-fx",
+        "repo": "sudoku.nvim",
+        "type": "github"
       }
     },
     "systems": {

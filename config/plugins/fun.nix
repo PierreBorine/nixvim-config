@@ -4,6 +4,10 @@
   ];
 
   plugins = {
+    sudoku = {
+      enable = true;
+      settings.persist_games = false;
+    };
     typr = {
       enable = true;
       lazyLoad.settings.cmd = [ "Typr" "TyprStats" ];
