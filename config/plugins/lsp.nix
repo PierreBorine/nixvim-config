@@ -6,7 +6,6 @@
     servers = {
       nixd = {
         enable = true;
-        extraOptions.offset_encoding = "utf-8"; # WARN: fix in neovim 0.10.3
         settings.nixpkgs.expr = "import <nixpkgs> { }";
       };
       bashls.enable = true;
