@@ -9,6 +9,7 @@
     ./base46.nix
     ./syntax.nix
     ./tools.nix
+    ./fold.nix
     ./lsp.nix
     ./fun.nix
     ./ui.nix

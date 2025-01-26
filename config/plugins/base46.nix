@@ -65,14 +65,23 @@ in {
     require('base46').load_all_highlights()
   '';
 
-  plugins.toggleterm.settings.highlights = {
-    Normal = {
-      guibg = c.base_30.darker_black;
+  plugins = {
+    toggleterm.settings.highlights = {
+      Normal = {
+        guibg = c.base_30.darker_black;
+      };
+    };
+    trim.settings.highlight_bg = c.base_16.base08;
+    bufferline.settings.highlights = {
+      background.bg = c.base_30.darker_black;
     };
   };
 
   extraFiles = let
     hl_add = {
+      FoldedIcon.fg = c.base_16.base00;
+      FoldedText.bg = c.base_16.base00;
+
       # Illuminate
       IlluminatedWordText = { bold = true; bg = c.base_30.black2; };
       IlluminatedWordRead = { bold = true; bg = c.base_30.black2; };
