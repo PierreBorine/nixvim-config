@@ -14,10 +14,10 @@
       csharp_ls.enable = true; # C#
       ts_ls.enable = true; # Javascript / Typescript
       # Haskell
-      hls = {
-        enable = true;
-        installGhc = true;
-      };
+      # hls = {
+      #   enable = true;
+      #   installGhc = true;
+      # };
       html.enable = true;
       cssls.enable = true;
       rust_analyzer = {

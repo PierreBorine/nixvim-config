@@ -34,7 +34,7 @@
       lintersByFt = {
         rust = ["clippy"];
         nix = ["nix" "deadnix"];
-        haskell = ["hlint"];
+        # haskell = ["hlint"];
         c = ["clangtidy"];
         cpp = ["clangtidy"];
         gitcommit = ["gitlint"];
@@ -53,6 +53,7 @@
       enable = true;
       nixGrammars = true;
       settings = {
+        auto_install = false;
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           bash
           c
