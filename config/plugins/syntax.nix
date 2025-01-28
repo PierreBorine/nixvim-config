@@ -31,12 +31,14 @@
     # Linting
     lint = {
       enable = true;
+      # https://github.com/mfussenegger/nvim-lint/#available-linters
+      # https://github.com/caramelomartins/awesome-linters
       lintersByFt = {
         rust = ["clippy"];
         nix = ["nix" "deadnix"];
         # haskell = ["hlint"];
-        c = ["clangtidy"];
-        cpp = ["clangtidy"];
+        c = ["cppcheck"]; # clangtidy/cpplint/cppcheck
+        cpp = ["cppcheck"];
         gitcommit = ["gitlint"];
         markdownlint = ["markdownlint"];
         html = ["htmlhint"];
@@ -81,6 +83,18 @@
       };
     };
   };
+
+  extraPackages = with pkgs; [
+    alejandra
+    rustfmt
+
+    clippy
+    cppcheck
+    deadnix
+    gitlint
+    htmlhint
+    eslint_d
+  ];
 
   keymaps = [
     {
