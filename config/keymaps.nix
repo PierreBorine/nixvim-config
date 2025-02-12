@@ -16,6 +16,18 @@
       options.desc = "General Clear highlights";
     }
     {
+      mode = "v";
+      key = "<Tab>";
+      action = ">gv";
+      options.desc = "Increate indentation of selection";
+    }
+    {
+      mode = "v";
+      key = "<S-Tab>";
+      action = "<gv";
+      options.desc = "Decrease indentation of selection";
+    }
+    {
       key = "<C-t>";
       action.__raw = ''
         function()
