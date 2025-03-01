@@ -18,6 +18,7 @@
         "friendly-snippets"
         "comment-box.nvim"
         "sudoku"
+        "mini.nvim"
       ];
     };
   };

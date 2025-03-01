@@ -4,5 +4,6 @@
     ./live-server.nix
     ./typr.nix
     ./sudoku.nix
+    ./toggler.nix
   ];
 }

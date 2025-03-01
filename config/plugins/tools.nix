@@ -1,4 +1,11 @@
 {
+  userCommands = {
+    Trim = {
+      command = "lua MiniTrailspace.trim()";
+      desc = "Trim all trailing whitespace";
+    };
+  };
+
   plugins = {
     yazi = {
       enable = true;
@@ -28,11 +35,68 @@
             parsers = ["css"];
           };
         };
+
+        filetypes = {
+          css.names = true;
+          scss.names = true;
+        };
       };
+    };
+
+    nvim-toggler = {
+      enable = true;
+      settings = {
+        remove_default_keybinds = true;
+        inverses = {
+          enabled = "disabled";
+        };
+      };
+    };
+
+    treesj = {
+      enable = true;
+      settings = {
+        notify = false;
+        use_default_keymaps = false;
+      };
+    };
+
+    noice.settings.presets.inc_rename = true;
+    inc-rename = {
+      enable = true;
+      lazyLoad.settings.cmd = "IncRename";
     };
   };
 
   keymaps = [
+    {
+      key = "<leader>rn";
+      action.__raw = ''
+        function()
+          return ":IncRename " .. vim.fn.expand("<cword>")
+        end
+      '';
+      options.expr = true;
+      options.desc = "Rename a variable using the LSP";
+    }
+    {
+      key = "<C-x>";
+      action.__raw = ''
+        function()
+          require('treesj').toggle()
+        end
+      '';
+      options.desc = "Toggle split/join";
+    }
+    {
+      key = "<C-a>";
+      action.__raw = ''
+        function()
+          require('nvim-toggler').toggle()
+        end
+      '';
+      options.desc = "Invert the word under your cursor";
+    }
     {
       key = "<leader>yy";
       action = "<cmd>Yazi<CR>";

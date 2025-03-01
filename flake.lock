@@ -342,7 +342,8 @@
         "lualine-so-fancy": "lualine-so-fancy",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "sudoku": "sudoku"
+        "sudoku": "sudoku",
+        "toggler": "toggler"
       }
     },
     "sudoku": {
@@ -373,6 +374,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "toggler": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718462352,
+        "narHash": "sha256-5+pFsPtA2u1m5tjkJHW9hDb/dM848jdhwnu3OWKgeIU=",
+        "owner": "nguyenvukhang",
+        "repo": "nvim-toggler",
+        "rev": "467808600882fd6c9e33b9dbc4889b1b80cfd917",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nguyenvukhang",
+        "repo": "nvim-toggler",
         "type": "github"
       }
     },

@@ -1,12 +1,12 @@
 {pkgs, ...}: {
-  extraPlugins = with pkgs.vimPlugins; [
-    cellular-automaton-nvim
-  ];
+  extraPlugins = [ pkgs.vimPlugins.cellular-automaton-nvim ];
 
   plugins = {
-    vim-be-good = {
-      enable = true;
-      lazyLoad.settings.cmd = "VimBeGood";
+    hardtime = {
+      enable = false;
+      settings = {
+        max_count = 80;
+      };
     };
     sudoku = {
       enable = true;
@@ -14,14 +14,16 @@
     };
     typr = {
       enable = true;
-      lazyLoad.settings.cmd = [ "Typr" "TyprStats" ];
+      settings = {
+        kblayout = "azerty";
+      };
     };
   };
 
   keymaps = [
     {
       mode = "n";
-      key = "<leader>r";
+      key = "<leader>mr"; # make rain
       action = "<cmd>CellularAutomaton make_it_rain<CR>";
       options.desc = "MAKE IT RAIN !!";
     }

@@ -1,15 +1,10 @@
 {pkgs, ...}: {
   plugins = {
     # Identation & whitespaces
-    intellitab.enable = true;
     indent-o-matic.enable = true;
-    trim = {
+    mini = {
       enable = true;
-      settings = {
-        trim_on_write = false;
-        highlight = true;
-        ft_blocklist = ["sudoku"];
-      };
+      modules.trailspace = { };
     };
 
     # Formatting
