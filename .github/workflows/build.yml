@@ -1,4 +1,4 @@
-name: Build nixvim
+name: Build to cachix
 
 on:
   workflow_dispatch:
@@ -8,6 +8,10 @@ on:
     paths:
       - 'flake.lock'
       - '**.nix'
+  workflow_run:
+    workflows: ["Update flake.lock"]
+    types:
+      - completed
 
 jobs:
   build:
