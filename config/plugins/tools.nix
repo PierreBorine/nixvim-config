@@ -37,6 +37,7 @@
         };
 
         filetypes = {
+          __unkeyed-1 = "*";
           css.names = true;
           scss.names = true;
         };
