@@ -63,10 +63,7 @@
     };
 
     noice.settings.presets.inc_rename = true;
-    inc-rename = {
-      enable = true;
-      lazyLoad.settings.cmd = "IncRename";
-    };
+    inc-rename.enable = true;
   };
 
   keymaps = [
