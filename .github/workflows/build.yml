@@ -30,7 +30,7 @@ jobs:
           extra_nix_config: max-jobs = 4
           nix_path: nixpkgs=channel:nixos-unstable
       - name: Install Cachix
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v16
         with:
           name: pierreborine
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
