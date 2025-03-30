@@ -63,20 +63,9 @@
     };
 
     noice.settings.presets.inc_rename = true;
-    inc-rename.enable = true;
   };
 
   keymaps = [
-    {
-      key = "<leader>rn";
-      action.__raw = ''
-        function()
-          return ":IncRename " .. vim.fn.expand("<cword>")
-        end
-      '';
-      options.expr = true;
-      options.desc = "Rename a variable using the LSP";
-    }
     {
       key = "<C-x>";
       action.__raw = ''
