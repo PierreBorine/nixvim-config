@@ -12,6 +12,7 @@
 
   extraFiles = {
     "lua/themes/seti.lua".source = ./seti.lua;
+    "lua/lualine/themes/seti-ui.lua".source = ./seti-lualine.lua;
     "lua/chadrc.lua".text =
       # lua
       ''
