@@ -6,7 +6,6 @@
     ./nvim-tree.nix
     ./comments.nix
     ./terminal.nix
-    ./base46.nix
     ./syntax.nix
     ./tools.nix
     ./fold.nix

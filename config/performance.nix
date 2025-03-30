@@ -19,6 +19,7 @@
         "comment-box.nvim"
         "sudoku"
         "mini.nvim"
+        "nvchad-ui"
       ];
     };
   };
