@@ -10,6 +10,11 @@
     require('base46').load_all_highlights()
   '';
 
+  userCommands.TransparencyToggle = {
+    command = "lua require('base46').toggle_transparency()";
+    desc = "Toggle theme transparency";
+  };
+
   extraFiles = {
     "lua/themes/seti.lua".source = ./seti.lua;
     "lua/lualine/themes/seti-ui.lua".source = ./seti-lualine.lua;
@@ -19,7 +24,7 @@
         local options = {
           base46 = {
             theme = "seti",
-            transparency = false,
+            transparency = true,
             integrations = { "bufferline", "vim-illuminate" },
           },
         }

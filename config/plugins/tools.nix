@@ -47,10 +47,7 @@
 
     treesj = {
       enable = true;
-      settings = {
-        notify = false;
-        use_default_keymaps = false;
-      };
+      settings.use_default_keymaps = false;
     };
   };
 

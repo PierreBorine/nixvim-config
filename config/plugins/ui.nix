@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   plugins = {
-    transparent.enable = false;
     smear-cursor = {
       enable = true;
       settings = {
@@ -23,7 +22,6 @@
     web-devicons.enable = true;
     indent-blankline.enable = true;
     dressing.enable = true;
-    notify.enable = true;
     noice = {
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
