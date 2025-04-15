@@ -88,4 +88,13 @@ M.type = "dark"
 
 M = require("base46").override_theme(M, "seti")
 
+local config = require "nvconfig"
+
+if config.base46.transparency then
+  M.polish_hl.blink = {
+    BlinkCmpLabel = { bg = "NONE" },
+    BlinkCmpMenu = { bg = "NONE" },
+  }
+end
+
 return M
