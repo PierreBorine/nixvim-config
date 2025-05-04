@@ -4,7 +4,7 @@
     comment-box.enable = true;
     todo-comments = {
       enable = true;
-      settings.sign_priority = 6; # default overrides git line status
+      settings.sign_priority = 6; # don't override git line status
     };
   };
 

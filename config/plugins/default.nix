@@ -17,6 +17,7 @@
   plugins = {
     lz-n.enable = true; # Enables lazy loading
 
+    tmux-navigator.enable = true;
     live-server = {
       enable = true;
       lazyLoad.settings.cmd = [
