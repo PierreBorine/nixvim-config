@@ -12,12 +12,6 @@
       enable = true;
       settings.persist_games = false;
     };
-    typr = {
-      enable = true;
-      settings = {
-        kblayout = "azerty";
-      };
-    };
   };
 
   keymaps = [
