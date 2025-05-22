@@ -1,6 +1,6 @@
 {
-  plugins.lsp = {
-    enable = true;
+  plugins.lspconfig.enable = true;
+  lsp = {
     inlayHints = true;
     # https://langserver.org/
     servers = {
@@ -19,6 +19,7 @@
       # };
       html.enable = true;
       cssls.enable = true;
+      qmlls.enable = true;
       rust_analyzer = {
         enable = true;
         installRustc = true;
