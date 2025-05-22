@@ -38,6 +38,7 @@
       ];
     };
     fidget.enable = true;
+    tiny-inline-diagnostic.enable = true;
   };
 
   extraPlugins = with pkgs.vimPlugins; [

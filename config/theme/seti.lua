@@ -91,10 +91,21 @@ M = require("base46").override_theme(M, "seti")
 local config = require "nvconfig"
 
 if config.base46.transparency then
-  M.polish_hl.blink = {
-    BlinkCmpLabel = { bg = "NONE" },
-    BlinkCmpMenu = { bg = "NONE" },
+  M.polish_hl = {
+    blink = {
+      BlinkCmpLabel = { bg = "NONE" },
+      BlinkCmpMenu = { bg = "NONE" },
+    },
+
+    ["tiny-inline-diagnostic"] = {
+      TinyInlineDiagnosticVirtualTextArrow = { bg = "NONE" },
+      TinyInlineInvDiagnosticVirtualTextError = { bg = "NONE" },
+      TinyInlineInvDiagnosticVirtualTextWarn = { bg = "NONE" },
+      TinyInlineInvDiagnosticVirtualTextInfo = { bg = "NONE" },
+      TinyInlineInvDiagnosticVirtualTextHint = { bg = "NONE" },
+    },
   }
+
 end
 
 return M

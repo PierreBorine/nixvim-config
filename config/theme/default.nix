@@ -25,7 +25,7 @@
           base46 = {
             theme = "seti",
             transparency = true,
-            integrations = { "bufferline", "vim-illuminate" },
+            integrations = { "bufferline", "vim-illuminate", "tiny-inline-diagnostic" },
           },
         }
         return options
