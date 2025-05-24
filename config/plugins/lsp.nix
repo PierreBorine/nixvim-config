@@ -1,7 +1,7 @@
 {
   plugins.lspconfig.enable = true;
   lsp = {
-    inlayHints = true;
+    inlayHints.enable = true;
     # https://langserver.org/
     servers = {
       nixd = {
@@ -20,11 +20,7 @@
       html.enable = true;
       cssls.enable = true;
       qmlls.enable = true;
-      rust_analyzer = {
-        enable = true;
-        installRustc = true;
-        installCargo = true;
-      };
+      rust_analyzer.enable = true;
     };
   };
 }
