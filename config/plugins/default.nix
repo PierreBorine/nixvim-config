@@ -29,7 +29,6 @@
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
     };
-    telescope.enable = true;
     nix.enable = true;
     nix-develop = {
       enable = true;

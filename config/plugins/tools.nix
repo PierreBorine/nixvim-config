@@ -49,6 +49,8 @@
       enable = true;
       settings.use_default_keymaps = false;
     };
+
+    telescope.enable = true;
   };
 
   keymaps = [
@@ -84,6 +86,26 @@
       key = "<leader>gg";
       action = "<cmd>LazyGit<CR>";
       options.desc = "Open LazyGit";
+    }
+    {
+      key = "<leader>ff";
+      action = "<cmd>Telescope find_files<CR>";
+      options.desc = "Lists files in current working directory";
+    }
+    {
+      key = "<leader>fg";
+      action = "<cmd>Telescope live_grep<CR>";
+      options.desc = "Search for a string in current working directory";
+    }
+    {
+      key = "<leader>fb";
+      action = "<cmd>Telescope buffers<CR>";
+      options.desc = "Lists open buffers";
+    }
+    {
+      key = "<leader>fo";
+      action = "<cmd>Telescope oldfiles<CR>";
+      options.desc = "Lists previously open files";
     }
   ];
 }
