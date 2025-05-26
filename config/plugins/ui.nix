@@ -37,7 +37,15 @@
         "TelescopePrompt"
       ];
     };
-    fidget.enable = true;
+    fidget = {
+      enable = true;
+      settings.notification = {
+        window = {
+          # Transparent background fix
+          winblend = 0;
+        };
+      };
+    };
     tiny-inline-diagnostic.enable = true;
   };
 
