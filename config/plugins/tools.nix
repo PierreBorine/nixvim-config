@@ -73,12 +73,12 @@
       options.desc = "Invert the word under your cursor";
     }
     {
-      key = "<leader>yy";
+      key = "<leader>yc";
       action = "<cmd>Yazi<CR>";
       options.desc = "Open yazi at the current file";
     }
     {
-      key = "<leader>yc";
+      key = "<leader>yy";
       action = "<cmd>Yazi cwd<CR>";
       options.desc = "Open Yazi in nvim's working directory";
     }

@@ -62,6 +62,7 @@
           css
           scss
           typescript
+          tsx
           markdown
           json
           nix

@@ -37,11 +37,5 @@
       options.desc = "Toggle the vertical terminal";
       options.silent = true;
     }
-    {
-      key = "<leader>f";
-      action = "<cmd>ToggleTerm direction=float<CR>";
-      options.desc = "Toggle the floating terminal";
-      options.silent = true;
-    }
   ];
 }
