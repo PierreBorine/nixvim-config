@@ -70,6 +70,7 @@
           rust
           glsl
           qmljs
+          qmldir
         ];
         highlight = {
           enable = true;
