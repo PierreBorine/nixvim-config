@@ -69,6 +69,7 @@
           regex
           rust
           glsl
+          qmljs
         ];
         highlight = {
           enable = true;

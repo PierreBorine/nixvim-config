@@ -19,7 +19,10 @@
       # };
       html.enable = true;
       cssls.enable = true;
-      qmlls.enable = true;
+      qmlls = {
+        enable = true;
+        settings.cmd = ["qmlls" "-E"];
+      };
       rust_analyzer.enable = true;
     };
   };
