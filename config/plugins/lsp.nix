@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   plugins.lspconfig.enable = true;
   lsp = {
     inlayHints.enable = true;
@@ -26,4 +26,7 @@
       rust_analyzer.enable = true;
     };
   };
+  extraPackages = with pkgs; [
+    cargo # rust_analyzer
+  ];
 }
