@@ -20,6 +20,11 @@
         nix = ["alejandra"];
         rust = ["rustfmt"];
         markdown = ["markdownfmt"];
+        python = [
+          "ruff_fix"
+          "ruff_format"
+          "ruff_organize_imports"
+        ];
       };
     };
 
@@ -42,6 +47,7 @@
         javascriptreact = ["eslint_d"];
         typescript = ["eslint_d"];
         typescriptreact = ["eslint_d"];
+        python = ["ruff"];
       };
     };
 
@@ -71,6 +77,7 @@
           glsl
           qmljs
           qmldir
+          python
         ];
         highlight = {
           enable = true;
@@ -85,6 +92,7 @@
   extraPackages = with pkgs; [
     alejandra
     rustfmt
+    ruff
 
     clippy
     cppcheck

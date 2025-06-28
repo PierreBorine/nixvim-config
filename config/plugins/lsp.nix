@@ -24,6 +24,7 @@
         settings.cmd = ["qmlls" "-E"];
       };
       rust_analyzer.enable = true;
+      ruff.enable = true;
     };
   };
   extraPackages = with pkgs; [
