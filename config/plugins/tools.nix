@@ -61,9 +61,20 @@
     };
 
     telescope.enable = true;
+
+    flash.enable = true;
   };
 
+  # Enab Flash in normal search
+  opts.modes.search.enabled = true;
+
   keymaps = [
+    {
+      mode = ["n" "x" "o"];
+      key = "s";
+      action = ''<cmd>lua require("flash").jump()<CR>'';
+      options.desc = "General Save file";
+    }
     {
       key = "<C-x>";
       action.__raw = ''
