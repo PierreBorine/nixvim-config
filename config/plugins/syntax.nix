@@ -2,10 +2,7 @@
   plugins = {
     # Identation & whitespaces
     indent-o-matic.enable = true;
-    mini = {
-      enable = true;
-      modules.trailspace = { };
-    };
+    mini-trailspace.enable = true;
 
     # Formatting
     conform-nvim = {
