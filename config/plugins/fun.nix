@@ -5,11 +5,11 @@
     hardtime = {
       enable = false;
       settings = {
-        max_count = 80;
+        max_count = 10;
       };
     };
     sudoku = {
-      enable = true;
+      enable = false;
       settings.persist_games = false;
     };
   };
