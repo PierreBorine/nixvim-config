@@ -1,13 +1,5 @@
 {pkgs, ...}: {
   plugins = {
-    smear-cursor = {
-      enable = true;
-      settings = {
-        stiffness = 0.5;
-        trailing_stiffness = 0.49;
-        never_draw_over_target = false;
-      };
-    };
     neoscroll = {
       enable = true;
       settings.easing = "cubic";
