@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   userCommands = {
     Trim = {
       command = "lua MiniTrailspace.trim()";
@@ -6,12 +6,19 @@
     };
   };
 
+  extraPackages = [pkgs.lazygit];
+
   plugins = {
     yazi = {
       enable = true;
       lazyLoad.settings.cmd = "Yazi";
     };
-    lazygit.enable = true;
+    snacks.enable = true;
+    snacks.settings.lazygit = {
+      enabled = true;
+      configure = false;
+    };
+    snacks.settings.quickfile.enabled = true;
 
     colorizer = {
       enable = true;
@@ -87,7 +94,7 @@
     }
     {
       key = "<leader>gg";
-      action = "<cmd>LazyGit<CR>";
+      action = "<cmd>lua Snacks.lazygit()<CR>";
       options.desc = "Open LazyGit";
     }
     {

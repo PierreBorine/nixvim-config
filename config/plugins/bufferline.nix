@@ -1,11 +1,11 @@
 {
   plugins = {
-    bufdelete.enable = true;
+    snacks.settings.bufdelete.enabled = true;
     bufferline = {
       enable = true;
       settings.options = {
         style_preset.__raw = "require('bufferline').style_preset.no_italic";
-        close_command = "Bdelete";
+        close_command = "lua Snacks.bufdelete.delete()";
         diagnostics = false;
         always_show_bufferline = false;
         indicator.style = "none";
@@ -55,7 +55,7 @@
     }
     {
       key = "<leader>x";
-      action = "<cmd>Bdelete<CR>";
+      action = "<cmd>lua Snacks.bufdelete.delete()<cr>";
       options.desc = "Close the current buffer";
       options.silent = true;
     }

@@ -12,7 +12,24 @@
       };
     };
     web-devicons.enable = true;
-    indent-blankline.enable = true;
+
+    snacks.settings.indent.enabled = true;
+    snacks.settings.chunk.enabled = true;
+    snacks.settings.scope = {
+      enabled = true;
+      edge = false;
+    };
+
+    snacks.settings.statuscolumn = {
+      enabled = true;
+      folds.open = true;
+      folds.git_hl = true;
+      right = ["git" "fold"];
+    };
+    snacks.settings.animate = {
+      enabled = true; # library
+      easing = "cubic";
+    };
     dressing.enable = true;
     noice = {
       enable = true;
