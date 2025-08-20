@@ -30,7 +30,7 @@
       enabled = true; # library
       easing = "cubic";
     };
-    dressing.enable = true;
+    snacks.settings.input.enabled = true;
     noice = {
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
