@@ -62,11 +62,12 @@
 
     telescope.enable = true;
 
-    flash.enable = true;
+    flash = {
+      enable = true;
+      # Enable in normal search
+      settings.modes.search.enabled = true;
+    };
   };
-
-  # Enab Flash in normal search
-  opts.modes.search.enabled = true;
 
   keymaps = [
     {
