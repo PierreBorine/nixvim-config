@@ -2,6 +2,7 @@
   extraPlugins = [pkgs.vimPlugins.cellular-automaton-nvim];
 
   plugins = {
+    wakatime.enable = true;
     hardtime = {
       enable = false;
       settings = {
@@ -13,6 +14,8 @@
       settings.persist_games = false;
     };
   };
+
+  extraPackages = [pkgs.wakatime-cli];
 
   keymaps = [
     {
