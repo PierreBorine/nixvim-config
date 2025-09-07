@@ -70,6 +70,9 @@
 
         packages = {
           default = nvim;
+          format = pkgs.writeShellScriptBin "format" ''
+            alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
+          '';
         };
       };
     };
