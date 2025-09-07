@@ -35,7 +35,19 @@
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
     };
-    highlight-undo.enable = true;
+    tiny-glimmer = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+      settings = {
+        transparency_color = "#151718";
+        overwrite = {
+          yank.enabled = true;
+          paste.enable = true;
+          undo.enabled = true;
+          redo.enabled = true;
+        };
+      };
+    };
     illuminate = {
       enable = true;
       minCountToHighlight = 2;

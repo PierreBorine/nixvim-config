@@ -30,6 +30,11 @@
       url = "github:nguyenvukhang/nvim-toggler";
       flake = false;
     };
+
+    tiny-glimmer = {
+      url = "github:rachartier/tiny-glimmer.nvim";
+      flake = false;
+    };
   };
 
   outputs = {

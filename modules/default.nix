@@ -1,8 +1,8 @@
 {
   imports = [
-    ./highlight-undo.nix
     ./live-server.nix
     ./sudoku.nix
+    ./tiny-glimmer.nix
     ./toggler.nix
   ];
 }
