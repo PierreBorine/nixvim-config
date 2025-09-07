@@ -38,6 +38,11 @@
         "RiffShell"
       ];
     };
+
+    render-markdown = {
+      enable = true;
+      lazyLoad.settings.ft = "markdown";
+    };
     markdown-preview.enable = true;
 
     # Comments

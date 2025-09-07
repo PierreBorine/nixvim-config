@@ -68,8 +68,6 @@
           scss
           typescript
           tsx
-          markdown
-          json
           nix
           regex
           rust
@@ -77,6 +75,14 @@
           qmljs
           qmldir
           python
+
+          markdown
+          markdown-inline
+          latex
+
+          ini
+          json
+          yaml
         ];
         highlight = {
           enable = true;
