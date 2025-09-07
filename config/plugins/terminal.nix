@@ -1,6 +1,15 @@
 {
   plugins.toggleterm = {
     enable = true;
+    lazyLoad = {
+      settings = {
+        cmd = "ToggleTerm";
+        keys = [
+          "<leader>v"
+          "<leader>h"
+        ];
+      };
+    };
     settings = {
       start_in_insert = false;
       shade_terminals = false;

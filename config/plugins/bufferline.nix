@@ -3,6 +3,7 @@
     snacks.settings.bufdelete.enabled = true;
     bufferline = {
       enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
       settings.options = {
         style_preset.__raw = "require('bufferline').style_preset.no_italic";
         close_command.__raw = "function(n) Snacks.bufdelete(n) end";

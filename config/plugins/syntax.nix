@@ -28,6 +28,7 @@
     # Linting
     lint = {
       enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
       # https://github.com/mfussenegger/nvim-lint/#available-linters
       # https://github.com/caramelomartins/awesome-linters
       lintersByFt = {
@@ -52,6 +53,7 @@
     treesitter = {
       enable = true;
       nixGrammars = true;
+      lazyLoad.settings.event = "BufEnter";
       settings = {
         auto_install = false;
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
@@ -89,9 +91,9 @@
   extraPackages = with pkgs; [
     alejandra
     rustfmt
-    ruff
+    ruff # python linter & formatter
 
-    clippy
+    clippy # Rust linting
     cppcheck
     deadnix
     gitlint

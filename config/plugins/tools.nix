@@ -60,7 +60,10 @@
       settings.use_default_keymaps = false;
     };
 
-    telescope.enable = true;
+    telescope = {
+      enable = true;
+      lazyLoad.settings.cmd = "Telescope";
+    };
   };
 
   keymaps = [

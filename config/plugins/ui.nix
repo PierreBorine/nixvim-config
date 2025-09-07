@@ -2,6 +2,7 @@
   plugins = {
     neoscroll = {
       enable = true;
+      lazyLoad.settings.event = "BufRead";
       settings.easing = "cubic";
     };
     gitsigns = {
@@ -50,6 +51,8 @@
     };
     illuminate = {
       enable = true;
+      # No Lazyloading, stop trying
+      # https://github.com/RRethy/vim-illuminate/issues/112
       minCountToHighlight = 2;
       filetypesDenylist = [
         "dirvish"
@@ -60,6 +63,7 @@
     };
     fidget = {
       enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
       settings.notification = {
         window = {
           # Transparent background fix
@@ -67,7 +71,10 @@
         };
       };
     };
-    tiny-inline-diagnostic.enable = true;
+    tiny-inline-diagnostic = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+    };
   };
 
   extraPlugins = with pkgs.vimPlugins; [

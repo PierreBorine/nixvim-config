@@ -2,6 +2,7 @@
   plugins = {
     blink-cmp = {
       enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
       setupLspCapabilities = true;
       settings = {
         keymap = {
@@ -38,6 +39,7 @@
 
     luasnip = {
       enable = true;
+      lazyLoad.settings.event = "InsertEnter";
       settings = {
         history = true;
         # enable_autosnippets = true; # big performance penalty
@@ -46,6 +48,7 @@
     friendly-snippets.enable = true;
     nvim-autopairs = {
       enable = true;
+      lazyLoad.settings.event = "InsertEnter";
       settings = {
         check_ts = true;
       };

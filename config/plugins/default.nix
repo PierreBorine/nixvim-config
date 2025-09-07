@@ -15,6 +15,7 @@
 
   plugins = {
     lz-n.enable = true; # Enables lazy loading
+    # "DeferredUIEnter" == "VeryLazy"
 
     tmux-navigator.enable = true;
     live-server = {
@@ -46,10 +47,12 @@
     };
     comment = {
       enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
       settings.pre_hook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
     };
     todo-comments = {
       enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
       settings.sign_priority = 6; # don't override git line status
     };
   };

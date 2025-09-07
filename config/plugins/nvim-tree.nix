@@ -1,6 +1,17 @@
 {
   plugins.nvim-tree = {
     enable = true;
+    lazyLoad.settings = {
+      cmd = [
+        "NvimTreeToggle"
+        "NvimTreeFocus"
+        "NvimTreeOpen"
+      ];
+      keys = [
+        "<C-n>"
+        "<leader>e"
+      ];
+    };
     settings = {
       disable_netrw = true;
       hijack_cursor = true;
