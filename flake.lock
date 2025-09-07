@@ -216,7 +216,6 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "sudoku": "sudoku",
-        "tiny-glimmer": "tiny-glimmer",
         "toggler": "toggler"
       }
     },
@@ -263,22 +262,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tiny-glimmer": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1757017180,
-        "narHash": "sha256-6vXvg7vgIVcLhtyvJwkzOkeChoTXyMEDvb7LPFgPIRU=",
-        "owner": "rachartier",
-        "repo": "tiny-glimmer.nvim",
-        "rev": "84f6b0d8d83b098141e67072ef8f2606820a4454",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rachartier",
-        "repo": "tiny-glimmer.nvim",
         "type": "github"
       }
     },
