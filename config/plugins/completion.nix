@@ -53,6 +53,10 @@
         check_ts = true;
       };
     };
+    ts-autotag = {
+      enable = true;
+      lazyLoad.settings.event = "BufReadPre";
+    };
   };
 
   extraConfigLua = ''
