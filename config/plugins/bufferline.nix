@@ -5,7 +5,8 @@
       enable = true;
       settings.options = {
         style_preset.__raw = "require('bufferline').style_preset.no_italic";
-        close_command = "lua Snacks.bufdelete.delete()";
+        close_command.__raw = "function(n) Snacks.bufdelete(n) end";
+        right_mouse_command.__raw = "function(n) Snacks.bufdelete(n) end";
         diagnostics = false;
         always_show_bufferline = false;
         indicator.style = "none";
