@@ -16,11 +16,9 @@
       standalonePlugins = [
         "nvim-treesitter"
         "friendly-snippets"
-        "comment-box.nvim"
         "blink.cmp"
         "sudoku"
         "mini.nvim"
-        "nvchad-ui"
       ];
     };
   };

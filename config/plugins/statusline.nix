@@ -8,8 +8,14 @@
       options = {
         theme = "seti-ui";
         icons_enabled = true;
-        component_separators = { left = ""; right = "";};
-        section_separators = { left = ""; right = "";};
+        component_separators = {
+          left = "";
+          right = "";
+        };
+        section_separators = {
+          left = "";
+          right = "";
+        };
         ignore_focus = [];
         always_divide_middle = true;
         always_show_tabline = true;
@@ -17,11 +23,13 @@
         refresh.statusline = 1;
       };
       sections = {
-        lualine_a = [{
-          __unkeyed-1 = "fancier_mode";
-          padding.left = 1;
-          width = 8;
-        }];
+        lualine_a = [
+          {
+            __unkeyed-1 = "fancier_mode";
+            padding.left = 1;
+            width = 8;
+          }
+        ];
         lualine_b = [
           {
             __unkeyed-1 = "filetype";
@@ -78,7 +86,11 @@
         lualine_y = [];
         lualine_z = [];
       };
-      extensions = [/*"aerial"*/];
+      extensions = [
+        /*
+        "aerial"
+        */
+      ];
     };
   };
 

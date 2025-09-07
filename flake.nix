@@ -2,8 +2,8 @@
   description = "A nixvim configuration";
 
   nixConfig = {
-    extra-substituters = [ "https://pierreborine.cachix.org" ];
-    extra-trusted-public-keys = [ "pierreborine.cachix.org-1:D6WNCFqd5FZkTMem+QF+q25/lU2KFf8C7zBvvzhZZAk=" ];
+    extra-substituters = ["https://pierreborine.cachix.org"];
+    extra-trusted-public-keys = ["pierreborine.cachix.org-1:D6WNCFqd5FZkTMem+QF+q25/lU2KFf8C7zBvvzhZZAk="];
   };
 
   inputs = {
@@ -53,7 +53,7 @@
         system,
         ...
       }: let
-        pkgs' = pkgs.extend(prev: _: import ./pkgs prev inputs);
+        pkgs' = pkgs.extend (prev: _: import ./pkgs prev inputs);
         nixvimLib = nixvim.lib;
         nixvim' = nixvim.legacyPackages.${system};
         nixvimModule = {

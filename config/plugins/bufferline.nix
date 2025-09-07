@@ -28,7 +28,7 @@
     {
       mode = "n";
       key = "<tab>";
-      action ="<cmd>BufferLineCycleNext<CR>";
+      action = "<cmd>BufferLineCycleNext<CR>";
       options.desc = "Cycle to next buffer tab";
       options.silent = true;
     }
@@ -42,7 +42,7 @@
     {
       mode = "n";
       key = "<C-tab>";
-      action ="<cmd>BufferLineMoveNext<CR>";
+      action = "<cmd>BufferLineMoveNext<CR>";
       options.desc = "Move current buffer forward";
       options.silent = true;
     }

@@ -6,16 +6,16 @@
 }:
 nixvimLib.nixvim.plugins.mkNeovimPlugin {
   name = "live-server";
-  package = [ "extraPlugins" "live-server"];
+  package = ["extraPlugins" "live-server"];
 
   extraOptions = {
-    liveServerPackage = lib.mkPackageOption pkgs [ "nodePackages" "live-server" ] {
+    liveServerPackage = lib.mkPackageOption pkgs ["nodePackages" "live-server"] {
       nullable = true;
     };
   };
 
   extraConfig = cfg: {
-    extraPackages = [ cfg.liveServerPackage ];
+    extraPackages = [cfg.liveServerPackage];
   };
 
   maintainers = [];

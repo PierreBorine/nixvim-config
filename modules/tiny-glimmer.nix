@@ -1,4 +1,8 @@
-{nixvimLib, pkgs, ...}:
+{
+  nixvimLib,
+  pkgs,
+  ...
+}:
 nixvimLib.nixvim.plugins.mkNeovimPlugin {
   name = "tiny-glimmer";
   package = "tiny-glimmer-nvim";

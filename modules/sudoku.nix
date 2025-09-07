@@ -1,7 +1,7 @@
 {nixvimLib, ...}:
 nixvimLib.nixvim.plugins.mkNeovimPlugin {
   name = "sudoku";
-  package = [ "extraPlugins" "sudoku"];
+  package = ["extraPlugins" "sudoku"];
 
   maintainers = [];
   url = "https://github.com/jim-fx/sudoku.nvim";
