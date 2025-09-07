@@ -53,7 +53,7 @@
         system,
         ...
       }: let
-        pkgs' = pkgs.extend(prev: final: import ./pkgs prev final inputs);
+        pkgs' = pkgs.extend(prev: _: import ./pkgs prev inputs);
         nixvimLib = nixvim.lib;
         nixvim' = nixvim.legacyPackages.${system};
         nixvimModule = {
