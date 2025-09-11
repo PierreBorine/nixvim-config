@@ -18,7 +18,6 @@
       enabled = true;
       configure = false;
     };
-    snacks.settings.quickfile.enabled = true;
 
     colorizer = {
       enable = true;
