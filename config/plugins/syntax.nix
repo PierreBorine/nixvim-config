@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   plugins = {
     # Identation & whitespaces
-    indent-o-matic.enable = true;
+    sleuth.enable = true;
     mini-trailspace.enable = true;
 
     # Formatting
