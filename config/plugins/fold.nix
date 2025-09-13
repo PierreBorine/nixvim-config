@@ -94,9 +94,9 @@
       end
 
       local folded = {
-        { "▒▓", "FoldedIcon" }, -- 
+        { "░▒▓", "FoldedIcon" }, -- 
         { " +" .. vim.v.foldend - vim.v.foldstart .. " lines ", "FoldedText" },
-        { "▓▒", "FoldedIcon" }, -- 
+        { "▓▒░", "FoldedIcon" }, -- 
       }
 
       for _, item in ipairs(folded) do
