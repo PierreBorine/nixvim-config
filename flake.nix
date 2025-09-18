@@ -39,12 +39,10 @@
   } @ inputs: let
     mkNixvim = pkgs: extra: let
       pkgs' = pkgs.extend (prev: _: import ./pkgs prev inputs);
-      nixvimLib = nixvim.lib;
       nixvim' = nixvim.legacyPackages.${pkgs.system};
       nixvimModule = {
         pkgs = pkgs';
         module = import ./config // extra;
-        extraSpecialArgs = {inherit nixvimLib;};
       };
     in {
       module = nixvimModule;

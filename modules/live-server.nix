@@ -1,10 +1,9 @@
 {
   lib,
-  nixvimLib,
   pkgs,
   ...
 }:
-nixvimLib.nixvim.plugins.mkNeovimPlugin {
+lib.nixvim.plugins.mkNeovimPlugin {
   name = "live-server";
   package = ["extraPlugins" "live-server"];
 

@@ -1,5 +1,5 @@
-{nixvimLib, ...}:
-nixvimLib.nixvim.plugins.mkNeovimPlugin {
+{lib, ...}:
+lib.nixvim.plugins.mkNeovimPlugin {
   name = "sudoku";
   package = ["extraPlugins" "sudoku"];
 

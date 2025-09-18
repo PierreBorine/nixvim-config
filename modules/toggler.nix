@@ -1,5 +1,5 @@
-{nixvimLib, ...}:
-nixvimLib.nixvim.plugins.mkNeovimPlugin {
+{lib, ...}:
+lib.nixvim.plugins.mkNeovimPlugin {
   name = "nvim-toggler";
   package = ["extraPlugins" "nvim-toggler"];
 
