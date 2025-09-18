@@ -9,7 +9,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
-    flake-parts.url = "github:hercules-ci/flake-parts";
 
     live-server = {
       url = "github:barrett-ruth/live-server.nvim";
@@ -33,10 +32,18 @@
   };
 
   outputs = {
-    flake-parts,
+    nixpkgs,
     nixvim,
     ...
   } @ inputs: let
+    systems = ["x86_64-linux" "aarch64-linux"];
+    forAllSystems = f:
+      nixpkgs.lib.genAttrs systems (system:
+        f {
+          inherit system;
+          pkgs = import nixpkgs {inherit system;};
+        });
+
     mkNixvim = pkgs: extra: let
       pkgs' = pkgs.extend (prev: _: import ./pkgs prev inputs);
       nixvim' = nixvim.legacyPackages.${pkgs.system};
@@ -48,44 +55,37 @@
       module = nixvimModule;
       nvim = nixvim'.makeNixvimWithModule nixvimModule;
     };
-  in
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+  in {
+    packages = forAllSystems ({pkgs, ...}: let
+      nvim = mkNixvim pkgs {};
+    in {
+      default = nvim.nvim;
+      format = pkgs.writeShellScriptBin "format" ''
+        alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
+      '';
+    });
 
-      perSystem = {
+    checks = forAllSystems ({
+      system,
+      pkgs,
+    }: let
+      nvim = mkNixvim pkgs {};
+    in {
+      # Run `nix flake check .` to verify that your config is not broken
+      default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim.module;
+    });
+
+    lib = {
+      mkNvim = {
+        wakatime ? false,
+        flake ? null,
         pkgs,
-        system,
-        ...
-      }: let
-        nvim = mkNixvim pkgs {};
-      in {
-        checks = {
-          # Run `nix flake check .` to verify that your config is not broken
-          default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim.module;
-        };
-
-        packages = {
-          default = nvim.nvim;
-          format = pkgs.writeShellScriptBin "format" ''
-            alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
-          '';
-        };
-      };
-
-      flake.lib = {
-        mkNvim = {
-          wakatime ? false,
-          flake ? null,
-          pkgs,
-        }:
-          (mkNixvim pkgs {
-            settings = {
-              inherit wakatime flake;
-            };
-          }).nvim;
-      };
+      }:
+        (mkNixvim pkgs {
+          settings = {
+            inherit wakatime flake;
+          };
+        }).nvim;
     };
+  };
 }
