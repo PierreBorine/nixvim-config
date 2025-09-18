@@ -44,9 +44,10 @@
           pkgs = import nixpkgs {inherit system;};
         });
 
-    mkNixvim = pkgs: extra: let
+    mkNixvim = system: extra: let
+      pkgs = import nixpkgs {inherit system;};
       pkgs' = pkgs.extend (prev: _: import ./pkgs prev inputs);
-      nixvim' = nixvim.legacyPackages.${pkgs.system};
+      nixvim' = nixvim.legacyPackages.${system};
       nixvimModule = {
         pkgs = pkgs';
         module = import ./config // extra;
@@ -57,7 +58,7 @@
     };
   in {
     packages = forAllSystems ({pkgs, ...}: let
-      nvim = mkNixvim pkgs {};
+      nvim = mkNixvim pkgs.system {};
     in {
       default = nvim.nvim;
       format = pkgs.writeShellScriptBin "format" ''
@@ -65,11 +66,8 @@
       '';
     });
 
-    checks = forAllSystems ({
-      system,
-      pkgs,
-    }: let
-      nvim = mkNixvim pkgs {};
+    checks = forAllSystems ({system, ...}: let
+      nvim = mkNixvim system {};
     in {
       # Run `nix flake check .` to verify that your config is not broken
       default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim.module;
@@ -78,12 +76,13 @@
     lib = {
       mkNvim = {
         wakatime ? false,
-        flake ? null,
-        pkgs,
+        inputs ? {self = null;},
+        system,
       }:
-        (mkNixvim pkgs {
+        (mkNixvim system {
           settings = {
-            inherit wakatime flake;
+            inherit wakatime;
+            flake = inputs.self;
           };
         }).nvim;
     };
