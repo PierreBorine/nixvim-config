@@ -1,8 +1,13 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   extraPlugins = [pkgs.vimPlugins.cellular-automaton-nvim];
 
   plugins = {
-    wakatime.enable = true;
+    wakatime.enable = config.settings.wakatime;
     hardtime = {
       enable = false;
       settings = {
@@ -15,7 +20,7 @@
     };
   };
 
-  extraPackages = [pkgs.wakatime-cli];
+  extraPackages = lib.optional config.plugins.wakatime.enable pkgs.wakatime-cli;
 
   keymaps = [
     {

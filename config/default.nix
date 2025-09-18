@@ -4,6 +4,7 @@
     ./plugins
     ../modules
     ./performance.nix
+    ./settings.nix
     ./keymaps.nix
   ];
 

@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   plugins.lspconfig.enable = true;
   lsp = {
     inlayHints.enable = true;
@@ -6,7 +11,12 @@
     servers = {
       nixd = {
         enable = true;
-        settings.nixpkgs.expr = "import <nixpkgs> { }";
+        settings = {
+          nixpkgs.expr = "import <nixpkgs> { }";
+          options.nixos = lib.mkIf (config.settings.flake != null) {
+            expr = "(builtins.getFlake \"${toString config.settings.flake}\").nixosConfigurations.nixos.options";
+          };
+        };
       };
       bashls.enable = true;
       ccls.enable = true; # C / C++

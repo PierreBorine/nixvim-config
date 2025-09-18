@@ -36,7 +36,21 @@
     flake-parts,
     nixvim,
     ...
-  } @ inputs:
+  } @ inputs: let
+    mkNixvim = pkgs: extra: let
+      pkgs' = pkgs.extend (prev: _: import ./pkgs prev inputs);
+      nixvimLib = nixvim.lib;
+      nixvim' = nixvim.legacyPackages.${pkgs.system};
+      nixvimModule = {
+        pkgs = pkgs';
+        module = import ./config // extra;
+        extraSpecialArgs = {inherit nixvimLib;};
+      };
+    in {
+      module = nixvimModule;
+      nvim = nixvim'.makeNixvimWithModule nixvimModule;
+    };
+  in
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "x86_64-linux"
@@ -48,27 +62,32 @@
         system,
         ...
       }: let
-        pkgs' = pkgs.extend (prev: _: import ./pkgs prev inputs);
-        nixvimLib = nixvim.lib;
-        nixvim' = nixvim.legacyPackages.${system};
-        nixvimModule = {
-          pkgs = pkgs';
-          module = import ./config;
-          extraSpecialArgs = {inherit nixvimLib;};
-        };
-        nvim = nixvim'.makeNixvimWithModule nixvimModule;
+        nvim = mkNixvim pkgs {};
       in {
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
-          default = nixvimLib.${system}.check.mkTestDerivationFromNixvimModule nixvimModule;
+          default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim.module;
         };
 
         packages = {
-          default = nvim;
+          default = nvim.nvim;
           format = pkgs.writeShellScriptBin "format" ''
             alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
           '';
         };
+      };
+
+      flake.lib = {
+        mkNvim = {
+          wakatime ? false,
+          flake ? null,
+          pkgs,
+        }:
+          (mkNixvim pkgs {
+            settings = {
+              inherit wakatime flake;
+            };
+          }).nvim;
       };
     };
 }
