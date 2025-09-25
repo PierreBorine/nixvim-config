@@ -8,7 +8,7 @@
     conform-nvim = {
       enable = true;
       lazyLoad.settings = {
-        event = "BufWritePre";
+        event = "DeferredUIEnter";
         cmd = "ConformInfo";
         keys = ["gf"];
       };
