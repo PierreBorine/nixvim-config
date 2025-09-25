@@ -14,6 +14,7 @@
       };
       # https://github.com/stevearc/conform.nvim#formatters
       settings.formatters_by_ft = {
+        json = ["jq"];
         nix = ["alejandra"];
         rust = ["rustfmt"];
         markdown = ["markdownfmt"];
@@ -98,6 +99,7 @@
     alejandra
     rustfmt
     ruff # python linter & formatter
+    jq
 
     clippy # Rust linting
     cppcheck
