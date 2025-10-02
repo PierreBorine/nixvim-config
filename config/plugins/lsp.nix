@@ -34,6 +34,7 @@
         settings.cmd = ["qmlls" "-E"];
       };
       rust_analyzer.enable = true;
+      # Python
       ruff.enable = true;
     };
   };

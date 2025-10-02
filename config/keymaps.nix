@@ -1,6 +1,11 @@
 {
   keymaps = [
     {
+      mode = "n";
+      key = ";";
+      action = ":";
+    }
+    {
       key = "<C-s>";
       action = "<cmd>w<CR>";
       options.desc = "Save file";
