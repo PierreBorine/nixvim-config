@@ -1,7 +1,7 @@
 {
   keymaps = [
     {
-      mode = "n";
+      mode = ["n" "v"];
       key = ";";
       action = ":";
     }
