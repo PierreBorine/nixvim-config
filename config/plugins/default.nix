@@ -58,7 +58,16 @@
     todo-comments = {
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
-      settings.sign_priority = 6; # don't override git line status
+      settings = {
+        sign_priority = 6; # don't override git line status
+        keywords = {
+          TEMP = {
+            icon = "󱑂 ";
+            color = "warning";
+            alt = ["TEMPORARY"];
+          };
+        };
+      };
     };
   };
 }
