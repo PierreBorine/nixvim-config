@@ -53,13 +53,15 @@
       enable = true;
       # No Lazyloading, stop trying
       # https://github.com/RRethy/vim-illuminate/issues/112
-      minCountToHighlight = 2;
-      filetypesDenylist = [
-        "dirvish"
-        "fugitive"
-        "NvimTree"
-        "TelescopePrompt"
-      ];
+      settings = {
+        min_count_to_highlight = 2;
+        filetypes_denylist = [
+          "dirvish"
+          "fugitive"
+          "NvimTree"
+          "TelescopePrompt"
+        ];
+      };
     };
     fidget = {
       enable = true;
