@@ -62,6 +62,8 @@
     in {
       default = nvim'.nvim;
       bundle-der = nvim'.nvim.overrideAttrs {pname = "nixvim";};
+
+      # Recipes
       bundle = pkgs.writeShellScriptBin "bundle" ''
         nix bundle .#bundle-der
       '';
