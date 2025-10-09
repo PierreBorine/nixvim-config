@@ -59,21 +59,23 @@
   in {
     packages = forAllSystems ({pkgs, ...}: let
       nvim' = mkNixvim pkgs.system {};
-    in {
-      default = nvim'.nvim;
-      bundle-der = nvim'.nvim.overrideAttrs {pname = "nixvim";};
+    in
+      import ./pkgs pkgs inputs
+      // {
+        default = nvim'.nvim;
+        bundle-der = nvim'.nvim.overrideAttrs {pname = "nixvim";};
 
-      # Recipes
-      bundle = pkgs.writeShellScriptBin "bundle" ''
-        nix bundle .#bundle-der
-      '';
-      bundle-deb = pkgs.writeShellScriptBin "bundle" ''
-        nix bundle --bundler github:NixOS/bundlers#toDEB .#bundle-der
-      '';
-      format = pkgs.writeShellScriptBin "format" ''
-        alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
-      '';
-    });
+        # Recipes
+        bundle = pkgs.writeShellScriptBin "bundle" ''
+          nix bundle .#bundle-der
+        '';
+        bundle-deb = pkgs.writeShellScriptBin "bundle" ''
+          nix bundle --bundler github:NixOS/bundlers#toDEB .#bundle-der
+        '';
+        format = pkgs.writeShellScriptBin "format" ''
+          alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
+        '';
+      });
 
     checks = forAllSystems ({system, ...}: let
       nvim' = mkNixvim system {};
