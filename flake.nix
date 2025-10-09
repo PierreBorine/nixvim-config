@@ -86,15 +86,13 @@
 
     lib = {
       mkNvim = {
-        wakatime ? false,
         inputs ? {self = null;},
         system,
-      }:
+      } @ settings:
         (mkNixvim system {
-          settings = {
-            inherit wakatime;
-            flake = inputs.self;
-          };
+          settings =
+            {flake = inputs.self;}
+            // builtins.removeAttrs settings ["inputs" "system"];
         }).nvim;
     };
   };
