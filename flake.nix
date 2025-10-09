@@ -58,19 +58,19 @@
     };
   in {
     packages = forAllSystems ({pkgs, ...}: let
-      nvim = mkNixvim pkgs.system {};
+      nvim' = mkNixvim pkgs.system {};
     in {
-      default = nvim.nvim;
+      default = nvim'.nvim;
       format = pkgs.writeShellScriptBin "format" ''
         alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
       '';
     });
 
     checks = forAllSystems ({system, ...}: let
-      nvim = mkNixvim system {};
+      nvim' = mkNixvim system {};
     in {
       # Run `nix flake check .` to verify that your config is not broken
-      default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim.module;
+      default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim'.module;
     });
 
     lib = {
