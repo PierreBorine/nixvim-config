@@ -61,6 +61,13 @@
       nvim' = mkNixvim pkgs.system {};
     in {
       default = nvim'.nvim;
+      bundle-der = nvim'.overrideAttrs {pname = "nixvim";};
+      bundle = pkgs.writeShellScriptBin "bundle" ''
+        nix bundle .#bundle-der
+      '';
+      bundle-deb = pkgs.writeShellScriptBin "bundle" ''
+        nix bundle --bundler github:NixOS/bundlers#toDEB .#bundle-der
+      '';
       format = pkgs.writeShellScriptBin "format" ''
         alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
       '';
