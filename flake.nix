@@ -80,16 +80,20 @@
   in {
     packages = forAllSystems ({pkgs, ...}: let
       nvim' = mkNixvim {inherit (pkgs) system;};
+      nvim-42 = mkNixvim {
+        inherit (pkgs) system;
+        life = 42;
+      };
     in {
       default = nvim'.nvim;
-      bundle-der = nvim'.nvim.overrideAttrs {pname = "nixvim";};
+      bundle-42 = nvim-42.nvim.overrideAttrs {pname = "nixvim";};
 
       # Recipes
       bundle = pkgs.writeShellScriptBin "bundle" ''
-        nix bundle .#bundle-der
+        nix bundle .#bundle-42
       '';
       bundle-deb = pkgs.writeShellScriptBin "bundle" ''
-        nix bundle --bundler github:NixOS/bundlers#toDEB .#bundle-der
+        nix bundle --bundler github:NixOS/bundlers#toDEB .#bundle-42
       '';
       format = pkgs.writeShellScriptBin "format" ''
         alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
