@@ -29,6 +29,16 @@
       url = "github:nguyenvukhang/nvim-toggler";
       flake = false;
     };
+
+    c-formatter-42 = {
+      url = "github:cacharle/c_formatter_42.vim";
+      flake = false;
+    };
+
+    header-42 = {
+      url = "github:42Paris/42header";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -91,7 +101,10 @@
     );
 
     checks = forAllSystems ({system, ...}: let
-      nvim' = mkNixvim {inherit system;};
+      nvim' = mkNixvim {
+        inherit system;
+        maximal = true;
+      };
     in {
       # Run `nix flake check .` to verify that your config is not broken
       default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim'.module;
