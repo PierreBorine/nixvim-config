@@ -17,11 +17,11 @@
     showmode = false;
 
     # Indenting
-    expandtab = true;
-    shiftwidth = 2;
+    expandtab = false; # false = real tabs
     smartindent = true;
-    tabstop = 2;
-    softtabstop = 2;
+    shiftwidth = 4;
+    tabstop = 4;
+    softtabstop = 4;
 
     # Numbers
     number = true;
@@ -48,5 +48,16 @@
     loaded_python3_provider = 0;
     loaded_perl_provider = 0;
     loaded_ruby_provider = 0;
+  };
+
+  files = {
+    "ftplugin/nix.lua" = {
+      opts = {
+        expandtab = true;
+        shiftwidth = 2;
+        tabstop = 2;
+        softtabstop = 2;
+      };
+    };
   };
 }
