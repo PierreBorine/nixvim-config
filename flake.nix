@@ -44,13 +44,24 @@
           pkgs = import nixpkgs {inherit system;};
         });
 
-    mkNixvim = system: extra: let
+    mkNixvim = {system, ...} @ settings: let
       pkgs = import nixpkgs {inherit system;};
       pkgs' = pkgs.extend (_: prev: import ./pkgs prev inputs);
       nixvim' = nixvim.legacyPackages.${system};
       nixvimModule = {
         pkgs = pkgs';
-        module = import ./config // extra;
+        module =
+          import ./config
+          // {
+            settings =
+              builtins.removeAttrs settings ["inputs" "system"]
+              // {
+                flake =
+                  if builtins.hasAttr "inputs" settings
+                  then settings.inputs.self
+                  else null;
+              };
+          };
       };
     in {
       module = nixvimModule;
@@ -58,7 +69,7 @@
     };
   in {
     packages = forAllSystems ({pkgs, ...}: let
-      nvim' = mkNixvim pkgs.system {};
+      nvim' = mkNixvim {inherit (pkgs) system;};
     in
       import ./pkgs pkgs inputs
       // {
@@ -78,22 +89,12 @@
       });
 
     checks = forAllSystems ({system, ...}: let
-      nvim' = mkNixvim system {};
+      nvim' = mkNixvim {inherit system;};
     in {
       # Run `nix flake check .` to verify that your config is not broken
       default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim'.module;
     });
 
-    lib = {
-      mkNvim = {
-        inputs ? {self = null;},
-        system,
-      } @ settings:
-        (mkNixvim system {
-          settings =
-            {flake = inputs.self;}
-            // builtins.removeAttrs settings ["inputs" "system"];
-        }).nvim;
-    };
+    lib.mkNvim = attrs: (mkNixvim attrs).nvim;
   };
 }
