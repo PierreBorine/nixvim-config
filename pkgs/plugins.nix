@@ -4,6 +4,18 @@
 }: let
   inherit (vimUtils) buildVimPlugin;
 in {
+  c-formatter-42 = buildVimPlugin {
+    pname = "c-formatter-42.vim";
+    version = inputs.c-formatter-42.rev;
+    src = inputs.c-formatter-42;
+  };
+
+  header-42 = buildVimPlugin {
+    pname = "42-header.vim";
+    version = inputs.header-42.rev;
+    src = inputs.header-42;
+  };
+
   live-server = buildVimPlugin {
     pname = "live-server.nvim";
     version = inputs.live-server.rev;

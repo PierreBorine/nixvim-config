@@ -11,6 +11,7 @@
     ./lsp.nix
     ./fun.nix
     ./ui.nix
+    ./42.nix
   ];
 
   plugins = {
