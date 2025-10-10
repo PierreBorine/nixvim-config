@@ -1,7 +1,19 @@
 {pkgs, ...}: {
   plugins = {
     # Identation & whitespaces
-    sleuth.enable = true;
+    indent-o-matic = {
+      enable = true;
+      lazyLoad = {
+        enable = true;
+        settings = {
+          event = [
+            "BufReadPost"
+            "BufWritePost"
+            "BufNewFile"
+          ];
+        };
+      };
+    };
     mini-trailspace.enable = true;
 
     # Formatting
