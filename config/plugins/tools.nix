@@ -41,9 +41,6 @@
       };
     };
 
-    vim-surround.enable = true;
-    repeat.enable = true;
-
     nvim-toggler = {
       enable = true;
       settings = {
