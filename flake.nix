@@ -46,7 +46,7 @@
 
     mkNixvim = system: extra: let
       pkgs = import nixpkgs {inherit system;};
-      pkgs' = pkgs.extend (prev: _: import ./pkgs prev inputs);
+      pkgs' = pkgs.extend (_: prev: import ./pkgs prev inputs);
       nixvim' = nixvim.legacyPackages.${system};
       nixvimModule = {
         pkgs = pkgs';
