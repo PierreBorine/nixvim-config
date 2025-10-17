@@ -11,7 +11,7 @@
     servers = {
       nixd = {
         enable = true;
-        settings = {
+        config = {
           nixpkgs.expr = "import <nixpkgs> { }";
           options.nixos = lib.mkIf (config.settings.flake != null) {
             expr = "(builtins.getFlake \"${toString config.settings.flake}\").nixosConfigurations.nixos.options";
@@ -42,7 +42,7 @@
       cssls.enable = true;
       qmlls = {
         enable = true;
-        settings.cmd = ["qmlls" "-E"];
+        config.cmd = ["qmlls" "-E"];
       };
       rust_analyzer.enable = true;
       # Python

@@ -49,7 +49,7 @@
     # Comments
     ts-context-commentstring = {
       enable = true;
-      extraOptions.enable_autocmd = false;
+      settings.enable_autocmd = false;
     };
     comment = {
       enable = true;
