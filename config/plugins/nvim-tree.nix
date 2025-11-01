@@ -44,15 +44,15 @@
 
   keymaps = [
     {
-      key = "<C-n>";
+      key = "<leader>e";
       action = "<cmd>NvimTreeToggle<CR>";
       options.desc = "nvim-tree toggle window";
       options.silent = true;
     }
     {
-      key = "<leader>e";
-      action = "<cmd>NvimTreeFocus<CR>";
-      options.desc = "nvim-tree focus window";
+      key = "<leader>fe";
+      action = "<cmd>NvimTreeToggle<CR>";
+      options.desc = "nvim-tree toggle window";
       options.silent = true;
     }
   ];
