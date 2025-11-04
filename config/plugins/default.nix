@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   imports = [
     ./completion.nix
     ./statusline.nix
@@ -20,7 +20,7 @@
 
     tmux-navigator.enable = true;
     live-server = {
-      enable = true;
+      enable = config.lib.isLang "Web";
       lazyLoad.settings.cmd = [
         "LiveServerStart"
         "LiveServerStop"

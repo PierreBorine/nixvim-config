@@ -21,5 +21,22 @@ in {
       default = null;
       description = "Path to the user's flake";
     };
+    languages = lib.mkOption {
+      type = with lib.types;
+        either (enum ["All"])
+        (listOf (enum ["Nix" "C" "Rust" "QML" "Python" "CS" "Web"]));
+      default =
+        if cfg.maximal
+        then "All"
+        else [];
+      description = "Languages to support";
+    };
+    lighter = lib.mkEnableOption "bundle friendly configuration";
   };
+  options.lib = lib.mkOption {type = lib.types.attrsOf lib.types.anything;};
+
+  config.lib.isLang = lang:
+    if config.settings.languages == "All"
+    then true
+    else lib.elem lang config.settings.languages;
 }

@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   plugins = {
     # Identation & whitespaces
     indent-o-matic = {
@@ -27,10 +32,10 @@
       # https://github.com/stevearc/conform.nvim#formatters
       settings.formatters_by_ft = {
         json = ["jq"];
-        nix = ["alejandra"];
-        rust = ["rustfmt"];
-        markdown = ["markdownfmt"];
-        python = [
+        nix = lib.optional (config.lib.isLang "Nix") "alejandra";
+        rust = lib.optional (config.lib.isLang "Rust") "rustfmt";
+        # markdown = ["markdownfmt"];
+        python = lib.optionals (config.lib.isLang "Python") [
           "ruff_fix"
           "ruff_format"
           "ruff_organize_imports"
@@ -45,20 +50,20 @@
       # https://github.com/mfussenegger/nvim-lint/#available-linters
       # https://github.com/caramelomartins/awesome-linters
       lintersByFt = {
-        rust = ["clippy"];
-        nix = ["nix" "deadnix"];
+        rust = lib.optional (config.lib.isLang "Rust") "clippy";
+        nix = lib.optionals (config.lib.isLang "Nix") ["nix" "deadnix"];
         # haskell = ["hlint"];
         c = ["cppcheck"]; # clangtidy/cpplint/cppcheck
         cpp = ["cppcheck"];
         gitcommit = ["gitlint"];
         markdownlint = ["markdownlint"];
-        html = ["htmlhint"];
-        css = ["eslint_d"];
-        javascript = ["eslint_d"];
-        javascriptreact = ["eslint_d"];
-        typescript = ["eslint_d"];
-        typescriptreact = ["eslint_d"];
-        python = ["ruff"];
+        html = lib.optional (config.lib.isLang "Web") "htmlhint";
+        css = lib.optional (config.lib.isLang "Web") "eslint_d";
+        javascript = lib.optional (config.lib.isLang "Web") "eslint_d";
+        javascriptreact = lib.optional (config.lib.isLang "Web") "eslint_d";
+        typescript = lib.optional (config.lib.isLang "Web") "eslint_d";
+        typescriptreact = lib.optional (config.lib.isLang "Web") "eslint_d";
+        python = lib.optional (config.lib.isLang "Python") "ruff";
       };
     };
 
@@ -107,19 +112,12 @@
     };
   };
 
-  extraPackages = with pkgs; [
-    alejandra
-    rustfmt
-    ruff # python linter & formatter
-    jq
-
-    clippy # Rust linting
-    cppcheck
-    deadnix
-    gitlint
-    htmlhint
-    eslint_d
-  ];
+  extraPackages = with pkgs;
+    [jq cppcheck]
+    ++ lib.optionals (config.lib.isLang "Web") [eslint_d htmlhint]
+    ++ lib.optionals (config.lib.isLang "Nix") [alejandra deadnix]
+    ++ lib.optional (config.lib.isLang "Python") ruff # python linter & formatter
+    ++ lib.optionals (config.lib.isLang "Rust") [clippy rustfmt];
 
   keymaps = [
     {

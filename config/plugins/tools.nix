@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   userCommands = {
     Trim = {
       command = "lua MiniTrailspace.trim()";
@@ -6,8 +11,9 @@
     };
   };
 
-  extraPackages = [pkgs.lazygit];
+  extraPackages = lib.optional (!config.settings.lighter) pkgs.lazygit;
 
+  dependencies.yazi.enable = config.settings.lighter;
   plugins = {
     yazi = {
       enable = true;

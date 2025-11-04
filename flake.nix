@@ -81,10 +81,12 @@
     packages = forAllSystems ({pkgs, ...}: let
       nvim' = mkNixvim {
         inherit (pkgs.stdenv.hostPlatform) system;
+        languages = "All";
       };
       nvim-42 = mkNixvim {
         inherit (pkgs.stdenv.hostPlatform) system;
         life = 42;
+        lighter = true;
       };
     in {
       default = nvim'.nvim;

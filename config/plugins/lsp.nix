@@ -10,7 +10,7 @@
     # https://langserver.org/
     servers = {
       nixd = {
-        enable = true;
+        enable = config.lib.isLang "Nix";
         config = {
           nixpkgs.expr = "import <nixpkgs> { }";
           options.nixos = lib.mkIf (config.settings.flake != null) {
@@ -19,20 +19,9 @@
         };
       };
       bashls.enable = true;
-      ccls = {
-        enable = true; # C / C++
-        # https://github.com/NixOS/nixpkgs/issues/449588
-        package = pkgs.ccls.overrideAttrs {
-          src = pkgs.fetchFromGitHub {
-            owner = "MaskRay";
-            repo = "ccls";
-            rev = "5660367c771345b68c4ead4a4db2d4786985bf78";
-            hash = "sha256-R+5pL0orUdHtquqvJa4esNmc6ETbX8WK5oJlBCSG+uI=";
-          };
-        };
-      };
-      csharp_ls.enable = true; # C#
-      ts_ls.enable = true; # Javascript / Typescript
+      clangd.enable = true; # C / C++
+      csharp_ls.enable = config.lib.isLang "CS"; # C#
+      ts_ls.enable = config.lib.isLang "Web"; # Javascript / Typescript
       # Haskell
       # hls = {
       #   enable = true;
@@ -41,15 +30,14 @@
       html.enable = true;
       cssls.enable = true;
       qmlls = {
-        enable = true;
+        enable = config.lib.isLang "QML";
         config.cmd = ["qmlls" "-E"];
       };
-      rust_analyzer.enable = true;
+      rust_analyzer.enable = config.lib.isLang "Rust";
       # Python
-      ruff.enable = true;
+      ruff.enable = config.lib.isLang "Python";
     };
   };
-  extraPackages = with pkgs; [
-    cargo # rust_analyzer
-  ];
+  extraPackages =
+    lib.optional (config.lib.isLang "Rust") pkgs.cargo; # rust_analyzer
 }
