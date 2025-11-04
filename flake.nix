@@ -79,9 +79,11 @@
     };
   in {
     packages = forAllSystems ({pkgs, ...}: let
-      nvim' = mkNixvim {inherit (pkgs) system;};
+      nvim' = mkNixvim {
+        inherit (pkgs.stdenv.hostPlatform) system;
+      };
       nvim-42 = mkNixvim {
-        inherit (pkgs) system;
+        inherit (pkgs.stdenv.hostPlatform) system;
         life = 42;
       };
     in {
