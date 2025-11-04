@@ -49,11 +49,5 @@
       options.desc = "nvim-tree toggle window";
       options.silent = true;
     }
-    {
-      key = "<leader>fe";
-      action = "<cmd>NvimTreeToggle<CR>";
-      options.desc = "nvim-tree toggle window";
-      options.silent = true;
-    }
   ];
 }
