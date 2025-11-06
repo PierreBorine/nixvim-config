@@ -28,10 +28,7 @@
             auto_show_delay_ms = 50;
             window.border = "rounded";
           };
-          ghost_text = {
-            enabled = true;
-            show_with_menu = false;
-          };
+          ghost_text.enabled = true;
           keyword.range = "prefix"; # can also be `full`
         };
       };
