@@ -53,9 +53,8 @@
         rust = lib.optional (config.lib.isLang "Rust") "clippy";
         nix = lib.optionals (config.lib.isLang "Nix") ["nix" "deadnix"];
         # haskell = ["hlint"];
-        c = ["clangtidy"];
-        cpp = ["clangtidy"];
-        gitcommit = ["gitlint"];
+        c = lib.optional (config.lib.isLang "C") "clangtidy";
+        cpp = lib.optional (config.lib.isLang "C") "clangtidy";
         markdownlint = ["markdownlint"];
         html = lib.optional (config.lib.isLang "Web") "htmlhint";
         css = lib.optional (config.lib.isLang "Web") "eslint_d";

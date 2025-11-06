@@ -27,8 +27,8 @@
       #   enable = true;
       #   installGhc = true;
       # };
-      html.enable = true;
-      cssls.enable = true;
+      html.enable = config.lib.isLang "Web";
+      cssls.enable = config.lib.isLang "Web";
       qmlls = {
         enable = config.lib.isLang "QML";
         config.cmd = ["qmlls" "-E"];
