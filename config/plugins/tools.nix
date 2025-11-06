@@ -20,10 +20,7 @@
       lazyLoad.settings.cmd = "Yazi";
     };
     snacks.enable = true;
-    snacks.settings.lazygit = {
-      enabled = true;
-      configure = false;
-    };
+    lazygit.enable = true;
 
     colorizer = {
       enable = true;
@@ -99,7 +96,7 @@
     }
     {
       key = "<leader>gg";
-      action = "<cmd>lua Snacks.lazygit()<CR>";
+      action = "<cmd>LazyGit<CR>";
       options.desc = "Open LazyGit";
     }
     {
