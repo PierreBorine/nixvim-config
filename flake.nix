@@ -39,6 +39,11 @@
       url = "github:42Paris/42header";
       flake = false;
     };
+
+    header-42-nvim = {
+      url = "github:Diogo-ss/42-header.nvim";
+      flake = false;
+    };
   };
 
   outputs = {

@@ -10,6 +10,12 @@ in {
     src = inputs.c-formatter-42;
   };
 
+  header-42-nvim = buildVimPlugin {
+    pname = "42-header.nvim";
+    version = inputs.header-42-nvim.rev;
+    src = inputs.header-42-nvim;
+  };
+
   header-42 = buildVimPlugin {
     pname = "42-header.vim";
     version = inputs.header-42.rev;

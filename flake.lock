@@ -71,6 +71,22 @@
         "type": "github"
       }
     },
+    "header-42-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744768039,
+        "narHash": "sha256-7byIoFoaRag23Zej7ioL+2WjAv7Zttn1/WZrya0NZPo=",
+        "owner": "Diogo-ss",
+        "repo": "42-header.nvim",
+        "rev": "4303be09d9615e9169661b3e5d5a98c3eecee0ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Diogo-ss",
+        "repo": "42-header.nvim",
+        "type": "github"
+      }
+    },
     "ixx": {
       "inputs": {
         "flake-utils": [
@@ -211,6 +227,7 @@
       "inputs": {
         "c-formatter-42": "c-formatter-42",
         "header-42": "header-42",
+        "header-42-nvim": "header-42-nvim",
         "live-server": "live-server",
         "lualine-so-fancy": "lualine-so-fancy",
         "nixpkgs": "nixpkgs",
