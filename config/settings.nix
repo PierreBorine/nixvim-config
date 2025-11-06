@@ -24,7 +24,7 @@ in {
     languages = lib.mkOption {
       type = with lib.types;
         either (enum ["All"])
-        (listOf (enum ["Nix" "C" "Rust" "QML" "Python" "CS" "Web"]));
+        (listOf (enum ["Nix" "C" "Rust" "QML" "Python" "CS" "Web" "Haskell"]));
       default =
         if cfg.maximal
         then "All"

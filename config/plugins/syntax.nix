@@ -53,8 +53,8 @@
         rust = lib.optional (config.lib.isLang "Rust") "clippy";
         nix = lib.optionals (config.lib.isLang "Nix") ["nix" "deadnix"];
         # haskell = ["hlint"];
-        c = ["cppcheck"]; # clangtidy/cpplint/cppcheck
-        cpp = ["cppcheck"];
+        c = ["clangtidy"];
+        cpp = ["clangtidy"];
         gitcommit = ["gitlint"];
         markdownlint = ["markdownlint"];
         html = lib.optional (config.lib.isLang "Web") "htmlhint";
@@ -113,10 +113,11 @@
   };
 
   extraPackages = with pkgs;
-    [jq cppcheck]
+    [jq]
     ++ lib.optionals (config.lib.isLang "Web") [eslint_d htmlhint]
     ++ lib.optionals (config.lib.isLang "Nix") [alejandra deadnix]
     ++ lib.optional (config.lib.isLang "Python") ruff # python linter & formatter
+    ++ lib.optional (config.lib.isLang "C") clang-tools
     ++ lib.optionals (config.lib.isLang "Rust") [clippy rustfmt];
 
   keymaps = [

@@ -19,7 +19,7 @@
         };
       };
       bashls.enable = true;
-      clangd.enable = true; # C / C++
+      clangd.enable = config.lib.isLang "C"; # C / C++
       csharp_ls.enable = config.lib.isLang "CS"; # C#
       ts_ls.enable = config.lib.isLang "Web"; # Javascript / Typescript
       # Haskell
