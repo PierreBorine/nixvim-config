@@ -113,7 +113,7 @@
   };
 
   extraPackages = with pkgs;
-    [jq]
+    [jq markdownlint-cli]
     ++ lib.optionals (config.lib.isLang "Web") [eslint_d htmlhint]
     ++ lib.optionals (config.lib.isLang "Nix") [alejandra deadnix]
     ++ lib.optional (config.lib.isLang "Python") ruff # python linter & formatter
