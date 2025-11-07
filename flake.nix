@@ -92,6 +92,7 @@
         inherit (pkgs.stdenv.hostPlatform) system;
         life = 42;
         lighter = true;
+        languages = ["C" "Python"];
       };
     in {
       default = nvim'.nvim;
