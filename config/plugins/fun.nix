@@ -18,6 +18,15 @@
       enable = false;
       settings.persist_games = false;
     };
+    showkeys = {
+      enable = true;
+      lazyLoad.settings.cmd = "ShowkeysToggle";
+      settings = {
+        excluded_modes = ["i"];
+        position = "top-right";
+        maxkeys = 4;
+      };
+    };
   };
 
   extraPackages = lib.optional config.plugins.wakatime.enable pkgs.wakatime-cli;
