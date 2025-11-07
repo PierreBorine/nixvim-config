@@ -20,7 +20,10 @@
 
   opts = {
     laststatus = 3; # Single statusline
+    signcolumn = "yes";
     showmode = false;
+    wrap = true; # Make sure long lines wrap
+    linebreak = true; # Wrap lines at convenient points
 
     # Indenting
     expandtab = false; # false = real tabs
@@ -28,21 +31,27 @@
     shiftwidth = 4;
     tabstop = 4;
     softtabstop = 4;
+    list = true; # visible tabs
 
     # Numbers
     number = true;
+    relativenumber = true;
     numberwidth = 2;
     ruler = false;
 
-    signcolumn = "yes";
+    undofile = true;
+    undolevels = 10000;
+    updatetime = 200;
+
+    # Window splits
     splitbelow = true;
     splitright = true;
 
-    updatetime = 250;
-    fillchars = {eob = " ";};
-    cursorline = true;
-    cursorlineopt = "number";
+    fillchars.eob = " ";
+    cursorline = true; # Highlight current line
+    cursorlineopt = "number"; # Only the number
   };
+  # Disable default dashboard
   extraConfigLua = ''
     vim.opt.shortmess:append "sI"
   '';
