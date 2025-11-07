@@ -21,6 +21,23 @@
       edge = false;
     };
 
+    smartcolumn = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+      settings = {
+        disabled_filetypes = [
+          "help"
+          "text"
+          "markdown"
+          "nix"
+        ];
+      };
+    };
+    virt-column = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+    };
+
     snacks.settings.statuscolumn = {
       enabled = true;
       folds.open = true;
