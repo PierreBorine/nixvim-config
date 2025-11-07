@@ -90,9 +90,9 @@
       };
       nvim-42 = mkNixvim {
         inherit (pkgs.stdenv.hostPlatform) system;
-        life = 42;
-        lighter = true;
         languages = ["C" "Python"];
+        portable = true;
+        life = 42;
       };
     in {
       default = nvim'.nvim;

@@ -31,7 +31,7 @@ in {
         else [];
       description = "Languages to support";
     };
-    lighter = lib.mkEnableOption "bundle friendly configuration";
+    portable = lib.mkEnableOption "bundle friendly configuration";
     transparent = lib.mkEnableOption "enable transparency by default";
   };
   options.lib = lib.mkOption {type = lib.types.attrsOf lib.types.anything;};

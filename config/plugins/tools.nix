@@ -11,9 +11,9 @@
     };
   };
 
-  extraPackages = lib.optional (!config.settings.lighter) pkgs.lazygit;
+  extraPackages = lib.optional (!config.settings.portable) pkgs.lazygit;
 
-  dependencies.yazi.enable = config.settings.lighter;
+  dependencies.yazi.enable = config.settings.portable;
   plugins = {
     yazi = {
       enable = true;
