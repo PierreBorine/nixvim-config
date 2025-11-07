@@ -1,11 +1,8 @@
-{
-  imports = [
-    ./c-formatter-42.nix
-    ./header-42-nvim.nix
-    ./header-42.nix
-    ./live-server.nix
-    ./sudoku.nix
-    ./tiny-glimmer.nix
-    ./toggler.nix
-  ];
+{lib, ...}: let
+  modules =
+    lib.filterAttrs
+    (n: _: lib.hasSuffix ".nix" n && n != "default.nix")
+    (builtins.readDir ./.);
+in {
+  imports = lib.mapAttrsToList (n: _: ./. + "/${n}") modules;
 }
