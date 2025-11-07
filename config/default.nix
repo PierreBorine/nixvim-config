@@ -6,12 +6,18 @@
     ./performance.nix
     ./settings.nix
     ./keymaps.nix
+
+    ({config, ...}: {
+      clipboard = {
+        register = "unnamedplus";
+        providers = {
+          wl-copy.enable = true;
+          xclip.enable = config.settings.portable;
+        };
+      };
+    })
   ];
 
-  clipboard = {
-    register = "unnamedplus";
-    providers.wl-copy.enable = true;
-  };
   opts = {
     laststatus = 3; # Single statusline
     showmode = false;
