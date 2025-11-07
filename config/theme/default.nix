@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   globals.base46_cache.__raw = ''vim.fn.stdpath "data" .. "/base46/"'';
 
   extraPlugins = [
@@ -24,7 +28,7 @@
         local options = {
           base46 = {
             theme = "seti",
-            transparency = true,
+            transparency = ${builtins.toJSON config.settings.transparent},
             integrations = { "bufferline", "vim-illuminate", "tiny-inline-diagnostic" },
           },
         }
