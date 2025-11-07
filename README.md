@@ -60,6 +60,19 @@ Access the package like this
       # Stdheader, norm formatter
       # default: null
       life = 42;
+      # Whether to have transparent background
+      # by default. Can toggle with :TransparencyToggle
+      # default: false
+      transparent = false;
+      # Which languages to support.
+      # either "All" or a list, available options:
+      # ["Nix" "C" "Rust" "QML" "Python" "CS" "Web" "Haskell"]
+      # default: []
+      languages = "All";
+      # Whether to disable some dependencies.
+      # Usefull to reduce closure size.
+      # default = false
+      portable = true;
     };
   in [nvim];
 }
