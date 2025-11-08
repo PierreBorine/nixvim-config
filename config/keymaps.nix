@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (mkKey) mkKeymap mkKeymap' mkKeymapWithOpts;
+  inherit (mkKey) mkKeymap mkKeymapWithOpts;
 in {
   extraConfigLua = ''
     ${lib.optionalString config.lsp.inlayHints.enable ''Snacks.toggle.inlay_hints():map("<leader>uh")''}
@@ -13,7 +13,11 @@ in {
   '';
 
   keymaps = [
-    (mkKeymap' ["n" "v"] ";" ":")
+    {
+      mode = ["n" "v"];
+      key = ";";
+      action = ":";
+    }
     (mkKeymapWithOpts ["n" "x"] "j" "v:count == 0 ? 'gj' : 'j'" "Down" {expr = true;})
     (mkKeymapWithOpts ["n" "x"] "<Down>" "v:count == 0 ? 'gj' : 'j'" "Down" {expr = true;})
     (mkKeymapWithOpts ["n" "x"] "k" "v:count == 0 ? 'gk' : 'k'" "Up" {expr = true;})
