@@ -99,5 +99,6 @@
   extraPlugins = with pkgs.vimPlugins; [
     nvzone-volt
     nvzone-menu
+    nvzone-minty
   ];
 }
