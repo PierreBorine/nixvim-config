@@ -61,13 +61,25 @@
       options.desc = "Clear highlights";
     }
     {
-      mode = "v";
+      mode = "n";
+      key = ">";
+      action = ">>";
+      options.desc = "Increate indentation of selection";
+    }
+    {
+      mode = "n";
+      key = "<";
+      action = "<<";
+      options.desc = "Decrease indentation of selection";
+    }
+    {
+      mode = "x";
       key = ">";
       action = ">gv";
       options.desc = "Increate indentation of selection";
     }
     {
-      mode = "v";
+      mode = "x";
       key = "<";
       action = "<gv";
       options.desc = "Decrease indentation of selection";
