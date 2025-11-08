@@ -1,4 +1,4 @@
-{
+{mkKey, ...}: {
   plugins.nvim-tree = {
     enable = true;
     lazyLoad.settings = {
@@ -43,11 +43,6 @@
   };
 
   keymaps = [
-    {
-      key = "<leader>e";
-      action = "<cmd>NvimTreeToggle<CR>";
-      options.desc = "nvim-tree toggle window";
-      options.silent = true;
-    }
+    (mkKey.mkKeymap "" "<leader>e" "<cmd>NvimTreeToggle<CR>" "nvim-tree toggle window")
   ];
 }

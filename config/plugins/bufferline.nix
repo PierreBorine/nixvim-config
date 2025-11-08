@@ -1,4 +1,4 @@
-{
+{mkKey, ...}: {
   plugins = {
     snacks.settings.bufdelete.enabled = true;
     bufferline = {
@@ -26,40 +26,13 @@
     };
   };
 
-  keymaps = [
-    {
-      mode = "n";
-      key = "<tab>";
-      action = "<cmd>BufferLineCycleNext<CR>";
-      options.desc = "Cycle to next buffer tab";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<S-tab>";
-      action = "<cmd>BufferLineCyclePrev<CR>";
-      options.desc = "Cycle to previous buffer";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<C-tab>";
-      action = "<cmd>BufferLineMoveNext<CR>";
-      options.desc = "Move current buffer forward";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<C-S-tab>";
-      action = "<cmd>BufferLineMovePrev<CR>";
-      options.desc = "Move current buffer backward";
-      options.silent = true;
-    }
-    {
-      key = "<leader>x";
-      action = "<cmd>lua Snacks.bufdelete.delete()<cr>";
-      options.desc = "Close the current buffer";
-      options.silent = true;
-    }
+  keymaps = let
+    inherit (mkKey) mkKeymap;
+  in [
+    (mkKeymap "n" "<tab>" "<cmd>BufferLineCycleNext<CR>" "Cycle to next buffer tab")
+    (mkKeymap "n" "<S-tab>" "<cmd>BufferLineCyclePrev<CR>" "Cycle to previous buffer tab")
+    (mkKeymap "n" "<C-tab>" "<cmd>BufferLineMoveNext<CR>" "Move current buffer forward")
+    (mkKeymap "n" "<C-S-tab>" "<cmd>BufferLineMovePrev<CR>" "Move current buffer backward")
+    (mkKeymap "" "<leader>x" "<cmd>lua Snacks.bufdelete.delete()<CR>" "Close the current buffer")
   ];
 }

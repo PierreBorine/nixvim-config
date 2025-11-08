@@ -64,6 +64,7 @@
       pkgs' = pkgs.extend (_: prev: import ./pkgs prev inputs);
       nixvim' = nixvim.legacyPackages.${system};
       nixvimModule = {
+        extraSpecialArgs = import ./lib;
         pkgs = pkgs';
         module =
           import ./config

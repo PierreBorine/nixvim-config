@@ -1,8 +1,11 @@
 {
   config,
+  mkKey,
   lib,
   ...
-}: {
+}: let
+  inherit (mkKey) mkKeymap mkKeymap' mkKeymapWithOpts;
+in {
   extraConfigLua = ''
     ${lib.optionalString config.lsp.inlayHints.enable ''Snacks.toggle.inlay_hints():map("<leader>uh")''}
     Snacks.toggle.diagnostics():map("<leader>ud")
@@ -10,126 +13,24 @@
   '';
 
   keymaps = [
-    {
-      mode = ["n" "v"];
-      key = ";";
-      action = ":";
-    }
-    {
-      mode = ["n" "x"];
-      key = "j";
-      action = "v:count == 0 ? 'gj' : 'j'";
-      options = {
-        desc = "Down";
-        expr = true;
-        silent = true;
-      };
-    }
-    {
-      mode = ["n" "x"];
-      key = "<Down>";
-      action = "v:count == 0 ? 'gj' : 'j'";
-      options = {
-        desc = "Down";
-        expr = true;
-        silent = true;
-      };
-    }
-    {
-      mode = ["n" "x"];
-      key = "k";
-      action = "v:count == 0 ? 'gk' : 'k'";
-      options = {
-        desc = "Up";
-        expr = true;
-        silent = true;
-      };
-    }
-    {
-      mode = ["n" "x"];
-      key = "<Up>";
-      action = "v:count == 0 ? 'gk' : 'k'";
-      options = {
-        desc = "Up";
-        expr = true;
-        silent = true;
-      };
-    }
-    {
-      key = "<C-s>";
-      action = "<cmd>w<CR>";
-      options.desc = "Save file";
-    }
-    {
-      key = "<C-c>";
-      action = "<cmd>%y+<CR>";
-      options.desc = "Copy whole file";
-    }
-    {
-      key = "<Esc>";
-      action = "<cmd>noh<CR>";
-      options.desc = "Clear highlights";
-    }
-    {
-      mode = "n";
-      key = "<leader>ut";
-      action = "<cmd>TransparencyToggle<CR>";
-      options.desc = "Toggle transparency";
-    }
-    {
-      mode = "n";
-      key = ">";
-      action = ">>";
-      options.desc = "Increate indentation of selection";
-    }
-    {
-      mode = "n";
-      key = "<";
-      action = "<<";
-      options.desc = "Decrease indentation of selection";
-    }
-    {
-      mode = "x";
-      key = ">";
-      action = ">gv";
-      options.desc = "Increate indentation of selection";
-    }
-    {
-      mode = "x";
-      key = "<";
-      action = "<gv";
-      options.desc = "Decrease indentation of selection";
-    }
-    {
-      mode = "n";
-      key = "<leader>fn";
-      action = "<cmd>enew<CR>";
-      options.desc = "New file";
-    }
-    {
-      mode = "n";
-      key = "<C-Up>";
-      action = "<cmd>resize +2<cr>";
-      options.desc = "Increase Window Height";
-    }
-    {
-      mode = "n";
-      key = "<C-Down>";
-      action = "<cmd>resize -2<cr>";
-      options.desc = "Decrease Window Height";
-    }
-    {
-      mode = "n";
-      key = "<C-Right>";
-      action = "<cmd>vertical resize +2<cr>";
-      options.desc = "Increase Window Width";
-    }
-    {
-      mode = "n";
-      key = "<C-Left>";
-      action = "<cmd>vertical resize -2<cr>";
-      options.desc = "Decrease Window Width";
-    }
+    (mkKeymap' ["n" "v"] ";" ":")
+    (mkKeymapWithOpts ["n" "x"] "j" "v:count == 0 ? 'gj' : 'j'" "Down" {expr = true;})
+    (mkKeymapWithOpts ["n" "x"] "<Down>" "v:count == 0 ? 'gj' : 'j'" "Down" {expr = true;})
+    (mkKeymapWithOpts ["n" "x"] "k" "v:count == 0 ? 'gk' : 'k'" "Up" {expr = true;})
+    (mkKeymapWithOpts ["n" "x"] "<Up>" "v:count == 0 ? 'gk' : 'k'" "Up" {expr = true;})
+    (mkKeymap "" "<C-s>" "<cmd>w<CR>" "Save file")
+    (mkKeymap "" "<C-c>" "<cmd>%y+<CR>" "Copy whole file")
+    (mkKeymap "" "<Esc>" "<cmd>noh<CR>" "Clear highlights")
+    (mkKeymap "n" "<leader>ut" "<cmd>TransparencyToggle<CR>" "Toggle transparency")
+    (mkKeymap "n" ">" ">>" "Increase indentation")
+    (mkKeymap "n" "<" "<<" "Decrease indentation")
+    (mkKeymap "x" ">" ">gv" "Increase indentation of selection")
+    (mkKeymap "x" "<" "<gv" "Decrease indentation of selection")
+    (mkKeymap "n" "<leader>fn" "<cmd>enew<CR>" "New file")
+    (mkKeymap "n" "<C-Up>" "<cmd>resize +2<CR>" "Increase Window Height")
+    (mkKeymap "n" "<C-Down>" "<cmd>resize -2<CR>" "Decrease Window Height")
+    (mkKeymap "n" "<C-Right>" "<cmd>vertical resize +2<CR>" "Increase Window Width")
+    (mkKeymap "n" "<C-Left>" "<cmd>vertical resize -2<CR>" "Decrease Window Height")
     {
       key = "<C-t>";
       action.__raw = ''function() require("minty.huefy").open() end'';
@@ -146,12 +47,5 @@
       '';
       options.desc = "Menu";
     }
-    # {
-    #   mode = "t";
-    #   key = "<C-x>";
-    #   action = "<C-\\><C-N>";
-    #   options.desc = "Escape terminal mode";
-    #   options.silent = true;
-    # }
   ];
 }

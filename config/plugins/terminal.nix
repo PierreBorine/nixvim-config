@@ -1,4 +1,4 @@
-{
+{mkKey, ...}: {
   plugins.toggleterm = {
     enable = true;
     lazyLoad = {
@@ -26,25 +26,11 @@
     };
   };
 
-  keymaps = [
-    {
-      mode = "t";
-      key = "<C-x>";
-      action = "<C-\\><C-N>";
-      options.desc = "Escape terminal mode";
-      options.silent = true;
-    }
-    {
-      key = "<leader>h";
-      action = "<cmd>ToggleTerm direction=horizontal<CR>";
-      options.desc = "Toggle the horizontal terminal";
-      options.silent = true;
-    }
-    {
-      key = "<leader>v";
-      action = "<cmd>ToggleTerm direction=vertical<CR>";
-      options.desc = "Toggle the vertical terminal";
-      options.silent = true;
-    }
+  keymaps = let
+    inherit (mkKey) mkKeymap;
+  in [
+    (mkKeymap "t" "<C-x>" "<C-\\><C-N>" "Escape terminal mode")
+    (mkKeymap "" "<leader>h" "<cmd>ToggleTerm direction=horizontal<CR>" "Toggle the horizontal terminal")
+    (mkKeymap "" "<leader>v" "<cmd>ToggleTerm direction=vertical<CR>" "Toggle the vertical terminal")
   ];
 }
