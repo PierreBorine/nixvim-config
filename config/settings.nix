@@ -37,7 +37,5 @@ in {
   options.lib = lib.mkOption {type = lib.types.attrsOf lib.types.anything;};
 
   config.lib.isLang = lang:
-    if config.settings.languages == "All"
-    then true
-    else lib.elem lang config.settings.languages;
+    config.settings.languages == "All" || lib.elem lang config.settings.languages;
 }
