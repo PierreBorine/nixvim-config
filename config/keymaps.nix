@@ -1,4 +1,14 @@
 {
+  config,
+  lib,
+  ...
+}: {
+  extraConfigLua = ''
+    ${lib.optionalString config.lsp.inlayHints.enable ''Snacks.toggle.inlay_hints():map("<leader>uh")''}
+    Snacks.toggle.diagnostics():map("<leader>ud")
+    Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+  '';
+
   keymaps = [
     {
       mode = ["n" "v"];
@@ -59,6 +69,12 @@
       key = "<Esc>";
       action = "<cmd>noh<CR>";
       options.desc = "Clear highlights";
+    }
+    {
+      mode = "n";
+      key = "<leader>ut";
+      action = "<cmd>TransparencyToggle<CR>";
+      options.desc = "Toggle transparency";
     }
     {
       mode = "n";
