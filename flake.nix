@@ -9,6 +9,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     live-server = {
       url = "github:barrett-ruth/live-server.nvim";
@@ -46,19 +47,12 @@
     };
   };
 
-  outputs = {
+  outputs = inputs @ {
+    flake-parts,
     nixpkgs,
     nixvim,
     ...
-  } @ inputs: let
-    systems = ["x86_64-linux" "aarch64-linux"];
-    forAllSystems = f:
-      nixpkgs.lib.genAttrs systems (system:
-        f {
-          inherit system;
-          pkgs = import nixpkgs {inherit system;};
-        });
-
+  }: let
     mkNixvim = {system, ...} @ settings: let
       pkgs = import nixpkgs {inherit system;};
       pkgs' = pkgs.extend (_: prev: import ./pkgs prev inputs);
@@ -83,48 +77,57 @@
       module = nixvimModule;
       nvim = nixvim'.makeNixvimWithModule nixvimModule;
     };
-  in {
-    packages = forAllSystems ({pkgs, ...}: let
-      nvim' = mkNixvim {
-        inherit (pkgs.stdenv.hostPlatform) system;
-        languages = "All";
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      flake = {
+        lib.mkNvim = attrs: (mkNixvim attrs).nvim;
       };
-      nvim-42 = mkNixvim {
-        inherit (pkgs.stdenv.hostPlatform) system;
-        languages = ["C" "Python"];
-        portable = true;
-        life = 42;
+
+      systems = ["x86_64-linux" "aarch64-linux"];
+
+      perSystem = {
+        system,
+        pkgs,
+        ...
+      }: {
+        packages = let
+          nvim' = mkNixvim {
+            inherit system;
+            languages = "All";
+          };
+          nvim-42 = mkNixvim {
+            inherit system;
+            languages = ["C" "Python"];
+            portable = true;
+            life = 42;
+          };
+        in {
+          default = nvim'.nvim;
+          bundle-42 = nvim-42.nvim.overrideAttrs {pname = "nixvim";};
+
+          # Recipes
+          bundle = pkgs.writeShellScriptBin "bundle" ''
+            nix bundle .#bundle-42
+          '';
+          bundle-deb = pkgs.writeShellScriptBin "bundle" ''
+            nix bundle --bundler github:NixOS/bundlers#toDEB .#bundle-42
+          '';
+          format = pkgs.writeShellScriptBin "format" ''
+            alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
+          '';
+        };
+
+        legacyPackages = import ./pkgs pkgs inputs;
+
+        checks = let
+          nvim' = mkNixvim {
+            inherit system;
+            maximal = true;
+          };
+        in {
+          # Run `nix flake check .` to verify that your config is not broken
+          default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim'.module;
+        };
       };
-    in {
-      default = nvim'.nvim;
-      bundle-42 = nvim-42.nvim.overrideAttrs {pname = "nixvim";};
-
-      # Recipes
-      bundle = pkgs.writeShellScriptBin "bundle" ''
-        nix bundle .#bundle-42
-      '';
-      bundle-deb = pkgs.writeShellScriptBin "bundle" ''
-        nix bundle --bundler github:NixOS/bundlers#toDEB .#bundle-42
-      '';
-      format = pkgs.writeShellScriptBin "format" ''
-        alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
-      '';
-    });
-
-    legacyPackages = forAllSystems (
-      {pkgs, ...}: import ./pkgs pkgs inputs
-    );
-
-    checks = forAllSystems ({system, ...}: let
-      nvim' = mkNixvim {
-        inherit system;
-        maximal = true;
-      };
-    in {
-      # Run `nix flake check .` to verify that your config is not broken
-      default = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule nvim'.module;
-    });
-
-    lib.mkNvim = attrs: (mkNixvim attrs).nvim;
-  };
+    };
 }
