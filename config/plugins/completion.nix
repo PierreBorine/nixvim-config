@@ -22,7 +22,31 @@
           window.border = "rounded";
         };
         completion = {
-          menu.border = "rounded";
+          menu = {
+            border = "rounded";
+            # https://github.com/xzbdmw/colorful-menu.nvim/?tab=readme-ov-file#use-it-in-blinkcmp
+            draw = {
+              columns = [
+                ["kind_icon"]
+                {
+                  __unkeyed-1 = "label";
+                  gap = 1;
+                }
+              ];
+              components.label = {
+                text.__raw = ''
+                  function(ctx)
+                    return require("colorful-menu").blink_components_text(ctx)
+                  end
+                '';
+                highlight.__raw = ''
+                  function(ctx)
+                    return require("colorful-menu").blink_components_highlight(ctx)
+                  end
+                '';
+              };
+            };
+          };
           documentation = {
             auto_show = true;
             auto_show_delay_ms = 50;
@@ -54,6 +78,7 @@
       enable = true;
       lazyLoad.settings.event = "BufReadPre";
     };
+    colorful-menu.enable = true;
   };
 
   extraConfigLua = ''
