@@ -1,5 +1,6 @@
 {
   config,
+  mkKey,
   pkgs,
   lib,
   ...
@@ -9,10 +10,15 @@
   plugins = {
     wakatime.enable = config.settings.wakatime;
     hardtime = {
-      enable = false;
+      enable = true;
       settings = {
+        enabled = false;
         max_count = 10;
       };
+    };
+    precognition = {
+      enable = true;
+      settings.startVisible = false;
     };
     sudoku = {
       enable = false;
@@ -31,12 +37,11 @@
 
   extraPackages = lib.optional config.plugins.wakatime.enable pkgs.wakatime-cli;
 
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader>mr"; # make rain
-      action = "<cmd>CellularAutomaton make_it_rain<CR>";
-      options.desc = "MAKE IT RAIN !!";
-    }
+  keymaps = let
+    inherit (mkKey) mkKeymap;
+  in [
+    (mkKeymap "n" "<leader>uR" "<cmd>CellularAutomaton make_it_rain<CR>" "MAKE IT RAIN !!")
+    (mkKeymap "n" "<leader>uH" "<cmd>Hardtime toggle<CR>" "Toggle Hardtime")
+    (mkKeymap "n" "<leader>uP" "<cmd>Precognition toggle<CR>" "Toggle Precognition")
   ];
 }
