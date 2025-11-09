@@ -4,6 +4,7 @@
     ./statusline.nix
     ./bufferline.nix
     ./nvim-tree.nix
+    ./comments.nix
     ./terminal.nix
     ./syntax.nix
     ./tools.nix
@@ -45,30 +46,5 @@
       lazyLoad.settings.ft = "markdown";
     };
     markdown-preview.enable = true;
-
-    # Comments
-    ts-context-commentstring = {
-      enable = true;
-      settings.enable_autocmd = false;
-    };
-    comment = {
-      enable = true;
-      lazyLoad.settings.event = "DeferredUIEnter";
-      settings.pre_hook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
-    };
-    todo-comments = {
-      enable = true;
-      lazyLoad.settings.event = "DeferredUIEnter";
-      settings = {
-        sign_priority = 6; # don't override git line status
-        keywords = {
-          TEMP = {
-            icon = "󱑂 ";
-            color = "warning";
-            alt = ["TEMPORARY"];
-          };
-        };
-      };
-    };
   };
 }
