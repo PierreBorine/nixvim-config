@@ -48,6 +48,10 @@
       enabled = true; # library
       easing = "cubic";
     };
+    snacks.settings.picker = {
+      enabled = true;
+      layout.preset = "telescope";
+    };
     snacks.settings.input.enabled = true;
     noice = {
       enable = true;
