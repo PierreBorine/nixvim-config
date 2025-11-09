@@ -24,6 +24,7 @@
     showmode = false;
     wrap = true; # Make sure long lines wrap
     linebreak = true; # Wrap lines at convenient points
+    termguicolors = true; # 24-bit colors
 
     # Indenting
     expandtab = false; # false = real tabs
