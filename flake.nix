@@ -16,11 +16,6 @@
       flake = false;
     };
 
-    sudoku = {
-      url = "github:jim-fx/sudoku.nvim";
-      flake = false;
-    };
-
     toggler = {
       url = "github:nguyenvukhang/nvim-toggler";
       flake = false;

@@ -17,7 +17,6 @@
         "nvim-treesitter"
         "friendly-snippets"
         "blink.cmp"
-        "sudoku"
         "mini.nvim"
       ];
     };

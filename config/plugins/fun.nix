@@ -20,10 +20,6 @@
       enable = true;
       settings.startVisible = false;
     };
-    sudoku = {
-      enable = false;
-      settings.persist_games = false;
-    };
     showkeys = {
       enable = true;
       lazyLoad.settings.cmd = "ShowkeysToggle";

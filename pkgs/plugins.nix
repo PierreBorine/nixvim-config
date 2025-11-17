@@ -28,12 +28,6 @@ in {
     src = inputs.lualine-so-fancy;
   };
 
-  sudoku = buildVimPlugin {
-    pname = "sudoku.nvim";
-    version = inputs.sudoku.rev;
-    src = inputs.sudoku;
-  };
-
   nvim-toggler = buildVimPlugin {
     pname = "nvim-toggler";
     version = inputs.toggler.rev;
