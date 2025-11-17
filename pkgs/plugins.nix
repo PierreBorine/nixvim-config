@@ -22,12 +22,6 @@ in {
     src = inputs.header-42;
   };
 
-  live-server = buildVimPlugin {
-    pname = "live-server.nvim";
-    version = inputs.live-server.rev;
-    src = inputs.live-server;
-  };
-
   lualine-so-fancy = buildVimPlugin {
     pname = "lualine-so-fancy.nvim";
     version = inputs.lualine-so-fancy.rev;

@@ -11,11 +11,6 @@
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    live-server = {
-      url = "github:barrett-ruth/live-server.nvim";
-      flake = false;
-    };
-
     lualine-so-fancy = {
       url = "github:meuter/lualine-so-fancy.nvim";
       flake = false;

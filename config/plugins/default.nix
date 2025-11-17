@@ -1,4 +1,4 @@
-{config, ...}: {
+{
   imports = [
     ./completion.nix
     ./statusline.nix
@@ -20,13 +20,6 @@
     # "DeferredUIEnter" == "VeryLazy"
 
     tmux-navigator.enable = true;
-    live-server = {
-      enable = config.lib.isLang "Web";
-      lazyLoad.settings.cmd = [
-        "LiveServerStart"
-        "LiveServerStop"
-      ];
-    };
     which-key = {
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
