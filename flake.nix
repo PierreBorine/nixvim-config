@@ -83,7 +83,7 @@
         packages = let
           nvim' = mkNixvim {
             inherit system;
-            languages = "All";
+            maximal = true;
           };
           nvim-42 = mkNixvim {
             inherit system;
