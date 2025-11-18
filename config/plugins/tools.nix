@@ -17,7 +17,10 @@
   plugins = {
     yazi = {
       enable = true;
-      lazyLoad.settings.cmd = "Yazi";
+      lazyLoad.settings = {
+        keys = ["<leader>yy" "<leader>yc"];
+        cmd = "Yazi";
+      };
     };
     snacks.enable = true;
     lazygit.enable = true;
@@ -46,6 +49,7 @@
 
     nvim-toggler = {
       enable = true;
+      lazyLoad.settings.keys = ["<C-a>"];
       settings = {
         remove_default_keybinds = true;
         inverses = {
@@ -56,6 +60,7 @@
 
     treesj = {
       enable = true;
+      lazyLoad.settings.keys = ["<C-x>"];
       settings.use_default_keymaps = false;
     };
 

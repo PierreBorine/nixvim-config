@@ -11,6 +11,7 @@
     wakatime.enable = config.settings.wakatime;
     hardtime = {
       enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
       settings = {
         enabled = false;
         max_count = 10;
@@ -18,6 +19,7 @@
     };
     precognition = {
       enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
       settings.startVisible = false;
     };
     showkeys = {

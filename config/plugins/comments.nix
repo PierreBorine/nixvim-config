@@ -2,6 +2,7 @@
   plugins = {
     ts-context-commentstring = {
       enable = true;
+      # Lazyload does not work well
       settings.enable_autocmd = false;
     };
     comment = {

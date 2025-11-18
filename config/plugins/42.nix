@@ -8,6 +8,10 @@
       c-formatter-42.enable = true;
       header-42-nvim = {
         enable = true;
+        lazyLoad.settings = {
+          cmd = "Stdheader";
+          keys = ["<F1>"];
+        };
         settings = {
           auto_update = false;
           git = {
