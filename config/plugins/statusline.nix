@@ -16,7 +16,11 @@
           left = "";
           right = "";
         };
-        ignore_focus = [];
+        ignore_focus = [
+          "NvimTree"
+          "TelescopePrompt"
+          "Trouble"
+        ];
         always_divide_middle = true;
         always_show_tabline = true;
         globalstatus = true;
