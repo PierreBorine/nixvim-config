@@ -32,5 +32,6 @@
     (mkKeymap "n" "L" "<cmd>BufferLineCycleNext<CR>" "Cycle to next buffer tab")
     (mkKeymap "n" "H" "<cmd>BufferLineCyclePrev<CR>" "Cycle to previous buffer tab")
     (mkKeymap "" "<leader>x" "<cmd>lua Snacks.bufdelete.delete()<CR>" "Close the current buffer")
+    (mkKeymap "" "<leader>bd" "<cmd>lua Snacks.bufdelete.delete()<CR>" "Close the current buffer")
   ];
 }
