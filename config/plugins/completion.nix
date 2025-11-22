@@ -5,18 +5,7 @@
       lazyLoad.settings.event = "DeferredUIEnter";
       setupLspCapabilities = true;
       settings = {
-        keymap = {
-          preset = "enter";
-          "<Tab>" = [
-            "select_next"
-            "fallback"
-          ];
-          "<S-Tab>" = [
-            "select_prev"
-            "accept"
-            "fallback"
-          ];
-        };
+        keymap.preset = "enter";
         signature = {
           enabled = true;
           window.border = "rounded";
