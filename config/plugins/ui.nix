@@ -43,6 +43,11 @@
     };
 
     # Status column
+    modicator = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+      settings.integration.lualine.mode_section = "a";
+    };
     snacks.settings.statuscolumn = {
       enabled = true;
       folds.open = true;
