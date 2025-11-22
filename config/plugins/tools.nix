@@ -47,6 +47,11 @@
       };
     };
 
+    trouble = {
+      enable = true;
+      lazyLoad.settings.cmd = "Trouble";
+    };
+
     nvim-toggler = {
       enable = true;
       lazyLoad.settings.keys = ["<C-a>"];
@@ -123,6 +128,11 @@
       key = "<leader>fo";
       action = "<cmd>Telescope oldfiles<CR>";
       options.desc = "Lists previously open files";
+    }
+    {
+      key = "<leader>cs";
+      action = "<cmd>Trouble symbols toggle focus=false<CR>";
+      options.desc = "Toggle Symbols";
     }
   ];
 }
