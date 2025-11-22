@@ -1,26 +1,30 @@
 {pkgs, ...}: {
   plugins = {
-    neoscroll = {
-      enable = true;
-      lazyLoad.settings.event = "BufRead";
-      settings.easing = "cubic";
-    };
-    gitsigns = {
-      enable = true;
-      settings.signs = {
-        delete.text = "󰍵";
-        changedelete.text = "󱕖";
-      };
-    };
     web-devicons.enable = true;
 
+    # Inlay elements
     snacks.settings.indent.enabled = true;
     snacks.settings.chunk.enabled = true;
     snacks.settings.scope = {
       enabled = true;
       edge = false;
     };
+    illuminate = {
+      enable = true;
+      # No Lazyloading, stop trying
+      # https://github.com/RRethy/vim-illuminate/issues/112
+      settings = {
+        min_count_to_highlight = 2;
+        filetypes_denylist = [
+          "dirvish"
+          "fugitive"
+          "NvimTree"
+          "TelescopePrompt"
+        ];
+      };
+    };
 
+    # Color column
     smartcolumn = {
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
@@ -38,24 +42,30 @@
       lazyLoad.settings.event = "DeferredUIEnter";
     };
 
+    # Status column
     snacks.settings.statuscolumn = {
       enabled = true;
       folds.open = true;
       folds.git_hl = true;
       right = ["git" "fold"];
     };
+    gitsigns = {
+      enable = true;
+      settings.signs = {
+        delete.text = "󰍵";
+        changedelete.text = "󱕖";
+      };
+    };
+
+    # Animations
     snacks.settings.animate = {
       enabled = true; # library
       easing = "cubic";
     };
-    snacks.settings.picker = {
-      enabled = true;
-      layout.preset = "telescope";
-    };
-    snacks.settings.input.enabled = true;
-    noice = {
+    neoscroll = {
       enable = true;
-      lazyLoad.settings.event = "DeferredUIEnter";
+      lazyLoad.settings.event = "BufRead";
+      settings.easing = "cubic";
     };
     tiny-glimmer = {
       enable = true;
@@ -70,19 +80,16 @@
         };
       };
     };
-    illuminate = {
+
+    # Text elements
+    snacks.settings.picker = {
+      enabled = true;
+      layout.preset = "telescope";
+    };
+    snacks.settings.input.enabled = true;
+    noice = {
       enable = true;
-      # No Lazyloading, stop trying
-      # https://github.com/RRethy/vim-illuminate/issues/112
-      settings = {
-        min_count_to_highlight = 2;
-        filetypes_denylist = [
-          "dirvish"
-          "fugitive"
-          "NvimTree"
-          "TelescopePrompt"
-        ];
-      };
+      lazyLoad.settings.event = "DeferredUIEnter";
     };
     fidget = {
       enable = true;
