@@ -29,10 +29,8 @@
   keymaps = let
     inherit (mkKey) mkKeymap;
   in [
-    (mkKeymap "n" "<tab>" "<cmd>BufferLineCycleNext<CR>" "Cycle to next buffer tab")
-    (mkKeymap "n" "<S-tab>" "<cmd>BufferLineCyclePrev<CR>" "Cycle to previous buffer tab")
-    (mkKeymap "n" "<C-tab>" "<cmd>BufferLineMoveNext<CR>" "Move current buffer forward")
-    (mkKeymap "n" "<C-S-tab>" "<cmd>BufferLineMovePrev<CR>" "Move current buffer backward")
+    (mkKeymap "n" "L" "<cmd>BufferLineCycleNext<CR>" "Cycle to next buffer tab")
+    (mkKeymap "n" "H" "<cmd>BufferLineCyclePrev<CR>" "Cycle to previous buffer tab")
     (mkKeymap "" "<leader>x" "<cmd>lua Snacks.bufdelete.delete()<CR>" "Close the current buffer")
   ];
 }
