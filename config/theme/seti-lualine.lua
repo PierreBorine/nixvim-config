@@ -1,5 +1,5 @@
 local c = {
-  darker_base00 = "#121414",
+  darker_base00 = "#181A1B",
   base00 = "#151718",
   base01 = "#282a2b",
   base02 = "#3B758C",
@@ -27,19 +27,22 @@ return {
   inactive = {
     a = { fg = c.base05, bg = c.base01, gui = 'bold' },
     b = { fg = c.base05, bg = c.base01 },
-    c = { fg = c.base05, bg = c.base00 },
+    c = { fg = c.base05, bg = c.darker_base00 },
   },
 
   visual = {
     a = { fg = c.base00, bg = c.base0A, gui = 'bold' },
-    b = { fg = c.base05, bg = c.base01 },
   },
   replace = {
     a = { fg = c.base00, bg = c.base08, gui = 'bold' },
-    b = { fg = c.base05, bg = c.base01 },
   },
   insert = {
     a = { fg = c.base00, bg = c.base0B, gui = 'bold' },
-    b = { fg = c.base05, bg = c.base01 },
+  },
+  terminal = {
+    a = { fg = c.base00, bg = c.base0E, gui = 'bold' },
+  },
+  command = {
+    a = { fg = c.base00, bg = c.base0C, gui = 'bold' },
   },
 }
