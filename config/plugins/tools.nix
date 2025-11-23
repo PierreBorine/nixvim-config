@@ -54,7 +54,6 @@
 
     nvim-toggler = {
       enable = true;
-      lazyLoad.settings.keys = ["<C-a>"];
       settings = {
         remove_default_keybinds = true;
         inverses = {
@@ -65,7 +64,14 @@
 
     treesj = {
       enable = true;
-      lazyLoad.settings.keys = ["<C-x>"];
+      lazyLoad.settings = {
+        keys = ["<C-x>"];
+        cmd = [
+          "TSJToggle"
+          "TSJSplit"
+          "TSJJoin"
+        ];
+      };
       settings.use_default_keymaps = false;
     };
 
@@ -78,15 +84,11 @@
   keymaps = [
     {
       key = "<C-x>";
-      action.__raw = ''
-        function()
-          require('treesj').toggle()
-        end
-      '';
+      action = "<cmd>TSJToggle<CR>";
       options.desc = "Toggle split/join";
     }
     {
-      key = "<C-a>";
+      key = "<C-A>";
       action.__raw = ''
         function()
           require('nvim-toggler').toggle()
