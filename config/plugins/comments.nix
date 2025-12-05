@@ -3,7 +3,13 @@
     ts-context-commentstring = {
       enable = true;
       # Lazyload does not work well
-      settings.enable_autocmd = false;
+      settings = {
+        enable_autocmd = false;
+        languages.c = {
+          __default = "// %s";
+          __multiline = "/* %s */";
+        };
+      };
     };
     comment = {
       enable = true;
