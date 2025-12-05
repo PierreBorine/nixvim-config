@@ -43,13 +43,13 @@ Access the package like this
 # configuration.nix
 {inputs, pkgs, ...}: {
   # With default settings
-  environment.systemPackages = [inputs.nixvim-config.packages.${pkgs.system}.default];
+  environment.systemPackages = [inputs.nixvim-config.packages.${pkgs.stdenv.hostPlatform.system}.default];
 
   # Recommended:
   # With some settings
   environment.systemPackages = let
     nvim = inputs.nixvim-config.lib.mkNvim {
-      inherit (pkgs) system; # mandatory
+      inherit (pkgs.stdenv.hostPlatform.system) system; # mandatory
       # Used to get the flake's options (inputs.self) for the Nix LSP
       # default: null
       inherit inputs;
@@ -82,10 +82,10 @@ Access the package like this
 If you want to change some options, you can use [`<nixvim>.extend`](https://nix-community.github.io/nixvim/platforms/standalone.html#extending-an-existing-configuration):
 ```Nix
 {inputs, pkgs, ...}: let
-  nvim' = inputs.nixvim-config.packages.${pkgs.system}.default;
+  nvim' = inputs.nixvim-config.packages.${pkgs.stdenv.hostPlatform.system}.default;
   # or
   nvim' = inputs.nixvim-config.lib.mkNvim {
-    inherit (pkgs) system;
+    inherit (pkgs.stdenv.hostPlatform.system) system;
     inherit inputs;
   };
   nvim = nvim'.extend {
