@@ -26,8 +26,6 @@ in {
     (mkKeymap "" "<C-c>" "<cmd>%y+<CR>" "Copy whole file")
     (mkKeymap "" "<Esc>" "<cmd>noh<CR>" "Clear highlights")
     (mkKeymap "n" "<leader>ut" "<cmd>TransparencyToggle<CR>" "Toggle transparency")
-    (mkKeymap "n" ">" ">>" "Increase indentation")
-    (mkKeymap "n" "<" "<<" "Decrease indentation")
     (mkKeymap "x" ">" ">gv" "Increase indentation of selection")
     (mkKeymap "x" "<" "<gv" "Decrease indentation of selection")
     (mkKeymap "n" "<leader>fn" "<cmd>enew<CR>" "New file")
