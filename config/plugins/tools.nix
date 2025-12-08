@@ -122,9 +122,8 @@
     (mkKeymap "" "<leader>yy" "<cmd>Yazi cwd<CR>" "Open Yazi in nvim's working directory")
     (mkKeymap "" "<leader>gg" "<cmd>LazyGit<CR>" "Open LazyGit")
     (mkKeymap "" "<leader>ff" "<cmd>Telescope find_files<CR>" "Lists files in current working directory")
-    (mkKeymap "" "<leader>ff" "<cmd>Telescope find_files<CR>" "Lists files in current working directory")
     (mkKeymap "" "<leader>fg" "<cmd>Telescope live_grep<CR>" "Search for a string in current working directory")
-    (mkKeymap "" "<leader>fg" "<cmd>Telescope buffers<CR>" "Lists open buffers")
+    (mkKeymap "" "<leader>fb" "<cmd>Telescope buffers<CR>" "Lists open buffers")
     (mkKeymap "" "<leader>fo" "<cmd>Telescope oldfiles<CR>" "Lists previously open files")
     (mkKeymap "" "<leader>cs" "<cmd>Trouble symbols toggle focus=false<CR>" "Toggle Symbols")
   ];
