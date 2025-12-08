@@ -53,6 +53,8 @@
       lazyLoad.settings.cmd = "Trouble";
     };
 
+    grug-far.enable = true;
+
     nvim-toggler = {
       enable = true;
       settings = {
@@ -98,6 +100,23 @@
         end
       '';
       options.desc = "Invert the word under your cursor";
+    }
+    {
+      mode = ["n" "x"];
+      key = "<leader>sr";
+      action.__raw = ''
+        function()
+          local grug = require("grug-far")
+          local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+          grug.open({
+            transient = true,
+            prefills = {
+              filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+            },
+          })
+        end
+      '';
+      options.desc = "Search and Replace";
     }
     (mkKeymap "" "<leader>yc" "<cmd>Yazi<CR>" "Open yazi at the current file")
     (mkKeymap "" "<leader>yy" "<cmd>Yazi cwd<CR>" "Open Yazi in nvim's working directory")
