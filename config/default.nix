@@ -58,6 +58,7 @@
   '';
   globals = {
     mapleader = " ";
+    maplocalleader = ",";
     # disable some default providers
     loaded_node_provider = 0;
     loaded_python_provider = 0;
