@@ -1,5 +1,6 @@
 {
   config,
+  mkKey,
   pkgs,
   lib,
   ...
@@ -81,7 +82,9 @@
     };
   };
 
-  keymaps = [
+  keymaps = let
+    inherit (mkKey) mkKeymap;
+  in [
     {
       key = "<C-x>";
       action = "<cmd>TSJToggle<CR>";
@@ -96,45 +99,14 @@
       '';
       options.desc = "Invert the word under your cursor";
     }
-    {
-      key = "<leader>yc";
-      action = "<cmd>Yazi<CR>";
-      options.desc = "Open yazi at the current file";
-    }
-    {
-      key = "<leader>yy";
-      action = "<cmd>Yazi cwd<CR>";
-      options.desc = "Open Yazi in nvim's working directory";
-    }
-    {
-      key = "<leader>gg";
-      action = "<cmd>LazyGit<CR>";
-      options.desc = "Open LazyGit";
-    }
-    {
-      key = "<leader>ff";
-      action = "<cmd>Telescope find_files<CR>";
-      options.desc = "Lists files in current working directory";
-    }
-    {
-      key = "<leader>fg";
-      action = "<cmd>Telescope live_grep<CR>";
-      options.desc = "Search for a string in current working directory";
-    }
-    {
-      key = "<leader>fb";
-      action = "<cmd>Telescope buffers<CR>";
-      options.desc = "Lists open buffers";
-    }
-    {
-      key = "<leader>fo";
-      action = "<cmd>Telescope oldfiles<CR>";
-      options.desc = "Lists previously open files";
-    }
-    {
-      key = "<leader>cs";
-      action = "<cmd>Trouble symbols toggle focus=false<CR>";
-      options.desc = "Toggle Symbols";
-    }
+    (mkKeymap "" "<leader>yc" "<cmd>Yazi<CR>" "Open yazi at the current file")
+    (mkKeymap "" "<leader>yy" "<cmd>Yazi cwd<CR>" "Open Yazi in nvim's working directory")
+    (mkKeymap "" "<leader>gg" "<cmd>LazyGit<CR>" "Open LazyGit")
+    (mkKeymap "" "<leader>ff" "<cmd>Telescope find_files<CR>" "Lists files in current working directory")
+    (mkKeymap "" "<leader>ff" "<cmd>Telescope find_files<CR>" "Lists files in current working directory")
+    (mkKeymap "" "<leader>fg" "<cmd>Telescope live_grep<CR>" "Search for a string in current working directory")
+    (mkKeymap "" "<leader>fg" "<cmd>Telescope buffers<CR>" "Lists open buffers")
+    (mkKeymap "" "<leader>fo" "<cmd>Telescope oldfiles<CR>" "Lists previously open files")
+    (mkKeymap "" "<leader>cs" "<cmd>Trouble symbols toggle focus=false<CR>" "Toggle Symbols")
   ];
 }
