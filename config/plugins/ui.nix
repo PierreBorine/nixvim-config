@@ -35,6 +35,9 @@
           "markdown"
           "nix"
         ];
+        custom_colorcolumn = {
+          python = ["79"];
+        };
       };
     };
     virt-column = {
