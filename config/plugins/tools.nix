@@ -14,7 +14,11 @@
 
   extraPackages = lib.optional (!config.settings.portable) pkgs.lazygit;
 
-  dependencies.yazi.enable = config.settings.portable;
+  dependencies.git.enable = !config.settings.portable;
+  dependencies.lazygit.enable = !config.settings.portable;
+  dependencies.yazi.enable = !config.settings.portable;
+  dependencies.coreutils.enable = !config.settings.portable;
+
   plugins = {
     yazi = {
       enable = true;

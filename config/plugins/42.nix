@@ -16,7 +16,12 @@
           auto_update = false;
           git = {
             enabled = true;
-            bin = lib.getExe config.dependencies.git.package;
+            ${
+              if config.dependencies.git.enable
+              then "bin"
+              else null
+            } =
+              lib.getExe config.dependencies.git.package;
           };
         };
       };
