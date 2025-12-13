@@ -13,7 +13,7 @@
         completion = {
           menu = {
             border = "rounded";
-            # https://github.com/xzbdmw/colorful-menu.nvim/?tab=readme-ov-file#use-it-in-blinkcmp
+            # https://github.com/xzbdmw/colorful-menu.nvim#use-it-in-blinkcmp
             draw = {
               columns = [
                 ["kind_icon"]
@@ -42,8 +42,9 @@
             window.border = "rounded";
           };
           ghost_text.enabled = true;
-          keyword.range = "prefix"; # can also be `full`
+          keyword.range = "prefix"; # or "full"
         };
+        snippets.preset = "luasnip";
       };
     };
 
@@ -53,9 +54,9 @@
         "InsertEnter"
         "BufReadPre" # For neogen
       ];
+      fromVscode = [{}];
       settings = {
-        history = true;
-        # enable_autosnippets = true; # big performance penalty
+        delete_check_events = "TextChanged";
       };
     };
     friendly-snippets.enable = true;
