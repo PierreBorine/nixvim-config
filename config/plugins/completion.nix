@@ -49,13 +49,22 @@
 
     luasnip = {
       enable = true;
-      lazyLoad.settings.event = "InsertEnter";
+      lazyLoad.settings.event = [
+        "InsertEnter"
+        "BufReadPre" # For neogen
+      ];
       settings = {
         history = true;
         # enable_autosnippets = true; # big performance penalty
       };
     };
     friendly-snippets.enable = true;
+    neogen = {
+      enable = true;
+      lazyLoad.settings.event = "BufReadPre";
+      keymaps.generate = "<leader>cd";
+      settings.snippet_engine = "luasnip";
+    };
     nvim-autopairs = {
       enable = true;
       lazyLoad.settings.event = "InsertEnter";
