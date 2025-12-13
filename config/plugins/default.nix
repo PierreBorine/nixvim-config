@@ -1,4 +1,4 @@
-{
+{mkKey, ...}: {
   imports = [
     ./completion.nix
     ./statusline.nix
@@ -39,5 +39,10 @@
       lazyLoad.settings.ft = "markdown";
     };
     markdown-preview.enable = true;
+    femaco.enable = true; # Edit code blocks
   };
+
+  keymaps = [
+    (mkKey.mkKeymap "" "<leader>cm" "<cmd>FeMaco<CR>" "Edit a markdown code block.")
+  ];
 }
