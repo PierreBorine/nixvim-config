@@ -71,17 +71,21 @@
   };
 
   extraConfigLua = ''
-    -- https://github.com/L3MON4D3/LuaSnip/issues/258#issuecomment-1429989436
+    -- From:  https://github.com/saghen/blink.cmp/issues/2035#issuecomment-3125771318
+    -- Fixes: https://github.com/L3MON4D3/LuaSnip/issues/258#issuecomment-1429989436
     vim.api.nvim_create_autocmd('ModeChanged', {
-      pattern = '*',
-      callback = function()
-        if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
-            and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
-            and not require('luasnip').session.jump_active
-        then
-          require('luasnip').unlink_current()
+      desc = 'Unlink current snippet on leaving insert/selection mode.',
+      group = vim.api.nvim_create_augroup('LuaSnipModeChanged', {}),
+      pattern = '[si]*:[^si]*',
+      callback = vim.schedule_wrap(function(event)
+        local ls = require('luasnip')
+        if vim.fn.mode():match('^[si]') then -- still in insert/select mode
+          return
         end
-      end
+        if ls.session.current_nodes[event.buf] and not ls.session.jump_active then
+          ls.unlink_current()
+        end
+      end),
     })
   '';
 }
