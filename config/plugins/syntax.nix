@@ -1,5 +1,6 @@
 {
   config,
+  mkKey,
   pkgs,
   lib,
   ...
@@ -120,14 +121,6 @@
     ++ lib.optionals (config.lib.isLang "Rust") [clippy rustfmt];
 
   keymaps = [
-    {
-      key = "gf";
-      action.__raw = ''
-        function()
-          require("conform").format({ async = true })
-        end
-      '';
-      options.desc = "Format buffer";
-    }
+    (mkKey.mkKeymap "" "gf" {__raw = "function()require('conform').format({async=true})end";} "Format buffer")
   ];
 }
