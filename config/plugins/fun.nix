@@ -13,7 +13,7 @@
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
       settings = {
-        enabled = false;
+        enabled = lib.mkDefault false;
         max_count = 10;
       };
     };
