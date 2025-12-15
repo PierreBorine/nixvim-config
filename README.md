@@ -41,7 +41,7 @@ If you want to reduce build time, you can add my cachix.
 Access the package like this
 ```Nix
 # configuration.nix
-{inputs, pkgs, ...}: {
+{inputs, pkgs, lib, ...}: {
   # With default settings
   environment.systemPackages = [inputs.nixvim-config.packages.${pkgs.stdenv.hostPlatform.system}.default];
 
@@ -73,29 +73,17 @@ Access the package like this
       # Usefull to reduce closure size.
       # default = false
       portable = true;
+      # Extra Nixvim config.
+      # See official documentation.
+      config = {
+        plugins = {
+          smear-cursor.enable = true;
+          hardtime.settings.enabled = true;
+        };
+        opts.wrap = lib.mkForce false;
+      };
     };
   in [nvim];
-}
-```
-
-#### Additional configuration
-If you want to change some options, you can use [`<nixvim>.extend`](https://nix-community.github.io/nixvim/platforms/standalone.html#extending-an-existing-configuration):
-```Nix
-{inputs, pkgs, ...}: let
-  nvim' = inputs.nixvim-config.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  # or
-  nvim' = inputs.nixvim-config.lib.mkNvim {
-    inherit (pkgs.stdenv.hostPlatform.system) system;
-    inherit inputs;
-  };
-  nvim = nvim'.extend {
-    config = {
-      plugins.smear-cursor.enable = true;
-      # Some more nixvim configuration...
-    };
-  };
-in {
-  environment.systemPackages = [nvim];
 }
 ```
 
