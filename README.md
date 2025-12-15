@@ -17,24 +17,8 @@ Import this flake into your's
 {
   inputs = {
     nixvim-config.url = "github:PierreBorine/nixvim-config";
-    # optional, the choice is yours:
-    # Decreases your system's closure size at
-    # the cost of build time if using the cachix.
+    # Recommended
     nixvim-config.inputs.nixpkgs.follows = "nixpkgs";
-  };
-}
-```
-If you want to reduce build time, you can add my cachix.
-```nix
-# configuration.nix
-{
-  nix.settings = {
-    substituters = [
-      "https://pierreborine.cachix.org"
-    ];
-    trusted-public-keys = [
-      "pierreborine.cachix.org-1:D6WNCFqd5FZkTMem+QF+q25/lU2KFf8C7zBvvzhZZAk="
-    ];
   };
 }
 ```
