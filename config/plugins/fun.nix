@@ -41,5 +41,6 @@
     (mkKeymap "n" "<leader>uR" "<cmd>CellularAutomaton make_it_rain<CR>" "MAKE IT RAIN !!")
     (mkKeymap "n" "<leader>uH" "<cmd>Hardtime toggle<CR>" "Toggle Hardtime")
     (mkKeymap "n" "<leader>uP" "<cmd>Precognition toggle<CR>" "Toggle Precognition")
+    (mkKeymap "n" "<leader>uK" "<cmd>ShowkeysToggle<CR>" "Toggle ShowKey")
   ];
 }
