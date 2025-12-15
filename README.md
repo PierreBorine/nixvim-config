@@ -86,19 +86,3 @@ Access the package like this
   in [nvim];
 }
 ```
-
-### Bundle
-This flake provides a standalone executable that can be run on any distribution.
-
-To get one, first go see the last succesfull [github build action](https://github.com/PierreBorine/nixvim-config/actions) and download the "nixvim" artifact.
-<br>If this is not available, clone this repository then run `nix run .#bundle`.
-
-This can take a while to build (and to execute for the first time) so be patient.
-```shell
-git clone https://github.com/PierreBorine/nixvim-config.git
-cd nixvim-config
-nix run .#bundle
-```
-
-> [!TIP]
-> You can also run `nix run .#bundle-deb` to get a .deb file.
