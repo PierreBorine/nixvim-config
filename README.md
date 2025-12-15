@@ -12,7 +12,7 @@ nix run github:PierreBorine/nixvim-config
 
 ### Flake
 Import this flake into your's
-```Nix
+```nix
 # flake.nix
 {
   inputs = {
@@ -39,7 +39,7 @@ If you want to reduce build time, you can add my cachix.
 }
 ```
 Access the package like this
-```Nix
+```nix
 # configuration.nix
 {inputs, pkgs, lib, ...}: {
   # With default settings
@@ -49,7 +49,7 @@ Access the package like this
   # With some settings
   environment.systemPackages = let
     nvim = inputs.nixvim-config.lib.mkNvim {
-      inherit (pkgs.stdenv.hostPlatform.system) system; # mandatory
+      inherit (pkgs.stdenv.hostPlatform) system; # mandatory
       # Used to get the flake's options (inputs.self) for the Nix LSP
       # default: null
       inherit inputs;
