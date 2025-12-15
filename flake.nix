@@ -54,14 +54,19 @@
           import ./config
           // {
             settings =
-              builtins.removeAttrs settings ["inputs" "system"]
+              builtins.removeAttrs settings ["inputs" "system" "config"]
               // {
                 flake =
                   if builtins.hasAttr "inputs" settings
                   then settings.inputs.self
                   else null;
               };
-          };
+          }
+          // (
+            if builtins.hasAttr "config" settings
+            then settings.config
+            else {}
+          );
       };
     in {
       module = nixvimModule;
