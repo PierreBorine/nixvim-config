@@ -16,12 +16,6 @@ in {
     src = inputs.header-42-nvim;
   };
 
-  header-42 = buildVimPlugin {
-    pname = "42-header.vim";
-    version = inputs.header-42.rev;
-    src = inputs.header-42;
-  };
-
   lualine-so-fancy = buildVimPlugin {
     pname = "lualine-so-fancy.nvim";
     version = inputs.lualine-so-fancy.rev;

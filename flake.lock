@@ -73,22 +73,6 @@
         "type": "github"
       }
     },
-    "header-42": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754434797,
-        "narHash": "sha256-WflranTZgaAoRTBqHsRuQEdvL15fv21ZRX77BzDMg0I=",
-        "owner": "42Paris",
-        "repo": "42header",
-        "rev": "e6e6b191871545e0d43f1aad817070bc806b8fa7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "42Paris",
-        "repo": "42header",
-        "type": "github"
-      }
-    },
     "header-42-nvim": {
       "flake": false,
       "locked": {
@@ -244,7 +228,6 @@
       "inputs": {
         "c-formatter-42": "c-formatter-42",
         "flake-parts": "flake-parts",
-        "header-42": "header-42",
         "header-42-nvim": "header-42-nvim",
         "lualine-so-fancy": "lualine-so-fancy",
         "nixpkgs": "nixpkgs",
