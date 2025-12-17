@@ -36,6 +36,7 @@
       rust_analyzer.enable = config.lib.isLang "Rust";
       # Python
       ruff.enable = config.lib.isLang "Python";
+      basedpyright.enable = config.lib.isLang "Python";
     };
   };
   extraPackages =
