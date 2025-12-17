@@ -30,17 +30,33 @@
         cmd = "ConformInfo";
         keys = ["gf"];
       };
-      # https://github.com/stevearc/conform.nvim#formatters
-      settings.formatters_by_ft = {
-        json = ["jq"];
-        nix = lib.optional (config.lib.isLang "Nix") "alejandra";
-        rust = lib.optional (config.lib.isLang "Rust") "rustfmt";
-        # markdown = ["markdownfmt"];
-        python = lib.optionals (config.lib.isLang "Python") [
-          "ruff_fix"
-          "ruff_format"
-          "ruff_organize_imports"
-        ];
+      settings = {
+        formatters = {
+          ruff_format = {
+            # https://github.com/stevearc/conform.nvim/blob/master/lua/conform/formatters/ruff_format.lua
+            args = [
+              "format"
+              "--line-length"
+              "79" # This is the good part
+              "--force-exclude"
+              "--stdin-filename"
+              "$FILENAME"
+              "-"
+            ];
+          };
+        };
+        # https://github.com/stevearc/conform.nvim#formatters
+        formatters_by_ft = {
+          json = ["jq"];
+          nix = lib.optional (config.lib.isLang "Nix") "alejandra";
+          rust = lib.optional (config.lib.isLang "Rust") "rustfmt";
+          # markdown = ["markdownfmt"];
+          python = lib.optionals (config.lib.isLang "Python") [
+            "ruff_fix"
+            "ruff_format"
+            "ruff_organize_imports"
+          ];
+        };
       };
     };
 
