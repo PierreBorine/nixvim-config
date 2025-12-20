@@ -86,38 +86,40 @@
     # Treesitter
     treesitter = {
       enable = true;
-      nixGrammars = true;
       lazyLoad.settings.event = "BufEnter";
+      grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        asm
+        lua
+        bash
+        c
+        cpp
+        make
+        c-sharp
+        fish
+        javascript
+        html
+        css
+        scss
+        typescript
+        tsx
+        nix
+        regex
+        rust
+        glsl
+        qmljs
+        qmldir
+        python
+
+        markdown
+        markdown-inline
+        latex
+
+        ini
+        json
+        yaml
+      ];
       settings = {
         auto_install = false;
-        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-          bash
-          c
-          cpp
-          c-sharp
-          fish
-          javascript
-          html
-          css
-          scss
-          typescript
-          tsx
-          nix
-          regex
-          rust
-          glsl
-          qmljs
-          qmldir
-          python
-
-          markdown
-          markdown-inline
-          latex
-
-          ini
-          json
-          yaml
-        ];
         highlight = {
           enable = true;
           useLanguagetree = true;
