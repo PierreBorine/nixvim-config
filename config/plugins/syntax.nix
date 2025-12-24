@@ -9,16 +9,11 @@
     # Identation & whitespaces
     indent-o-matic = {
       enable = true;
-      lazyLoad = {
-        enable = true;
-        settings = {
-          event = [
-            "BufReadPost"
-            "BufWritePost"
-            "BufNewFile"
-          ];
-        };
-      };
+      lazyLoad.settings.event = [
+        "BufReadPost"
+        "BufWritePost"
+        "BufNewFile"
+      ];
     };
     mini-trailspace.enable = true;
 
