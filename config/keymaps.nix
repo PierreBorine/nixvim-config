@@ -33,26 +33,5 @@ in {
     (mkKeymap "n" "<C-Down>" "<cmd>resize -2<CR>" "Decrease Window Height")
     (mkKeymap "n" "<C-Right>" "<cmd>vertical resize +2<CR>" "Increase Window Width")
     (mkKeymap "n" "<C-Left>" "<cmd>vertical resize -2<CR>" "Decrease Window Height")
-    {
-      key = "<C-t>";
-      action.__raw = ''function() require("minty.huefy").open() end'';
-      options.desc = "Open color picker";
-    }
-    {
-      mode = ["n" "v"];
-      key = "<RightMouse>";
-      action.__raw = ''
-        function()
-          require('menu.utils').delete_old_menus()
-          vim.cmd.exec '"normal! \\<RightMouse>"'
-
-          -- clicked buf
-          local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
-          local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
-          require("menu").open(options, { mouse = true })
-        end
-      '';
-      options.desc = "Menu";
-    }
   ];
 }

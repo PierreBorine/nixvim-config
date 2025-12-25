@@ -124,6 +124,11 @@
       '';
       options.desc = "Search and Replace";
     }
+    {
+      key = "<C-t>";
+      action.__raw = ''function() require("minty.huefy").open() end'';
+      options.desc = "Open color picker";
+    }
 
     (mkKeymap "" "<leader>yc" "<cmd>Yazi<CR>" "Open yazi at the current file")
     (mkKeymap "" "<leader>yy" "<cmd>Yazi cwd<CR>" "Open Yazi in nvim's working directory")
