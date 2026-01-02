@@ -31,10 +31,10 @@ return {
   },
 
   visual = {
-    a = { fg = c.base00, bg = c.base0A, gui = 'bold' },
+    a = { fg = c.base00, bg = c.base08, gui = 'bold' },
   },
   replace = {
-    a = { fg = c.base00, bg = c.base08, gui = 'bold' },
+    a = { fg = c.base00, bg = c.base0A, gui = 'bold' },
   },
   insert = {
     a = { fg = c.base00, bg = c.base0B, gui = 'bold' },
