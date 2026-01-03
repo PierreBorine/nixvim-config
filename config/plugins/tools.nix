@@ -58,6 +58,14 @@
     };
 
     grug-far.enable = true;
+    csvview = {
+      enable = true;
+      lazyLoad.settings.cmd = [
+        "CsvViewEnable"
+        "CsvViewDisable"
+        "CsvViewToggle"
+      ];
+    };
 
     nvim-toggler = {
       enable = true;
