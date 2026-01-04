@@ -2,7 +2,7 @@
   plugins = {
     blink-cmp = {
       enable = true;
-      lazyLoad.settings.event = "DeferredUIEnter";
+      lazyLoad.settings.event = "InsertEnter";
       setupLspCapabilities = true;
       settings = {
         keymap.preset = "enter";
@@ -59,6 +59,7 @@
         delete_check_events = "TextChanged";
       };
     };
+    # Lazy loaded by default
     friendly-snippets.enable = true;
     neogen = {
       enable = true;
@@ -77,7 +78,11 @@
       enable = true;
       lazyLoad.settings.event = "BufReadPre";
     };
-    colorful-menu.enable = true;
+    colorful-menu = {
+      enable = true;
+      # Same as blink
+      lazyLoad.settings.event = "InsertEnter";
+    };
   };
 
   extraConfigLua = ''

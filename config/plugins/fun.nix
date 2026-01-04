@@ -8,7 +8,10 @@
   extraPlugins = [pkgs.vimPlugins.cellular-automaton-nvim];
 
   plugins = {
-    wakatime.enable = config.settings.wakatime;
+    wakatime = {
+      enable = config.settings.wakatime;
+      lazyLoad.settings.event = "DeferredUIEnter";
+    };
     hardtime = {
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";

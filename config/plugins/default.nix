@@ -38,7 +38,10 @@
       enable = true;
       lazyLoad.settings.ft = "markdown";
     };
-    markdown-preview.enable = true;
+    markdown-preview = {
+      enable = true;
+      lazyLoad.settings.ft = "markdown";
+    };
   };
 
   keymaps = [

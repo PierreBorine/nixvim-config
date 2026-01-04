@@ -15,7 +15,10 @@
         "BufNewFile"
       ];
     };
-    mini-trailspace.enable = true;
+    mini-trailspace = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+    };
 
     # Formatting
     conform-nvim = {

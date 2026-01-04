@@ -59,6 +59,7 @@
     };
     gitsigns = {
       enable = true;
+      lazyLoad.settings.event = "BufRead";
       settings.signs = {
         delete.text = "󰍵";
         changedelete.text = "󱕖";

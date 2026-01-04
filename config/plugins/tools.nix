@@ -28,7 +28,10 @@
       };
     };
     snacks.enable = true;
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      lazyLoad.settings.cmd = "LazyGit";
+    };
 
     colorizer = {
       enable = true;
@@ -57,7 +60,13 @@
       lazyLoad.settings.cmd = "Trouble";
     };
 
-    grug-far.enable = true;
+    grug-far = {
+      enable = true;
+      lazyLoad.settings.cmd = [
+        "GrugFar"
+        "GrugFarWithin"
+      ];
+    };
     csvview = {
       enable = true;
       lazyLoad.settings.cmd = [
@@ -90,7 +99,10 @@
       settings.use_default_keymaps = false;
     };
 
-    flash.enable = true;
+    flash = {
+      enable = true;
+      lazyLoad.settings.event = "BufRead";
+    };
 
     telescope = {
       enable = true;
