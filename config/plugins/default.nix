@@ -1,4 +1,4 @@
-{mkKey, ...}: {
+{
   imports = [
     ./completion.nix
     ./statusline.nix
@@ -43,8 +43,4 @@
       lazyLoad.settings.ft = "markdown";
     };
   };
-
-  keymaps = [
-    (mkKey.mkKeymap "" "<leader>cm" "<cmd>FeMaco<CR>" "Edit a markdown code block.")
-  ];
 }
