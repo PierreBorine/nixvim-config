@@ -5,13 +5,6 @@
   lib,
   ...
 }: {
-  userCommands = {
-    Trim = {
-      command = "lua MiniTrailspace.trim()";
-      desc = "Trim all trailing whitespace";
-    };
-  };
-
   extraPackages = lib.optional (!config.settings.portable) pkgs.lazygit;
 
   dependencies.git.enable = !config.settings.portable;

@@ -5,6 +5,13 @@
   lib,
   ...
 }: {
+  userCommands = {
+    Trim = {
+      command = "lua MiniTrailspace.trim()";
+      desc = "Trim all trailing whitespace";
+    };
+  };
+
   plugins = {
     # Identation & whitespaces
     indent-o-matic = {
