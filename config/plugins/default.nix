@@ -39,7 +39,6 @@
       lazyLoad.settings.ft = "markdown";
     };
     markdown-preview.enable = true;
-    femaco.enable = true; # Edit code blocks
   };
 
   keymaps = [
