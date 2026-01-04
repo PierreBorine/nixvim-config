@@ -5,7 +5,13 @@
 }: {
   config = lib.mkIf (config.settings.life == 42) {
     plugins = {
-      c-formatter-42.enable = true;
+      formatter-42 = {
+        enable = true;
+        lazyLoad.settings = {
+          cmd = "CFormat42";
+          keys = ["<F2>"];
+        };
+      };
       header-42-nvim = {
         enable = true;
         lazyLoad.settings = {
@@ -25,6 +31,13 @@
           };
         };
       };
+    };
+
+    keymaps = lib.singleton {
+      mode = "n";
+      key = "<F2>";
+      action = "<cmd>CFormat42<CR>";
+      options.desc = "Format current buffer with the 42 Norms";
     };
   };
 }

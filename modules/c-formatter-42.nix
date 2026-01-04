@@ -1,29 +1,30 @@
 {
-  lib,
   pkgs,
+  lib,
   ...
 }:
-lib.nixvim.plugins.mkVimPlugin {
-  name = "c-formatter-42";
+lib.nixvim.plugins.mkNeovimPlugin {
+  name = "formatter-42";
+  moduleName = "42-formatter";
   package = ["extraPlugins" "c-formatter-42"];
 
   extraOptions = {
-    c-formatter-42Package = lib.mkPackageOption pkgs "c-formatter-42" {
+    c-formatter-42_package = lib.mkPackageOption pkgs "c-formatter-42" {
       nullable = true;
     };
-    norminettePackage = lib.mkPackageOption pkgs "norminette" {
+    norminette_package = lib.mkPackageOption pkgs "norminette" {
       nullable = true;
     };
   };
 
   extraConfig = cfg: {
     extraPackages = [
-      cfg.c-formatter-42Package
-      cfg.norminettePackage
+      cfg.c-formatter-42_package
+      cfg.norminette_package
     ];
   };
 
   maintainers = [];
-  url = "https://github.com/cacharle/c_formatter_42.vim";
-  description = "Vim plugin for the c_formatter_42 formatter";
+  url = "https://github.com/Diogo-ss/42-C-Formatter.nvim";
+  description = "Format C/C++ according to the 42 norm directly in Neovim";
 }

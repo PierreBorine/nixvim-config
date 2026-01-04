@@ -17,7 +17,7 @@
     };
 
     c-formatter-42 = {
-      url = "github:cacharle/c_formatter_42.vim";
+      url = "github:Diogo-ss/42-C-Formatter.nvim";
       flake = false;
     };
 

@@ -3,16 +3,16 @@
     "c-formatter-42": {
       "flake": false,
       "locked": {
-        "lastModified": 1693743643,
-        "narHash": "sha256-LutpQuceEypwwln9LZuwCzM1Eu2Cmvox1KtwpgwmTDc=",
-        "owner": "cacharle",
-        "repo": "c_formatter_42.vim",
-        "rev": "7a2d50f6683d6f58a2c95375524b4406d6bdc2c3",
+        "lastModified": 1689974383,
+        "narHash": "sha256-a/BCHM3hiFlvQ5SZEf49Gi19IBnXjCtqFGg7sR7lsZo=",
+        "owner": "Diogo-ss",
+        "repo": "42-C-Formatter.nvim",
+        "rev": "f925bedf740e39f500298251e9eaa062667e10e3",
         "type": "github"
       },
       "original": {
-        "owner": "cacharle",
-        "repo": "c_formatter_42.vim",
+        "owner": "Diogo-ss",
+        "repo": "42-C-Formatter.nvim",
         "type": "github"
       }
     },
