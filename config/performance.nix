@@ -18,6 +18,7 @@
         "friendly-snippets"
         "blink.cmp"
         "mini.nvim"
+        "snacks.nvim"
       ];
     };
   };
