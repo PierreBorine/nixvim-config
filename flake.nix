@@ -44,7 +44,7 @@
           import ./config
           // {
             settings =
-              builtins.removeAttrs settings ["inputs" "system" "config"]
+              removeAttrs settings ["inputs" "system" "config"]
               // {
                 flake =
                   if builtins.hasAttr "inputs" settings
