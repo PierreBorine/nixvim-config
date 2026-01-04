@@ -1,5 +1,5 @@
 {
-  plugins.treesitter.folding = true;
+  plugins.treesitter.folding.enable = true;
   # vim.opt at end of file
   # Source: https://github.com/Wansmer/nvim-config/blob/edc5fa809d6fb7a8d2423e694ef9b11c7ac9b41b/lua/modules/foldtext.lua
   # https://old.reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
