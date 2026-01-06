@@ -25,14 +25,6 @@
       lazyLoad.settings.event = "DeferredUIEnter";
     };
     nix.enable = true;
-    nix-develop = {
-      enable = true;
-      lazyLoad.settings.cmd = [
-        "NixDevelop"
-        "NixShell"
-        "RiffShell"
-      ];
-    };
 
     render-markdown = {
       enable = true;
