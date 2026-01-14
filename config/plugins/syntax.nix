@@ -91,7 +91,7 @@
     # Treesitter
     treesitter = {
       enable = true;
-      lazyLoad.settings.event = "BufEnter";
+      # Do **not** lazy-load
       grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
         asm
         lua
