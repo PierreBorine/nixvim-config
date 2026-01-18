@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   imports = [
     ./completion.nix
     ./statusline.nix
@@ -27,11 +27,24 @@
     nix.enable = true;
 
     render-markdown = {
-      enable = true;
-      lazyLoad.settings.ft = "markdown";
+      enable = config.lib.isLang "Markdown";
+      lazyLoad.settings = {
+        ft = "markdown";
+        after =
+          # lua
+          ''
+            function()
+              Snacks.toggle({
+                name = "Render Markdown",
+                get = require("render-markdown").get,
+                set = require("render-markdown").set,
+              }):map("<leader>um")
+            end
+          '';
+      };
     };
     markdown-preview = {
-      enable = true;
+      enable = config.lib.isLang "Markdown";
       lazyLoad.settings.ft = "markdown";
     };
   };

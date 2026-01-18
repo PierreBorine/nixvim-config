@@ -37,6 +37,8 @@
       # Python
       ruff.enable = config.lib.isLang "Python";
       basedpyright.enable = config.lib.isLang "Python";
+      # Markdown
+      marksman.enable = config.lib.isLang "Markdown";
     };
   };
   extraPackages =

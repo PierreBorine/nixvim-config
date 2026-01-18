@@ -55,12 +55,12 @@
           json = ["jq"];
           nix = lib.optional (config.lib.isLang "Nix") "alejandra";
           rust = lib.optional (config.lib.isLang "Rust") "rustfmt";
-          # markdown = ["markdownfmt"];
           python = lib.optionals (config.lib.isLang "Python") [
             "ruff_fix"
             "ruff_format"
             "ruff_organize_imports"
           ];
+          markdown = lib.optional (config.lib.isLang "Markdown") "markdownlint-cli2";
         };
       };
     };
@@ -77,7 +77,6 @@
         # haskell = ["hlint"];
         c = lib.optional (config.lib.isLang "C") "clangtidy";
         cpp = lib.optional (config.lib.isLang "C") "clangtidy";
-        markdownlint = ["markdownlint"];
         html = lib.optional (config.lib.isLang "Web") "htmlhint";
         css = lib.optional (config.lib.isLang "Web") "eslint_d";
         javascript = lib.optional (config.lib.isLang "Web") "eslint_d";
@@ -85,7 +84,16 @@
         typescript = lib.optional (config.lib.isLang "Web") "eslint_d";
         typescriptreact = lib.optional (config.lib.isLang "Web") "eslint_d";
         python = lib.optional (config.lib.isLang "Python") "ruff";
+        markdown = lib.optional (config.lib.isLang "Markdown") "markdownlint-cli2";
       };
+      # FIX: cannot use `markdownlint-cli2` in `config.plugins.lint.linters`
+      luaConfig.post =
+        lib.optionalString (config.lib.isLang "Markdown")
+        # lua
+        ''
+          __lint.linters["markdownlint-cli2"].cmd = "${lib.getExe pkgs.markdownlint-cli2}"
+          __lint.linters["markdownlint-cli2"].args = {"--disable", "MD033", "--", "-"}
+        '';
     };
 
     # Treesitter
@@ -136,11 +144,12 @@
   };
 
   extraPackages = with pkgs;
-    [jq markdownlint-cli]
+    [jq]
     ++ lib.optionals (config.lib.isLang "Web") [eslint_d htmlhint]
     ++ lib.optionals (config.lib.isLang "Nix") [alejandra deadnix]
     ++ lib.optional (config.lib.isLang "Python") ruff # python linter & formatter
     ++ lib.optional (config.lib.isLang "C") clang-tools
+    ++ lib.optional (config.lib.isLang "Markdown") markdownlint-cli2
     ++ lib.optionals (config.lib.isLang "Rust") [clippy rustfmt];
 
   keymaps = [

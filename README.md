@@ -1,17 +1,21 @@
-nixvim-config
-=============
-#### My Nixvim configuration
+# nixvim-config
+
+## My Nixvim configuration
 
 <div align="center"><img src=".github/assets/screenshot.png" alt="nvim"></div>
 
 ## Usage
+
 ### Run without installing
+
 ```Shell
 nix run github:PierreBorine/nixvim-config
 ```
 
 ### Flake
+
 Import this flake into your's
+
 ```nix
 # flake.nix
 {
@@ -22,7 +26,9 @@ Import this flake into your's
   };
 }
 ```
+
 Access the package like this
+
 ```nix
 # configuration.nix
 {inputs, pkgs, lib, ...}: {
