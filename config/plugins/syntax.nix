@@ -75,7 +75,7 @@ in {
       # https://github.com/caramelomartins/awesome-linters
       lintersByFt = {
         rust = lib.optional (isLang "Rust") "clippy";
-        nix = lib.optionals (isLang "Nix") ["nix" "deadnix"];
+        nix = lib.optionals (isLang "Nix") ["nix" "deadnix" "statix"];
         # haskell = ["hlint"];
         c = lib.optional (isLang "C") "clangtidy";
         cpp = lib.optional (isLang "C") "clangtidy";
@@ -151,7 +151,7 @@ in {
   extraPackages = with pkgs;
     [jq]
     ++ lib.optionals (isLang "Web") [eslint_d htmlhint]
-    ++ lib.optionals (isLang "Nix") [alejandra deadnix]
+    ++ lib.optionals (isLang "Nix") [alejandra deadnix statix]
     ++ lib.optional (isLang "Python") ruff # python linter & formatter
     ++ lib.optional (isLang "C") clang-tools
     ++ lib.optional (isLang "Markdown") markdownlint-cli2
