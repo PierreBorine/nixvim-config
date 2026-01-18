@@ -77,4 +77,11 @@
       };
     };
   };
+
+  userCommands = {
+    Qa = {
+      command = "qa";
+      desc = "Quit all, common mistype";
+    };
+  };
 }
