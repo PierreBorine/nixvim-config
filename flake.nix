@@ -80,23 +80,10 @@
             inherit system;
             maximal = true;
           };
-          nvim-42 = mkNixvim {
-            inherit system;
-            languages = ["C" "Python"];
-            portable = true;
-            life = 42;
-          };
         in {
           default = nvim'.nvim;
-          bundle-42 = nvim-42.nvim.overrideAttrs {pname = "nixvim";};
 
           # Recipes
-          bundle = pkgs.writeShellScriptBin "bundle" ''
-            nix bundle .#bundle-42
-          '';
-          bundle-deb = pkgs.writeShellScriptBin "bundle" ''
-            nix bundle --bundler github:NixOS/bundlers#toDEB .#bundle-42
-          '';
           format = pkgs.writeShellScriptBin "format" ''
             alejandra check -e pkgs/ && nixpkgs-fmt pkgs/
           '';
