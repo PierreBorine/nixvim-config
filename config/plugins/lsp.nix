@@ -3,14 +3,16 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  inherit (config.lib) isLang;
+in {
   plugins.lspconfig.enable = true;
   lsp = {
     inlayHints.enable = true;
     # https://langserver.org/
     servers = {
       nixd = {
-        enable = config.lib.isLang "Nix";
+        enable = isLang "Nix";
         config = {
           nixpkgs.expr = "import <nixpkgs> { }";
           options.nixos = lib.mkIf (config.settings.flake != null) {
@@ -19,28 +21,28 @@
         };
       };
       bashls.enable = true;
-      clangd.enable = config.lib.isLang "C"; # C / C++
-      csharp_ls.enable = config.lib.isLang "CS"; # C#
-      ts_ls.enable = config.lib.isLang "Web"; # Javascript / Typescript
+      clangd.enable = isLang "C"; # C / C++
+      csharp_ls.enable = isLang "CS"; # C#
+      ts_ls.enable = isLang "Web"; # Javascript / Typescript
       # Haskell
       # hls = {
       #   enable = true;
       #   installGhc = true;
       # };
-      html.enable = config.lib.isLang "Web";
-      cssls.enable = config.lib.isLang "Web";
+      html.enable = isLang "Web";
+      cssls.enable = isLang "Web";
       qmlls = {
-        enable = config.lib.isLang "QML";
+        enable = isLang "QML";
         config.cmd = ["qmlls" "-E"];
       };
-      rust_analyzer.enable = config.lib.isLang "Rust";
+      rust_analyzer.enable = isLang "Rust";
       # Python
-      ruff.enable = config.lib.isLang "Python";
-      basedpyright.enable = config.lib.isLang "Python";
+      ruff.enable = isLang "Python";
+      basedpyright.enable = isLang "Python";
       # Markdown
-      marksman.enable = config.lib.isLang "Markdown";
+      marksman.enable = isLang "Markdown";
     };
   };
   extraPackages =
-    lib.optional (config.lib.isLang "Rust") pkgs.cargo; # rust_analyzer
+    lib.optional (isLang "Rust") pkgs.cargo; # rust_analyzer
 }

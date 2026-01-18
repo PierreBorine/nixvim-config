@@ -1,4 +1,6 @@
-{config, ...}: {
+{config, ...}: let
+  inherit (config.lib) isLang;
+in {
   imports = [
     ./completion.nix
     ./statusline.nix
@@ -27,7 +29,7 @@
     nix.enable = true;
 
     render-markdown = {
-      enable = config.lib.isLang "Markdown";
+      enable = isLang "Markdown";
       lazyLoad.settings = {
         ft = "markdown";
         after =
@@ -44,7 +46,7 @@
       };
     };
     markdown-preview = {
-      enable = config.lib.isLang "Markdown";
+      enable = isLang "Markdown";
       lazyLoad.settings.ft = "markdown";
     };
   };

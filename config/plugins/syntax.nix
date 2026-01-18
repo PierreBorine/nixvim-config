@@ -4,7 +4,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  inherit (config.lib) isLang;
+in {
   userCommands = {
     Trim = {
       command = "lua MiniTrailspace.trim()";
@@ -53,14 +55,14 @@
         # https://github.com/stevearc/conform.nvim#formatters
         formatters_by_ft = {
           json = ["jq"];
-          nix = lib.optional (config.lib.isLang "Nix") "alejandra";
-          rust = lib.optional (config.lib.isLang "Rust") "rustfmt";
-          python = lib.optionals (config.lib.isLang "Python") [
+          nix = lib.optional (isLang "Nix") "alejandra";
+          rust = lib.optional (isLang "Rust") "rustfmt";
+          python = lib.optionals (isLang "Python") [
             "ruff_fix"
             "ruff_format"
             "ruff_organize_imports"
           ];
-          markdown = lib.optional (config.lib.isLang "Markdown") "markdownlint-cli2";
+          markdown = lib.optional (isLang "Markdown") "markdownlint-cli2";
         };
       };
     };
@@ -72,23 +74,26 @@
       # https://github.com/mfussenegger/nvim-lint/#available-linters
       # https://github.com/caramelomartins/awesome-linters
       lintersByFt = {
-        rust = lib.optional (config.lib.isLang "Rust") "clippy";
-        nix = lib.optionals (config.lib.isLang "Nix") ["nix" "deadnix"];
+        rust = lib.optional (isLang "Rust") "clippy";
+        nix = lib.optionals (isLang "Nix") ["nix" "deadnix"];
         # haskell = ["hlint"];
-        c = lib.optional (config.lib.isLang "C") "clangtidy";
-        cpp = lib.optional (config.lib.isLang "C") "clangtidy";
-        html = lib.optional (config.lib.isLang "Web") "htmlhint";
-        css = lib.optional (config.lib.isLang "Web") "eslint_d";
-        javascript = lib.optional (config.lib.isLang "Web") "eslint_d";
-        javascriptreact = lib.optional (config.lib.isLang "Web") "eslint_d";
-        typescript = lib.optional (config.lib.isLang "Web") "eslint_d";
-        typescriptreact = lib.optional (config.lib.isLang "Web") "eslint_d";
-        python = lib.optional (config.lib.isLang "Python") "ruff";
-        markdown = lib.optional (config.lib.isLang "Markdown") "markdownlint-cli2";
+        c = lib.optional (isLang "C") "clangtidy";
+        cpp = lib.optional (isLang "C") "clangtidy";
+        html = lib.optional (isLang "Web") "htmlhint";
+        css = lib.optional (isLang "Web") "eslint_d";
+        javascript = lib.optional (isLang "Web") "eslint_d";
+        javascriptreact = lib.optional (isLang "Web") "eslint_d";
+        typescript = lib.optional (isLang "Web") "eslint_d";
+        typescriptreact = lib.optional (isLang "Web") "eslint_d";
+        python = lib.optional (isLang "Python") "ruff";
+        markdown = lib.optional (isLang "Markdown") "markdownlint-cli2";
+      };
+
+      linters = {
       };
       # FIX: cannot use `markdownlint-cli2` in `config.plugins.lint.linters`
       luaConfig.post =
-        lib.optionalString (config.lib.isLang "Markdown")
+        lib.optionalString (isLang "Markdown")
         # lua
         ''
           __lint.linters["markdownlint-cli2"].cmd = "${lib.getExe pkgs.markdownlint-cli2}"
@@ -145,12 +150,12 @@
 
   extraPackages = with pkgs;
     [jq]
-    ++ lib.optionals (config.lib.isLang "Web") [eslint_d htmlhint]
-    ++ lib.optionals (config.lib.isLang "Nix") [alejandra deadnix]
-    ++ lib.optional (config.lib.isLang "Python") ruff # python linter & formatter
-    ++ lib.optional (config.lib.isLang "C") clang-tools
-    ++ lib.optional (config.lib.isLang "Markdown") markdownlint-cli2
-    ++ lib.optionals (config.lib.isLang "Rust") [clippy rustfmt];
+    ++ lib.optionals (isLang "Web") [eslint_d htmlhint]
+    ++ lib.optionals (isLang "Nix") [alejandra deadnix]
+    ++ lib.optional (isLang "Python") ruff # python linter & formatter
+    ++ lib.optional (isLang "C") clang-tools
+    ++ lib.optional (isLang "Markdown") markdownlint-cli2
+    ++ lib.optionals (isLang "Rust") [clippy rustfmt];
 
   keymaps = [
     (mkKey.mkKeymap "" "gf" {__raw = "function()require('conform').format({async=true})end";} "Format buffer")
