@@ -4,6 +4,18 @@
   ...
 }: let
   cfg = config.settings;
+
+  supportedLanguages = [
+    "Nix"
+    "C"
+    "Rust"
+    "QML"
+    "Python"
+    "CS"
+    "Web"
+    # "Haskell"
+    "Markdown"
+  ];
 in {
   options.settings = {
     maximal = lib.mkEnableOption "maximal configuration";
@@ -24,7 +36,7 @@ in {
     languages = lib.mkOption {
       type = with lib.types;
         either (enum ["All"])
-        (listOf (enum ["Nix" "C" "Rust" "QML" "Python" "CS" "Web" "Haskell" "Markdown"]));
+        (listOf (enum supportedLanguages));
       default =
         if cfg.maximal
         then "All"
