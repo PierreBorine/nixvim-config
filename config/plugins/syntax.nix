@@ -42,6 +42,15 @@
     lint = {
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
+      luaConfig.post =
+        # lua
+        ''
+          vim.api.nvim_create_autocmd({ "BufEnter" }, {
+            callback = function()
+              __lint.try_lint()
+            end,
+          })
+        '';
       # https://github.com/mfussenegger/nvim-lint/#available-linters
       # https://github.com/caramelomartins/awesome-linters
       lintersByFt = {
