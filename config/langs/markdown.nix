@@ -25,21 +25,11 @@ in {
       };
       lint = {
         lintersByFt.markdown = ["markdownlint-cli2"];
-        # linters.markdownlint-cli2 = {
-        #   cmd = lib.getExe pkgs.markdownlint-cli2;
-        #   stdin = true;
-        #   args = [
-        #     "--config"
-        #     "${mdConfig}"
-        #     "-"
-        #   ];
-        # };
-        # FIX: Waiting for https://github.com/nix-community/nixvim/pull/4161
-        luaConfig.post = ''
-          __lint.linters["markdownlint-cli2"].cmd = "${lib.getExe pkgs.markdownlint-cli2}"
-          __lint.linters["markdownlint-cli2"].stdin = true
-          __lint.linters["markdownlint-cli2"].args = {"--config", "${mdConfig}", "-"}
-        '';
+        linters.markdownlint-cli2 = {
+          cmd = lib.getExe pkgs.markdownlint-cli2;
+          stdin = true;
+          args = ["--config" "${mdConfig}" "-"];
+        };
       };
 
       render-markdown = {
