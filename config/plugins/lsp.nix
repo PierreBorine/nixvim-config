@@ -39,8 +39,6 @@ in {
       # Python
       ruff.enable = isLang "Python";
       basedpyright.enable = isLang "Python";
-      # Markdown
-      marksman.enable = isLang "Markdown";
     };
   };
   extraPackages =

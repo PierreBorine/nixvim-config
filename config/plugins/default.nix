@@ -1,6 +1,4 @@
-{config, ...}: let
-  inherit (config.lib) isLang;
-in {
+{
   imports = [
     ./completion.nix
     ./statusline.nix
@@ -27,27 +25,5 @@ in {
       lazyLoad.settings.event = "DeferredUIEnter";
     };
     nix.enable = true;
-
-    render-markdown = {
-      enable = isLang "Markdown";
-      lazyLoad.settings = {
-        ft = "markdown";
-        after =
-          # lua
-          ''
-            function()
-              Snacks.toggle({
-                name = "Render Markdown",
-                get = require("render-markdown").get,
-                set = require("render-markdown").set,
-              }):map("<leader>um")
-            end
-          '';
-      };
-    };
-    markdown-preview = {
-      enable = isLang "Markdown";
-      lazyLoad.settings.ft = "markdown";
-    };
   };
 }

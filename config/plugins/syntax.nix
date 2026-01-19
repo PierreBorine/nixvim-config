@@ -62,7 +62,6 @@ in {
             "ruff_format"
             "ruff_organize_imports"
           ];
-          markdown = lib.optional (isLang "Markdown") "markdownlint-cli2";
         };
       };
     };
@@ -86,19 +85,7 @@ in {
         typescript = lib.optional (isLang "Web") "eslint_d";
         typescriptreact = lib.optional (isLang "Web") "eslint_d";
         python = lib.optional (isLang "Python") "ruff";
-        markdown = lib.optional (isLang "Markdown") "markdownlint-cli2";
       };
-
-      linters = {
-      };
-      # FIX: cannot use `markdownlint-cli2` in `config.plugins.lint.linters`
-      luaConfig.post =
-        lib.optionalString (isLang "Markdown")
-        # lua
-        ''
-          __lint.linters["markdownlint-cli2"].cmd = "${lib.getExe pkgs.markdownlint-cli2}"
-          __lint.linters["markdownlint-cli2"].args = {"--disable", "MD033", "--", "-"}
-        '';
     };
 
     # Treesitter
@@ -154,7 +141,6 @@ in {
     ++ lib.optionals (isLang "Nix") [alejandra deadnix statix]
     ++ lib.optional (isLang "Python") ruff # python linter & formatter
     ++ lib.optional (isLang "C") clang-tools
-    ++ lib.optional (isLang "Markdown") markdownlint-cli2
     ++ lib.optionals (isLang "Rust") [clippy rustfmt];
 
   keymaps = [

@@ -1,5 +1,6 @@
 {
   imports = [
+    ./langs
     ./theme
     ./plugins
     ../modules
