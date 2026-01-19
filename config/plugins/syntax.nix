@@ -1,12 +1,8 @@
 {
-  config,
   mkKey,
   pkgs,
-  lib,
   ...
-}: let
-  inherit (config.lib) isLang;
-in {
+}: {
   userCommands = {
     Trim = {
       command = "lua MiniTrailspace.trim()";
@@ -15,7 +11,6 @@ in {
   };
 
   plugins = {
-    # Identation & whitespaces
     indent-o-matic = {
       enable = true;
       lazyLoad.settings.event = [
@@ -29,7 +24,6 @@ in {
       lazyLoad.settings.event = "DeferredUIEnter";
     };
 
-    # Formatting
     conform-nvim = {
       enable = true;
       lazyLoad.settings = {
@@ -45,7 +39,6 @@ in {
       };
     };
 
-    # Linting
     lint = {
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
@@ -53,16 +46,9 @@ in {
       # https://github.com/caramelomartins/awesome-linters
       lintersByFt = {
         # haskell = ["hlint"];
-        html = lib.optional (isLang "Web") "htmlhint";
-        css = lib.optional (isLang "Web") "eslint_d";
-        javascript = lib.optional (isLang "Web") "eslint_d";
-        javascriptreact = lib.optional (isLang "Web") "eslint_d";
-        typescript = lib.optional (isLang "Web") "eslint_d";
-        typescriptreact = lib.optional (isLang "Web") "eslint_d";
       };
     };
 
-    # Treesitter
     treesitter = {
       enable = true;
       # Do **not** lazy-load
@@ -109,9 +95,7 @@ in {
     };
   };
 
-  extraPackages = with pkgs;
-    [jq]
-    ++ lib.optionals (isLang "Web") [eslint_d htmlhint];
+  extraPackages = [pkgs.jq];
 
   keymaps = [
     (mkKey.mkKeymap "" "gf" {__raw = "function()require('conform').format({async=true})end";} "Format buffer")
