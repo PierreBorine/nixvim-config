@@ -99,6 +99,9 @@
         ini
         json
         yaml
+        toml
+        ron
+        xml
       ];
       settings = {
         auto_install = false;
