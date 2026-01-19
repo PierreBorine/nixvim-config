@@ -19,7 +19,13 @@
       conform-nvim.settings = {
         formatters_by_ft.nix = ["alejandra"];
       };
-      lint.lintersByFt.nix = ["nix" "deadnix" "statix"];
+      lint = {
+        lintersByFt.nix = ["nix" "deadnix" "statix"];
+        linters = {
+          deadnix.cmd = lib.getExe pkgs.deadnix;
+          statix.cmd = lib.getExe pkgs.statix;
+        };
+      };
 
       nix.enable = true;
       nix-develop.enable = true;
@@ -37,10 +43,6 @@
       };
     };
 
-    extraPackages = [
-      pkgs.alejandra
-      pkgs.deadnix
-      pkgs.statix
-    ];
+    extraPackages = [pkgs.alejandra];
   };
 }
