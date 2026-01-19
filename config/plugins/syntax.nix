@@ -42,7 +42,6 @@ in {
         formatters_by_ft = {
           json = ["jq"];
           nix = lib.optional (isLang "Nix") "alejandra";
-          rust = lib.optional (isLang "Rust") "rustfmt";
         };
       };
     };
@@ -54,7 +53,6 @@ in {
       # https://github.com/mfussenegger/nvim-lint/#available-linters
       # https://github.com/caramelomartins/awesome-linters
       lintersByFt = {
-        rust = lib.optional (isLang "Rust") "clippy";
         nix = lib.optionals (isLang "Nix") ["nix" "deadnix" "statix"];
         # haskell = ["hlint"];
         html = lib.optional (isLang "Web") "htmlhint";
@@ -116,8 +114,7 @@ in {
   extraPackages = with pkgs;
     [jq]
     ++ lib.optionals (isLang "Web") [eslint_d htmlhint]
-    ++ lib.optionals (isLang "Nix") [alejandra deadnix statix]
-    ++ lib.optionals (isLang "Rust") [clippy rustfmt];
+    ++ lib.optionals (isLang "Nix") [alejandra deadnix statix];
 
   keymaps = [
     (mkKey.mkKeymap "" "gf" {__raw = "function()require('conform').format({async=true})end";} "Format buffer")

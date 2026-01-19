@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: let
@@ -34,9 +33,6 @@ in {
         enable = isLang "QML";
         config.cmd = ["qmlls" "-E"];
       };
-      rust_analyzer.enable = isLang "Rust";
     };
   };
-  extraPackages =
-    lib.optional (isLang "Rust") pkgs.cargo; # rust_analyzer
 }
