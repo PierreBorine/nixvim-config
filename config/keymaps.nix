@@ -10,6 +10,16 @@ in {
     ${lib.optionalString config.lsp.inlayHints.enable ''Snacks.toggle.inlay_hints():map("<leader>uh")''}
     Snacks.toggle.diagnostics():map("<leader>ud")
     Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+
+    local _base46 = require("nvconfig").base46
+    Snacks.toggle({
+      name = "transparency",
+      get = function() return _base46.transparency end,
+      set = function(state)
+        _base46.transparency = not state
+        require('base46').toggle_transparency()
+      end,
+    }):map("<leader>ut")
   '';
 
   keymaps = [
@@ -25,7 +35,6 @@ in {
     (mkKeymap "" "<C-s>" "<cmd>w<CR>" "Save file")
     (mkKeymap "" "<C-c>" "<cmd>%y+<CR>" "Copy whole file")
     (mkKeymap "" "<Esc>" "<cmd>noh<CR>" "Clear highlights")
-    (mkKeymap "n" "<leader>ut" "<cmd>TransparencyToggle<CR>" "Toggle transparency")
     (mkKeymap "x" ">" ">gv" "Increase indentation of selection")
     (mkKeymap "x" "<" "<gv" "Decrease indentation of selection")
     (mkKeymap "n" "<leader>fn" "<cmd>enew<CR>" "New file")

@@ -50,8 +50,8 @@ Access the package like this
       # Stdheader, norm formatter
       # default: null
       life = 42;
-      # Whether to have transparent background
-      # by default. Can toggle with :TransparencyToggle
+      # Whether to have transparent background by default.
+      # Can be toggled with <leader>ut
       # default: false
       transparent = false;
       # Which languages to support.
