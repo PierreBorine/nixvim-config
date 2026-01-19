@@ -21,7 +21,6 @@ in {
         };
       };
       bashls.enable = true;
-      clangd.enable = isLang "C"; # C / C++
       csharp_ls.enable = isLang "CS"; # C#
       ts_ls.enable = isLang "Web"; # Javascript / Typescript
       # Haskell

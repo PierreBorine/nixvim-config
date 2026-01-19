@@ -76,8 +76,6 @@ in {
         rust = lib.optional (isLang "Rust") "clippy";
         nix = lib.optionals (isLang "Nix") ["nix" "deadnix" "statix"];
         # haskell = ["hlint"];
-        c = lib.optional (isLang "C") "clangtidy";
-        cpp = lib.optional (isLang "C") "clangtidy";
         html = lib.optional (isLang "Web") "htmlhint";
         css = lib.optional (isLang "Web") "eslint_d";
         javascript = lib.optional (isLang "Web") "eslint_d";
@@ -140,7 +138,6 @@ in {
     ++ lib.optionals (isLang "Web") [eslint_d htmlhint]
     ++ lib.optionals (isLang "Nix") [alejandra deadnix statix]
     ++ lib.optional (isLang "Python") ruff # python linter & formatter
-    ++ lib.optional (isLang "C") clang-tools
     ++ lib.optionals (isLang "Rust") [clippy rustfmt];
 
   keymaps = [
