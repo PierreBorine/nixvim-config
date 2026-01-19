@@ -68,17 +68,6 @@
     loaded_ruby_provider = 0;
   };
 
-  files = {
-    "ftplugin/nix.lua" = {
-      opts = {
-        expandtab = true;
-        shiftwidth = 2;
-        tabstop = 2;
-        softtabstop = 2;
-      };
-    };
-  };
-
   userCommands = {
     Qa = {
       command = "qa";

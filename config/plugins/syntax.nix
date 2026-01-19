@@ -41,7 +41,6 @@ in {
         # https://github.com/stevearc/conform.nvim#formatters
         formatters_by_ft = {
           json = ["jq"];
-          nix = lib.optional (isLang "Nix") "alejandra";
         };
       };
     };
@@ -53,7 +52,6 @@ in {
       # https://github.com/mfussenegger/nvim-lint/#available-linters
       # https://github.com/caramelomartins/awesome-linters
       lintersByFt = {
-        nix = lib.optionals (isLang "Nix") ["nix" "deadnix" "statix"];
         # haskell = ["hlint"];
         html = lib.optional (isLang "Web") "htmlhint";
         css = lib.optional (isLang "Web") "eslint_d";
@@ -113,8 +111,7 @@ in {
 
   extraPackages = with pkgs;
     [jq]
-    ++ lib.optionals (isLang "Web") [eslint_d htmlhint]
-    ++ lib.optionals (isLang "Nix") [alejandra deadnix statix];
+    ++ lib.optionals (isLang "Web") [eslint_d htmlhint];
 
   keymaps = [
     (mkKey.mkKeymap "" "gf" {__raw = "function()require('conform').format({async=true})end";} "Format buffer")

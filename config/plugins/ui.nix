@@ -32,7 +32,6 @@
         disabled_filetypes = [
           "help"
           "text"
-          "nix"
         ];
       };
     };

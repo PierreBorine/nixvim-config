@@ -24,6 +24,5 @@
       enable = true;
       lazyLoad.settings.event = "DeferredUIEnter";
     };
-    nix.enable = true;
   };
 }
