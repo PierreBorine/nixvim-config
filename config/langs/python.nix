@@ -34,7 +34,10 @@
           };
         };
       };
-      lint.lintersByFt.python = ["ruff"];
+      lint = {
+        lintersByFt.python = ["ruff" "mypy"];
+        linters.mypy.cmd = lib.getExe pkgs.mypy;
+      };
 
       smartcolumn.settings.custom_colorcolumn = {
         python = ["79"];
