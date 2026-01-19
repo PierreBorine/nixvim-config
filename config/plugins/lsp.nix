@@ -1,6 +1,4 @@
-{config, ...}: let
-  inherit (config.lib) isLang;
-in {
+{
   plugins.lspconfig.enable = true;
   lsp = {
     inlayHints.enable = true;
@@ -12,10 +10,6 @@ in {
       #   enable = true;
       #   installGhc = true;
       # };
-      qmlls = {
-        enable = isLang "QML";
-        config.cmd = ["qmlls" "-E"];
-      };
     };
   };
 }
