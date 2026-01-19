@@ -12,7 +12,29 @@
     };
     hardtime = {
       enable = true;
-      lazyLoad.settings.event = "DeferredUIEnter";
+      lazyLoad.settings = {
+        event = "DeferredUIEnter";
+        after =
+          # lua
+          ''
+            function()
+              local hardtime = require("hardtime")
+              Snacks.toggle({
+                name = "hardtime",
+                get = function()
+                  return hardtime.is_plugin_enabled
+                end,
+                set = function(state)
+                  if state then
+                    hardtime.enable()
+                  else
+                    hardtime.disable()
+                  end
+                end,
+              }):map("<leader>uH")
+            end
+          '';
+      };
       settings = {
         enabled = lib.mkDefault false;
         max_count = 10;
@@ -34,7 +56,6 @@
   keymaps = let
     inherit (mkKey) mkKeymap;
   in [
-    (mkKeymap "n" "<leader>uH" "<cmd>Hardtime toggle<CR>" "Toggle Hardtime")
     (mkKeymap "n" "<leader>uK" "<cmd>ShowkeysToggle<CR>" "Toggle ShowKey")
   ];
 }
