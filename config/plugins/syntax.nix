@@ -3,14 +3,22 @@
   pkgs,
   ...
 }: {
-  userCommands = {
-    Trim = {
-      command = "lua MiniTrailspace.trim()";
-      desc = "Trim all trailing whitespace";
+  lsp = {
+    inlayHints.enable = true;
+    # https://langserver.org/
+    servers = {
+      bashls.enable = true;
+      # Haskell
+      # hls = {
+      #   enable = true;
+      #   installGhc = true;
+      # };
     };
   };
 
   plugins = {
+    lspconfig.enable = true;
+
     indent-o-matic = {
       enable = true;
       lazyLoad.settings.event = [
@@ -101,6 +109,13 @@
 
         indent.enable = true;
       };
+    };
+  };
+
+  userCommands = {
+    Trim = {
+      command = "lua MiniTrailspace.trim()";
+      desc = "Trim all trailing whitespace";
     };
   };
 
