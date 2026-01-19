@@ -15,14 +15,6 @@
     ./42.nix
   ];
 
-  plugins = {
-    lz-n.enable = true; # Enables lazy loading
-    # "DeferredUIEnter" == "VeryLazy"
-
-    tmux-navigator.enable = true;
-    which-key = {
-      enable = true;
-      lazyLoad.settings.event = "DeferredUIEnter";
-    };
-  };
+  # "DeferredUIEnter" == "VeryLazy"
+  plugins.lz-n.enable = true; # Enables lazy loading
 }

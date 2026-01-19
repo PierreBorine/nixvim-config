@@ -26,6 +26,12 @@
       lazyLoad.settings.cmd = "LazyGit";
     };
 
+    tmux-navigator.enable = true;
+    which-key = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+    };
+
     colorizer = {
       enable = true;
       lazyLoad.settings.event = "BufReadPre";
