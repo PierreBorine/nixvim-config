@@ -38,30 +38,11 @@ in {
         keys = ["gf"];
       };
       settings = {
-        formatters = {
-          ruff_format = {
-            # https://github.com/stevearc/conform.nvim/blob/master/lua/conform/formatters/ruff_format.lua
-            args = [
-              "format"
-              "--line-length"
-              "79" # This is the good part
-              "--force-exclude"
-              "--stdin-filename"
-              "$FILENAME"
-              "-"
-            ];
-          };
-        };
         # https://github.com/stevearc/conform.nvim#formatters
         formatters_by_ft = {
           json = ["jq"];
           nix = lib.optional (isLang "Nix") "alejandra";
           rust = lib.optional (isLang "Rust") "rustfmt";
-          python = lib.optionals (isLang "Python") [
-            "ruff_fix"
-            "ruff_format"
-            "ruff_organize_imports"
-          ];
         };
       };
     };
@@ -82,7 +63,6 @@ in {
         javascriptreact = lib.optional (isLang "Web") "eslint_d";
         typescript = lib.optional (isLang "Web") "eslint_d";
         typescriptreact = lib.optional (isLang "Web") "eslint_d";
-        python = lib.optional (isLang "Python") "ruff";
       };
     };
 
@@ -137,7 +117,6 @@ in {
     [jq]
     ++ lib.optionals (isLang "Web") [eslint_d htmlhint]
     ++ lib.optionals (isLang "Nix") [alejandra deadnix statix]
-    ++ lib.optional (isLang "Python") ruff # python linter & formatter
     ++ lib.optionals (isLang "Rust") [clippy rustfmt];
 
   keymaps = [

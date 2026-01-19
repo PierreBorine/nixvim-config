@@ -35,9 +35,6 @@ in {
         config.cmd = ["qmlls" "-E"];
       };
       rust_analyzer.enable = isLang "Rust";
-      # Python
-      ruff.enable = isLang "Python";
-      basedpyright.enable = isLang "Python";
     };
   };
   extraPackages =
