@@ -56,7 +56,7 @@ Access the package like this
       transparent = false;
       # Which languages to support.
       # either "All" or a list, available options:
-      # ["Nix" "C" "Rust" "QML" "Python" "CS" "Web" "Haskell"]
+      # ["Nix" "C" "Rust" "QML" "Python" "CS" "Web" "Markdown"]
       # default: []
       languages = "All";
       # Whether to disable some dependencies.
