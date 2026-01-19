@@ -18,11 +18,6 @@
         max_count = 10;
       };
     };
-    precognition = {
-      enable = true;
-      lazyLoad.settings.event = "DeferredUIEnter";
-      settings.startVisible = false;
-    };
     showkeys = {
       enable = true;
       lazyLoad.settings.cmd = "ShowkeysToggle";
@@ -40,7 +35,6 @@
     inherit (mkKey) mkKeymap;
   in [
     (mkKeymap "n" "<leader>uH" "<cmd>Hardtime toggle<CR>" "Toggle Hardtime")
-    (mkKeymap "n" "<leader>uP" "<cmd>Precognition toggle<CR>" "Toggle Precognition")
     (mkKeymap "n" "<leader>uK" "<cmd>ShowkeysToggle<CR>" "Toggle ShowKey")
   ];
 }
