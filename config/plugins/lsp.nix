@@ -7,7 +7,6 @@ in {
     # https://langserver.org/
     servers = {
       bashls.enable = true;
-      csharp_ls.enable = isLang "CS"; # C#
       # Haskell
       # hls = {
       #   enable = true;

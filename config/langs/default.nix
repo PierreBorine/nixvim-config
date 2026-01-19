@@ -5,6 +5,7 @@
     ./rust.nix
     ./web.nix
     ./nix.nix
+    ./cs.nix
     ./c.nix
   ];
 }
