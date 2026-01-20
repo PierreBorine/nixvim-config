@@ -54,7 +54,31 @@
     };
     gitsigns = {
       enable = true;
-      lazyLoad.settings.event = "BufRead";
+      lazyLoad.settings = {
+        event = "BufRead";
+        after =
+          # lua
+          ''
+            function()
+              local _gitsigns = require("gitsigns")
+              local _config = require("gitsigns.config").config
+              Snacks.toggle({
+                name = "git inline blame line",
+                get = function() return _config.current_line_blame end,
+                set = function(state) _gitsigns.toggle_current_line_blame(state) end,
+              }):map("<leader>ub")
+
+              Snacks.toggle({
+                name = "git inline diff",
+                get = function() return _config.linehl and _config.word_diff end,
+                set = function(state)
+                  _gitsigns.toggle_linehl(state)
+                  _gitsigns.toggle_word_diff(state)
+                end,
+              }):map("<leader>ui")
+            end
+          '';
+      };
       settings.signs = {
         delete.text = "󰍵";
         changedelete.text = "󱕖";
