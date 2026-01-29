@@ -6,10 +6,8 @@
   ...
 }: {
   plugins = {
-    wakatime = {
-      enable = config.settings.wakatime;
-      lazyLoad.settings.event = "DeferredUIEnter";
-    };
+    # Don't lazy-load
+    wakatime.enable = config.settings.wakatime;
     hardtime = {
       enable = true;
       lazyLoad.settings = {
