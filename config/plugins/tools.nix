@@ -27,6 +27,10 @@
       enable = true;
       lazyLoad.settings.cmd = "LazyGit";
     };
+    gitportal = {
+      enable = true;
+      lazyLoad.settings.cmd = ["GitPortal"];
+    };
 
     tmux-navigator.enable = true;
     which-key = {
@@ -154,6 +158,8 @@
     (mkKeymap "" "<leader>yc" "<cmd>Yazi<CR>" "Open yazi at the current file")
     (mkKeymap "" "<leader>yy" "<cmd>Yazi cwd<CR>" "Open Yazi in nvim's working directory")
     (mkKeymap "" "<leader>gg" "<cmd>LazyGit<CR>" "Open LazyGit")
+    (mkKeymap "" "<leader>cc" "<cmd>GitPortal copy_link_to_clipboard<CR>" "Copy the link to the current file.")
+    (mkKeymap "" "<leader>co" "<cmd>GitPortal browse_file<CR>" "Copy the link to the current file.")
 
     (mkKeymap "" "<leader>ff" "<cmd>Telescope find_files<CR>" "Lists files in current working directory")
     (mkKeymap "" "<leader>fg" "<cmd>Telescope live_grep<CR>" "Search for a string in current working directory")
