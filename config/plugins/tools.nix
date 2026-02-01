@@ -91,6 +91,10 @@
       };
     };
 
+    nvim-surround = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
+    };
     treesj = {
       enable = true;
       lazyLoad.settings = {
