@@ -14,6 +14,8 @@
     coreutils.enable = !config.settings.portable;
   };
 
+  lsp.servers.typos_lsp.enable = true;
+
   plugins = {
     yazi = {
       enable = true;
