@@ -21,7 +21,7 @@ in {
 
     plugins = {
       conform-nvim.settings.formatters_by_ft = {
-        markdown = "markdownlint-cli2";
+        markdown = ["markdownlint-cli2"];
       };
       lint = {
         lintersByFt.markdown = ["markdownlint-cli2"];
