@@ -32,6 +32,11 @@ in {
         };
       };
 
+      md-table-tidy = {
+        enable = true;
+        # Automatically registers <leader>tt
+        lazyLoad.settings.fmt = "markdown";
+      };
       render-markdown = {
         enable = true;
         lazyLoad.settings = {

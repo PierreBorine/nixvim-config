@@ -6,6 +6,11 @@
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    md-table-tidy = {
+      url = "github:timantipov/md-table-tidy.nvim";
+      flake = false;
+    };
+
     lualine-so-fancy = {
       url = "github:meuter/lualine-so-fancy.nvim";
       flake = false;

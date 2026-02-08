@@ -87,6 +87,22 @@
         "type": "github"
       }
     },
+    "md-table-tidy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768813694,
+        "narHash": "sha256-BUnUl4KJSmRli4LTssvvscTMmUq70mS2/BWOi58cxdM=",
+        "owner": "timantipov",
+        "repo": "md-table-tidy.nvim",
+        "rev": "311228944648b0557bd211cb706284698e1a381a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "timantipov",
+        "repo": "md-table-tidy.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1768564909,
@@ -160,6 +176,7 @@
         "flake-parts": "flake-parts",
         "header-42-nvim": "header-42-nvim",
         "lualine-so-fancy": "lualine-so-fancy",
+        "md-table-tidy": "md-table-tidy",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "toggler": "toggler"

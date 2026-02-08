@@ -27,4 +27,10 @@ in {
     version = inputs.toggler.rev;
     src = inputs.toggler;
   };
+
+  md-table-tidy = buildVimPlugin {
+    pname = "md-table-tidy";
+    version = inputs.md-table-tidy.rev;
+    src = inputs.md-table-tidy;
+  };
 }
