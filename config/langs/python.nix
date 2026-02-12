@@ -7,7 +7,15 @@
   config = lib.mkIf (config.lib.isLang "Python") {
     lsp.servers = {
       ruff.enable = true;
-      basedpyright.enable = true;
+      basedpyright = {
+        enable = true;
+        config.settings.basedpyright = {
+          analysis.diagnosticSeverityOverrides = {
+            reportAny = false;
+            reportExplicitAny = false;
+          };
+        };
+      };
     };
 
     plugins = {
