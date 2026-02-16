@@ -1,5 +1,9 @@
 # nixvim-config
 
+> [!NOTE]
+> This project has [given up on github](https://giveupgithub.org) and is now
+> hosted on [Codeberg](https://codeberg.org/PierreBorine/nixvim-config).
+
 ## My Nixvim configuration
 
 <div align="center"><img src=".github/assets/screenshot.png" alt="nvim"></div>
